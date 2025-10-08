@@ -1,8 +1,20 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import AppLogoImage from "@/assets/images/app-logo.png"
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import { useRouter } from "expo-router";
 
 export default function Index() {
+
+  const router = useRouter();
+
+  const onStartedPressed = () => {
+    router.push("/auth/register");
+  };
+
+  const onLoginPressed = () => {
+    router.push("/auth/login");
+  };
+
   return (
     <View style={styles.container} >
 
@@ -15,16 +27,16 @@ export default function Index() {
       </View>
 
       <View style={styles.footerContent}>
-        <TouchableOpacity style={styles.startButton}>
+        <TouchableOpacity style={styles.startButton} onPress={onStartedPressed}>
           <Text style={styles.startButtonText}>Let&apos;s get started</Text>
         </TouchableOpacity>
 
-        <View style={styles.loginTextContainer}>
+        <TouchableOpacity style={styles.loginTextContainer} onPress={onLoginPressed}>
           <Text style={styles.loginText}>I already have an account</Text>
           <View style={styles.loginArrowIcon}>
             <FontAwesome6 name="arrow-right-long" size={14} color="#ffffff" />
           </View>
-        </View>
+        </TouchableOpacity>
       </View>
 
     </View>
@@ -76,7 +88,6 @@ const styles = StyleSheet.create({
   },
   footerContent: {
     width: "100%",
-    marginBottom: 24,
   },
   startButton: {
     justifyContent: "center",
