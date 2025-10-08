@@ -1,6 +1,7 @@
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
-import RegistrationBackground from "@/assets/images/registration-background.png"
+import { ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import LoginBackground from "@/assets/images/login-background.png"
 import { useRouter } from "expo-router";
+import Fontisto from '@expo/vector-icons/Fontisto';
 
 export default function RegisterScreen() {
 
@@ -10,16 +11,37 @@ export default function RegisterScreen() {
         <View style={styles.container}>
 
             <ImageBackground
-                source={RegistrationBackground}
+                source={LoginBackground}
                 style={styles.backgroundContainer}
                 resizeMode="cover" />
 
             <View style={styles.foregroundContainer}>
-                <View style={styles.header}>
-                    <Text> Login Header</Text>
-                </View>
+                <View style={styles.header} />
 
                 <View style={styles.footer}>
+                    <View>
+                        <Text style={styles.title}>Login</Text>
+                        <View style={styles.descriptionContainer}>
+                            <Text style={styles.description}>Good to see you back!</Text>
+                            <Fontisto name="heart" size={16} color="black" />
+                        </View>
+                        <TextInput
+                            style={styles.emailInput}
+                            placeholder="Email"
+                            placeholderTextColor="#D2D2D2"
+                            autoCapitalize='none'
+                            keyboardType='email-address'
+                        />
+                    </View>
+
+                    <View style={styles.buttonSection}>
+                        <TouchableOpacity style={styles.nextButton}>
+                            <Text style={styles.nextButtonText}>Next</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.cancelButton} onPress={() => { router.back() }}>
+                            <Text style={styles.cancelButtonText}>Cancel</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </View>
 
@@ -35,7 +57,7 @@ const styles = StyleSheet.create({
     backgroundContainer: {
         position: "absolute",
         width: "100%",
-        aspectRatio: 1.25,
+        height: "100%",
         justifyContent: "center",
         alignItems: "center",
     },
@@ -48,14 +70,59 @@ const styles = StyleSheet.create({
     header: {
         flex: 1,
         width: "100%",
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#123456"
     },
     footer: {
         flex: 1,
         width: "100%",
         flexDirection: "column",
-        backgroundColor: "#abcdef"
+    },
+    title: {
+        marginTop: 32,
+        fontSize: 52,
+        fontWeight: "bold",
+    },
+    descriptionContainer: {
+        flexDirection: "row",
+        alignItems: "center"
+    },
+    description: {
+        fontSize: 19,
+        fontWeight: "light",
+        color: "#202020",
+        lineHeight: 35,
+        marginEnd: 12,
+    },
+    emailInput: {
+        width: "100%",
+        backgroundColor: "#F8F8F8",
+        fontSize: 14,
+        padding: 16,
+        borderRadius: 60,
+        marginTop: 12,
+    },
+    buttonSection: {
+        flex: 1,
+        justifyContent: "flex-end",
+        alignItems: "center"
+    },
+    nextButton: {
+        width: "100%",
+        marginHorizontal: 24,
+        backgroundColor: "#004CFF",
+        borderRadius: 16,
+    },
+    nextButtonText: {
+        color: "#F3F3F3",
+        margin: 16,
+        fontFamily: "Nunito Sans",
+        fontSize: 22,
+        fontWeight: "300",
+        textAlign: "center",
+    },
+    cancelButton: {
+        marginVertical: 28
+    },
+    cancelButtonText: {
+        color: "#202020",
     },
 });

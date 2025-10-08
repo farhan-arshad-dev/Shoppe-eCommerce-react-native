@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
         fontFamily: "Nunito Sans",
         fontSize: 22,
         fontWeight: "300",
-        textAlign: "center", // ✅ centers text horizontally
+        textAlign: "center",
     },
     cancelButton: {
         marginVertical: 28
