@@ -35,7 +35,9 @@ export default function RegisterScreen() {
                     </View>
 
                     <View style={styles.buttonSection}>
-                        <TouchableOpacity style={styles.nextButton}>
+                        <TouchableOpacity style={styles.nextButton} onPress={() => {
+                            router.push("/auth/login/password")
+                        }}>
                             <Text style={styles.nextButtonText}>Next</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.cancelButton} onPress={() => { router.back() }}>
