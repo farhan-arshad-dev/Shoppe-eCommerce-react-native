@@ -2,6 +2,7 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import AppLogoImage from "@/assets/images/app-logo.png"
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import { useRouter } from "expo-router";
+import PrimaryButton from "@/components/PrimaryButton";
 
 export default function Index() {
 
@@ -27,9 +28,7 @@ export default function Index() {
       </View>
 
       <View style={styles.footerContent}>
-        <TouchableOpacity style={styles.startButton} onPress={onStartedPressed}>
-          <Text style={styles.startButtonText}>Let&apos;s get started</Text>
-        </TouchableOpacity>
+        <PrimaryButton text={"Let's get started"} onPress={onStartedPressed} />
 
         <TouchableOpacity style={styles.loginTextContainer} onPress={onLoginPressed}>
           <Text style={styles.loginText}>I already have an account</Text>
@@ -88,20 +87,7 @@ const styles = StyleSheet.create({
   },
   footerContent: {
     width: "100%",
-  },
-  startButton: {
-    justifyContent: "center",
-    marginHorizontal: 24,
-    backgroundColor: "#004CFF",
-    borderRadius: 16,
-  },
-  startButtonText: {
-    color: "#F3F3F3",
-    margin: 16,
-    fontFamily: "Nunito Sans",
-    fontSize: 22,
-    fontWeight: "300",
-    textAlign: "center", // ✅ centers text horizontally
+    paddingHorizontal: 24,
   },
   loginTextContainer: {
     flexDirection: "row",

@@ -2,6 +2,7 @@ import { ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } 
 import LoginBackground from "@/assets/images/login-background.png"
 import { useRouter } from "expo-router";
 import Fontisto from '@expo/vector-icons/Fontisto';
+import PrimaryButton from "@/components/PrimaryButton";
 
 export default function RegisterScreen() {
 
@@ -35,11 +36,9 @@ export default function RegisterScreen() {
                     </View>
 
                     <View style={styles.buttonSection}>
-                        <TouchableOpacity style={styles.nextButton} onPress={() => {
+                        <PrimaryButton text={"Next"} onPress={() => {
                             router.push("/auth/login/password")
-                        }}>
-                            <Text style={styles.nextButtonText}>Next</Text>
-                        </TouchableOpacity>
+                        }} />
                         <TouchableOpacity style={styles.cancelButton} onPress={() => { router.back() }}>
                             <Text style={styles.cancelButtonText}>Cancel</Text>
                         </TouchableOpacity>
@@ -106,20 +105,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "flex-end",
         alignItems: "center"
-    },
-    nextButton: {
-        width: "100%",
-        marginHorizontal: 24,
-        backgroundColor: "#004CFF",
-        borderRadius: 16,
-    },
-    nextButtonText: {
-        color: "#F3F3F3",
-        margin: 16,
-        fontFamily: "Nunito Sans",
-        fontSize: 22,
-        fontWeight: "300",
-        textAlign: "center",
     },
     cancelButton: {
         marginVertical: 28

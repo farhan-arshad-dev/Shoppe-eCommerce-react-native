@@ -3,25 +3,12 @@ import { Image, ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, 
 import PasswordBackground from "@/assets/images/password-background.png"
 import ProfilePic from "@/assets/images/profile.png"
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import PasswordBullet from "@/components/PasswordBullet";
 
 export default function PasswordScreen() {
-
-    const maxLength = 8;
     const router = useRouter();
-    const [password, setPassword] = useState("");
-    const inputRef = useRef<TextInput>(null);
     const [isWrongPassword, setIsWrongPassword] = useState(false);
-    const handlePasswordChange = (text: string) => {
-        if (text.length <= maxLength) {
-            setPassword(text);
-        }
-        setIsWrongPassword(text === "00000"); // temp to mark the password wrong
-    };
-
-    useEffect(() => {
-        inputRef.current?.focus();
-    });
 
     return (
         <View style={styles.container}>
@@ -40,38 +27,18 @@ export default function PasswordScreen() {
 
                     <Text style={styles.title}>Hello, Romina!!</Text>
                     <Text style={styles.description}>Type your password</Text>
-
-
-                    <TouchableOpacity
-                        activeOpacity={1}
-                        onPress={() => inputRef.current?.focus()}
-                        style={styles.passwordBulletContainer}
-                    >
-                        <TextInput
-                            ref={inputRef}
-                            value={password}
-                            onChangeText={handlePasswordChange}
-                            keyboardType="numeric"
-                            secureTextEntry={false}
-                            style={styles.hiddenInput}
-                            maxLength={maxLength}
-                        />
-
-                        <View style={styles.bulletRow}>
-                            {[...Array(maxLength)].map((_, i) => {
-                                const filled = i < password.length;
-                                return (<View
-                                    key={i}
-                                    style={[styles.bullet,
-                                    isWrongPassword ?
-                                        (filled ? styles.wrongPasswordBullet : styles.wrongPasswordEmptyBullet) :
-                                        (filled ? styles.filledBullet : styles.emptyBullet)
-                                    ]}
-                                />
-                                );
-                            })}
-                        </View>
-                    </TouchableOpacity>
+                    <PasswordBullet
+                        maxLength={8}
+                        isWrongPassword={isWrongPassword}
+                        setIsWrongPassword={setIsWrongPassword}
+                        onPasswordChanged={(passowrd) => {
+                            if (passowrd === "00000000") {
+                                router.replace("/home")
+                            } else if (passowrd === "11111111") {
+                                router.replace("/home/whats-new")
+                            }
+                        }}
+                    />
                 </View>
 
                 <View style={styles.footer}>
@@ -156,42 +123,6 @@ const styles = StyleSheet.create({
         fontWeight: "light",
         lineHeight: 35,
         marginBottom: 8,
-    },
-    passwordBulletContainer: {
-        height: 18,
-        width: "100%",
-    },
-    hiddenInput: {
-        position: "absolute",
-        opacity: 0,
-    },
-    bulletRow: {
-        flexDirection: "row",
-        justifyContent: "center",
-        gap: 12,
-    },
-    bullet: {
-        width: 17,
-        height: 17,
-        borderRadius: 9,
-        alignItems: "center",
-        justifyContent: "center",
-    },
-    filledBullet: {
-        backgroundColor: "#004CFF",
-        borderColor: "#004CFF",
-    },
-    emptyBullet: {
-        borderColor: "#E5EBFC",
-        backgroundColor: "#E5EBFC",
-    },
-    wrongPasswordBullet: {
-        backgroundColor: "#EC4E4E",
-        borderColor: "#EC4E4E",
-    },
-    wrongPasswordEmptyBullet: {
-        backgroundColor: "#F8CECE",
-        borderColor: "#F8CECE",
     },
     footer: {
         flex: 1,

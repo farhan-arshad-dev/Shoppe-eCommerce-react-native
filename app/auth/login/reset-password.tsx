@@ -2,18 +2,37 @@ import { useRouter } from "expo-router";
 import { Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import ResetPasswordBackground from "@/assets/images/reset-password-background.png"
 import ProfilePic from "@/assets/images/profile.png"
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { useState } from "react";
+import VerificationOptions, { VerificationType } from "@/components/VerificationOpntions";
+import PasswordBullet from "@/components/PasswordBullet";
+import PrimaryButton from "@/components/PrimaryButton";
+import SecondaryButton from "@/components/SecondaryButton";
+import PrimaryInputText from "@/components/PrimaryInputText";
 
-enum VerificationType {
-    SMS,
-    EMAIL,
-}
+enum ScreenType {
+    VERIFICATION_CODE_TYPE_SELECTION,
+    VERIFICATION_CODE_ENTRY,
+    NEW_PASSWORD
+};
 
 export default function PasswordScreen() {
     const router = useRouter();
+
+    const [screenType, setScreenType] = useState<ScreenType>(ScreenType.VERIFICATION_CODE_TYPE_SELECTION)
     const [verificationType, setVerificationType] = useState<VerificationType>(VerificationType.SMS)
-    const isSMSVerification = verificationType === VerificationType.SMS;
+    const [verificationError, setVerificationError] = useState<boolean>(false)
+
+    const title =
+        screenType === ScreenType.NEW_PASSWORD ?
+            "Setup New Password" :
+            "Password Recovery";
+
+    const description = screenType === ScreenType.VERIFICATION_CODE_ENTRY ?
+        "Enter 4-digits code we sent you \n on your phone number" :
+        screenType === ScreenType.NEW_PASSWORD ?
+            "Please, setup a new password for \n your account" :
+            "How you would like to restore your password?";
+
     return (
         <View style={styles.container}>
 
@@ -29,48 +48,67 @@ export default function PasswordScreen() {
                         <Image source={ProfilePic} style={styles.profilePic} />
                     </View>
 
-                    <Text style={styles.title}>Password Recovery</Text>
-                    <Text style={styles.description}>How you would like to restore{"\n"}your password?</Text>
+                    <Text style={styles.title}>{title}</Text>
+                    <Text style={styles.description}>{description}</Text>
+
+                    {screenType === ScreenType.VERIFICATION_CODE_ENTRY && (
+                        <Text style={styles.phoneNumberText}>+98*******00</Text>
+                    )}
                 </View>
 
                 <View style={styles.footer}>
-                    <View style={styles.verificationOptions}>
-                        <TouchableOpacity activeOpacity={1} style={styles.smsButton} onPress={() => {
-                            setVerificationType(VerificationType.SMS)
-                        }}>
-                            <Text style={styles.smsButtonText}>SMS</Text>
 
-                            <View style={[styles.bullet, (isSMSVerification ? styles.smsBulletActive : styles.smsBulletInActive)]} >
-                                {verificationType === VerificationType.SMS && (
-                                    <MaterialCommunityIcons name="check-bold" size={14} color="white" />
-                                )}
+                    {screenType === ScreenType.VERIFICATION_CODE_TYPE_SELECTION &&
+                        (<VerificationOptions verificationType={verificationType} setVerificationType={setVerificationType} />)}
+
+                    {screenType === ScreenType.VERIFICATION_CODE_ENTRY &&
+                        (<PasswordBullet
+                            maxLength={4}
+                            isWrongPassword={false}
+                            style={{ marginTop: 24 }}
+                            onPasswordChanged={(passowrd) => {
+                                if (passowrd === "0000") {
+                                    setScreenType(ScreenType.NEW_PASSWORD)
+                                }
+                            }}
+                        />)}
+
+                    {screenType === ScreenType.NEW_PASSWORD &&
+                        (
+                            <View style={styles.newPasswordContainer}>
+                                <PrimaryInputText placeHolder={"New Password"} textStyle={styles.newPasswordInput} />
+                                <PrimaryInputText placeHolder={"Repeat Password"} textStyle={styles.newPasswordInput} />
                             </View>
-                        </TouchableOpacity>
+                        )}
 
-                        <TouchableOpacity activeOpacity={1} style={styles.emailButton} onPress={() => {
-                            setVerificationType(VerificationType.EMAIL)
-                        }}>
-                            <Text style={styles.emailButtonText}>Email</Text>
-                            <View style={[styles.bullet, (isSMSVerification ? styles.emailBulletInActive : styles.emailBulletActive)]} >
-                                {verificationType === VerificationType.EMAIL && (
-                                    <MaterialCommunityIcons name="check-bold" size={14} color="white" />
-                                )}
-                            </View>
+                    <View style={styles.footerButtonSection}>
+                        {screenType === ScreenType.VERIFICATION_CODE_TYPE_SELECTION &&
+                            (<PrimaryButton text={"Next"} onPress={() => {
+                                setScreenType(ScreenType.VERIFICATION_CODE_ENTRY)
+                            }} />
+                            )
+                        }
 
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.nextButtonSection}>
-                        <TouchableOpacity style={styles.nextButton} onPress={() => {
-                        }}>
-                            <Text style={styles.nextButtonText}>Next</Text>
-                        </TouchableOpacity>
+                        {screenType === ScreenType.VERIFICATION_CODE_ENTRY &&
+                            (<SecondaryButton text={"Send Again"} style={{ width: "55%" }} onPress={() => {
+                                setVerificationError(true);
+                            }} />
+                            )
+                        }
+
+                        {screenType === ScreenType.NEW_PASSWORD &&
+                            (<PrimaryButton text={"Save"} onPress={() => {
+                                router.replace("/home/whats-new");
+                            }} />
+                            )
+                        }
+
                         <TouchableOpacity style={styles.cancelButton} onPress={() => { router.back() }}>
                             <Text style={styles.cancelButtonText}>Cancel</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
             </View>
-
         </View >
     );
 }
@@ -133,64 +171,8 @@ const styles = StyleSheet.create({
         fontSize: 19,
         fontWeight: "light",
         lineHeight: 27,
-        marginBottom: 28,
+        marginBottom: 18,
         textAlign: "center"
-    },
-    verificationOptions: {
-        width: "100%",
-        alignItems: "center"
-    },
-    smsButton: {
-        flexDirection: "row",
-        justifyContent: "center",
-        width: "55%",
-        backgroundColor: "#E5EBFC",
-        borderRadius: 16,
-    },
-    smsButtonText: {
-        flex: 1,
-        color: "#004CFF",
-        textAlign: "center",
-        lineHeight: 19,
-        margin: 10,
-        fontWeight: "bold",
-    },
-    emailButton: {
-        width: "55%",
-        backgroundColor: "#FFEBEB",
-        borderRadius: 16,
-        marginTop: 10,
-    },
-    emailButtonText: {
-        color: "#000000",
-        textAlign: "center",
-        lineHeight: 19,
-        margin: 10,
-        fontWeight: "medium",
-    },
-    bullet: {
-        position: "absolute",
-        width: 22,
-        height: 22,
-        borderRadius: 11,
-        borderColor: "#ffffff",
-        borderWidth: 2,
-        right: 6,
-        margin: 8,
-        justifyContent: "center",
-        alignItems: "center",
-    },
-    smsBulletActive: {
-        backgroundColor: "#004CFF",
-    },
-    smsBulletInActive: {
-        backgroundColor: "#E5EBFC",
-    },
-    emailBulletActive: {
-        backgroundColor: "#EC4E4E",
-    },
-    emailBulletInActive: {
-        backgroundColor: "#F8CECE",
     },
     footer: {
         flex: 1,
@@ -198,23 +180,9 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
     },
-    nextButtonSection: {
+    footerButtonSection: {
         width: "100%",
         alignItems: "center",
-    },
-    nextButton: {
-        width: "100%",
-        marginHorizontal: 24,
-        backgroundColor: "#004CFF",
-        borderRadius: 16,
-    },
-    nextButtonText: {
-        color: "#F3F3F3",
-        margin: 16,
-        fontFamily: "Nunito Sans",
-        fontSize: 22,
-        fontWeight: "300",
-        textAlign: "center",
     },
     cancelButton: {
         marginVertical: 28
@@ -222,4 +190,16 @@ const styles = StyleSheet.create({
     cancelButtonText: {
         color: "#202020",
     },
+    phoneNumberText: {
+        fontSize: 16,
+        fontWeight: "bold",
+        color: "#000000",
+    },
+    newPasswordContainer: {
+        width: "100%",
+    },
+    newPasswordInput: {
+        textAlign: "center",
+        borderRadius: 15,
+    }
 });
