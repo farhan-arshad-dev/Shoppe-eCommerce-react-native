@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
     secondaryButtonText: {
         color: "#F3F3F3",
         margin: 16,
-        fontFamily: "Nunito Sans",
         fontSize: 22,
         fontWeight: "300",
         textAlign: "center",

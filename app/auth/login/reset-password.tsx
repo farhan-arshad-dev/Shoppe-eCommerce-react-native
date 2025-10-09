@@ -8,6 +8,7 @@ import PasswordBullet from "@/components/PasswordBullet";
 import PrimaryButton from "@/components/PrimaryButton";
 import SecondaryButton from "@/components/SecondaryButton";
 import PrimaryInputText from "@/components/PrimaryInputText";
+import PasswordResetErrorModal from "@/components/PasswordResetErrorModal";
 
 enum ScreenType {
     VERIFICATION_CODE_TYPE_SELECTION,
@@ -20,7 +21,7 @@ export default function PasswordScreen() {
 
     const [screenType, setScreenType] = useState<ScreenType>(ScreenType.VERIFICATION_CODE_TYPE_SELECTION)
     const [verificationType, setVerificationType] = useState<VerificationType>(VerificationType.SMS)
-    const [verificationError, setVerificationError] = useState<boolean>(false)
+    const [isVerificationErrorVisible, setIsVerificationErrorVisible] = useState<boolean>(false)
 
     const title =
         screenType === ScreenType.NEW_PASSWORD ?
@@ -91,7 +92,7 @@ export default function PasswordScreen() {
 
                         {screenType === ScreenType.VERIFICATION_CODE_ENTRY &&
                             (<SecondaryButton text={"Send Again"} style={{ width: "55%" }} onPress={() => {
-                                setVerificationError(true);
+                                setIsVerificationErrorVisible(true);
                             }} />
                             )
                         }
@@ -109,6 +110,10 @@ export default function PasswordScreen() {
                     </View>
                 </View>
             </View>
+
+            <PasswordResetErrorModal visible={isVerificationErrorVisible} onClose={() => {
+                setIsVerificationErrorVisible(false);
+            }} />
         </View >
     );
 }
