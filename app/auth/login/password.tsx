@@ -3,7 +3,7 @@ import { Image, ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, 
 import PasswordBackground from "@/assets/images/password-background.png"
 import ProfilePic from "@/assets/images/profile.png"
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function PasswordScreen() {
 
@@ -18,6 +18,10 @@ export default function PasswordScreen() {
         }
         setIsWrongPassword(text === "00000"); // temp to mark the password wrong
     };
+
+    useEffect(() => {
+        inputRef.current?.focus();
+    });
 
     return (
         <View style={styles.container}>
@@ -36,6 +40,7 @@ export default function PasswordScreen() {
 
                     <Text style={styles.title}>Hello, Romina!!</Text>
                     <Text style={styles.description}>Type your password</Text>
+
 
                     <TouchableOpacity
                         activeOpacity={1}
@@ -71,7 +76,7 @@ export default function PasswordScreen() {
 
                 <View style={styles.footer}>
                     {isWrongPassword && (<TouchableOpacity style={styles.forgotPasswordContainer} onPress={() => {
-
+                        router.push("/auth/login/reset-password");
                     }}>
                         <Text style={styles.forgotPasswordText}>Forgot your password?</Text>
                     </TouchableOpacity>
@@ -169,7 +174,6 @@ const styles = StyleSheet.create({
         width: 17,
         height: 17,
         borderRadius: 9,
-        borderColor: "#aaa",
         alignItems: "center",
         justifyContent: "center",
     },
