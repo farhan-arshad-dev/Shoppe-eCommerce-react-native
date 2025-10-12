@@ -3,12 +3,12 @@ import { Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from
 import ResetPasswordBackground from "@/assets/images/reset-password-background.png"
 import ProfilePic from "@/assets/images/profile.png"
 import { useState } from "react";
-import VerificationOptions, { VerificationType } from "@/components/VerificationOpntions";
-import PasswordBullet from "@/components/PasswordBullet";
-import PrimaryButton from "@/components/PrimaryButton";
-import SecondaryButton from "@/components/SecondaryButton";
-import PrimaryInputText from "@/components/PrimaryInputText";
-import PasswordResetErrorModal from "@/components/PasswordResetErrorModal";
+import VerificationOptions, { VerificationType } from "@/src/components/VerificationOpntions";
+import PasswordBullet from "@/src/components/PasswordBullet";
+import PrimaryButton from "@/src/components/PrimaryButton";
+import SecondaryButton from "@/src/components/SecondaryButton";
+import PrimaryInputText from "@/src/components/PrimaryInputText";
+import PasswordResetErrorModal from "@/src/components/PasswordResetErrorModal";
 
 enum ScreenType {
     VERIFICATION_CODE_TYPE_SELECTION,

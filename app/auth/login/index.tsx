@@ -2,7 +2,7 @@ import { ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } 
 import LoginBackground from "@/assets/images/login-background.png"
 import { useRouter } from "expo-router";
 import Fontisto from '@expo/vector-icons/Fontisto';
-import PrimaryButton from "@/components/PrimaryButton";
+import PrimaryButton from "@/src/components/PrimaryButton";
 
 export default function RegisterScreen() {
 

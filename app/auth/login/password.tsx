@@ -4,7 +4,7 @@ import PasswordBackground from "@/assets/images/password-background.png"
 import ProfilePic from "@/assets/images/profile.png"
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import { useState } from "react";
-import PasswordBullet from "@/components/PasswordBullet";
+import PasswordBullet from "@/src/components/PasswordBullet";
 
 export default function PasswordScreen() {
     const router = useRouter();

@@ -2,7 +2,7 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import AppLogoImage from "@/assets/images/app-logo.png"
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import { useRouter } from "expo-router";
-import PrimaryButton from "@/components/PrimaryButton";
+import PrimaryButton from "@/src/components/PrimaryButton";
 
 export default function Index() {
 

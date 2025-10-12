@@ -1,4 +1,5 @@
-import { StyleSheet, TextInput, TextStyle } from "react-native";
+import { TextInput, TextStyle } from "react-native";
+import styles from "./styles";
 
 export default function PrimaryInputText({
     placeHolder,
@@ -17,15 +18,3 @@ export default function PrimaryInputText({
         />
     );
 }
-
-const styles = StyleSheet.create({
-    primaryInput: {
-        width: "100%",
-        backgroundColor: "#F8F8F8",
-        fontSize: 14,
-        padding: 16,
-        borderRadius: 60,
-        marginBottom: 8,
-        textAlign: "left"
-    },
-});
