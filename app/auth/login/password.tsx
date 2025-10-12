@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
 
         // Android Shadow
-        elevation: 4,
+        elevation: 4,   // background must set in the same scope
         marginBottom: 28,
     },
     profilePic: {
