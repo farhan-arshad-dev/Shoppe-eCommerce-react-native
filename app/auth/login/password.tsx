@@ -1,7 +1,7 @@
 import { useRouter } from "expo-router";
 import { Image, ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import PasswordBackground from "@/assets/images/password-background.png"
-import ProfilePic from "@/assets/images/profile.png"
+import ProfilePic from "@/assets/images/profile-dummy.png"
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import { useState } from "react";
 import PasswordBullet from "@/src/components/PasswordBullet";

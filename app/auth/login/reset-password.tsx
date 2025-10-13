@@ -1,7 +1,7 @@
 import { useRouter } from "expo-router";
 import { Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import ResetPasswordBackground from "@/assets/images/reset-password-background.png"
-import ProfilePic from "@/assets/images/profile.png"
+import ProfilePic from "@/assets/images/profile-dummy.png"
 import { useState } from "react";
 import VerificationOptions, { VerificationType } from "@/src/components/VerificationOpntions";
 import PasswordBullet from "@/src/components/PasswordBullet";

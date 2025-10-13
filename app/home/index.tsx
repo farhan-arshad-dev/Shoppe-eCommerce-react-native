@@ -1,9 +1,5 @@
-import { Text } from "react-native";
+import { Redirect } from "expo-router";
 
-export default function WhatsNewScreen() {
-    return (
-        <Text style={{
-            width: "100%", height: "100%", textAlign: "center",
-        }}>{"Home Screen"}</Text>
-    )
+export default function Index() {
+    return <Redirect href="/home/(tabs)" />;
 }
