@@ -3,9 +3,10 @@ import AppLogoImage from "@/assets/images/app-logo.png"
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import { useRouter } from "expo-router";
 import PrimaryButton from "@/src/components/PrimaryButton";
+import { useEffect } from "react";
+import LoginArrowIcon from "@/src/components/LongArrowIcon";
 
 export default function Index() {
-
   const router = useRouter();
 
   const onStartedPressed = () => {
@@ -15,6 +16,15 @@ export default function Index() {
   const onLoginPressed = () => {
     router.push("/auth/login");
   };
+
+  // Temp code
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      router.replace("/home");
+    }, 500);
+
+    return () => clearTimeout(timer);
+  });
 
   return (
     <View style={styles.container} >
@@ -32,9 +42,7 @@ export default function Index() {
 
         <TouchableOpacity style={styles.loginTextContainer} onPress={onLoginPressed}>
           <Text style={styles.loginText}>I already have an account</Text>
-          <View style={styles.loginArrowIcon}>
-            <FontAwesome6 name="arrow-right-long" size={14} color="#ffffff" />
-          </View>
+          <LoginArrowIcon />
         </TouchableOpacity>
       </View>
 
@@ -99,13 +107,4 @@ const styles = StyleSheet.create({
     color: "#202020",
     opacity: 0.9,
   },
-  loginArrowIcon: {
-    height: 30,
-    width: 30,
-    marginHorizontal: 16,
-    backgroundColor: "#004CFF",
-    borderRadius: 15,
-    alignItems: "center",
-    justifyContent: "center",
-  }
 });
