@@ -2,7 +2,7 @@ import CategoryGrid from "@/src/components/CategoryGrid";
 import NewItemLayout from "@/src/components/NewItem";
 import SeeAllButton from "@/src/components/SeeAllButton";
 import Timer from "@/src/components/CountDownTimer";
-import { categories, justForYouItems, newItems, popularItems, saleItems, slides, topProducts } from "@/src/data/home-page-data";
+import { categories, justForYouItems, newItems, popularItems, saleItems, slides, topProducts } from "@/src/data/shop-tabs-data";
 import Feather from '@expo/vector-icons/Feather';
 import { useEffect, useRef, useState } from "react";
 import { FlatList, Image, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";

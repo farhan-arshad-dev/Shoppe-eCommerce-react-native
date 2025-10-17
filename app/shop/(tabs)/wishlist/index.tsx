@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
 
-export default function HomeScreen() {
+export default function WishlistScreen() {
     return (
         <View style={styles.container}>
             <View>
-                <Text>Menu</Text>
+                <Text>Wish List</Text>
             </View>
         </View>
     )

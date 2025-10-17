@@ -20,7 +20,7 @@ export default function Index() {
   // Temp code
   useEffect(() => {
     const timer = setTimeout(() => {
-      router.replace("/home");
+      router.replace("/shop");
     }, 500);
 
     return () => clearTimeout(timer);

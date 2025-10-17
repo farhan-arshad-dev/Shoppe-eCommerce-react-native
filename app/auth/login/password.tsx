@@ -33,9 +33,9 @@ export default function PasswordScreen() {
                         setIsWrongPassword={setIsWrongPassword}
                         onPasswordChanged={(passowrd) => {
                             if (passowrd === "00000000") {
-                                router.replace("/home")
+                                router.replace("/shop")
                             } else if (passowrd === "11111111") {
-                                router.replace("/home/whats-new")
+                                router.replace("/shop/whats-new")
                             }
                         }}
                     />

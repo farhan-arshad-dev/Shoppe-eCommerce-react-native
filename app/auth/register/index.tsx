@@ -98,7 +98,7 @@ export default function RegisterScreen() {
 
                     <View style={styles.buttonSection}>
                         <TouchableOpacity style={styles.doneButton} onPress={() => {
-                            router.replace("/home/whats-new");
+                            router.replace("/shop/whats-new");
                         }}>
                             <Text style={styles.doneButtonText}>Done</Text>
                         </TouchableOpacity>

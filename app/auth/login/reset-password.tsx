@@ -99,7 +99,7 @@ export default function PasswordScreen() {
 
                         {screenType === ScreenType.NEW_PASSWORD &&
                             (<PrimaryButton text={"Save"} onPress={() => {
-                                router.replace("/home/whats-new");
+                                router.replace("/shop/whats-new");
                             }} />
                             )
                         }

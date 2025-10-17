@@ -1,4 +1,4 @@
-import { Category, NewItem, PopularItem, SaleItem, TopProduct } from "../types/home";
+import { Category, NewItem, PopularItem, SaleItem, TopProduct } from "../types/shop";
 import { Slide } from "../types/slide";
 
 export const slides: Slide[] = [

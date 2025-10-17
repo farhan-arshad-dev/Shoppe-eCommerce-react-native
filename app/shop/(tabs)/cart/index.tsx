@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
 
-export default function HomeScreen() {
+export default function CartScreen() {
     return (
         <View style={styles.container}>
             <View>
-                <Text>Profile Screen</Text>
+                <Text>Cart Screen</Text>
             </View>
         </View>
     )
