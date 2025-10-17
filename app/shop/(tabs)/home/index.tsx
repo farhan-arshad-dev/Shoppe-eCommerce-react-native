@@ -5,15 +5,17 @@ import Timer from "@/src/components/CountDownTimer";
 import { categories, justForYouItems, newItems, popularItems, saleItems, slides, topProducts } from "@/src/data/shop-tabs-data";
 import Feather from '@expo/vector-icons/Feather';
 import { useEffect, useRef, useState } from "react";
-import { FlatList, Image, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { FlatList, Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import PagerView from "react-native-pager-view";
 import SalesItemLayout from "@/src/components/SalesItem";
 import PopularItemLayout from "@/src/components/PopularItem";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import JustForYouItem from "@/src/components/JustForYouItem";
+import { useRouter } from "expo-router";
 
 export default function HomeScreen() {
 
+    const router = useRouter();
     const pagerRef = useRef<PagerView>(null);
     const [page, setPage] = useState(0);
 
@@ -122,7 +124,9 @@ export default function HomeScreen() {
                     />
                 </View>
 
-                <View style={styles.flashSaleContainer}>
+                <Pressable style={styles.flashSaleContainer} onPress={() => {
+                    router.push('/shop/(tabs)/home/flash-sale');
+                }}>
                     <View style={styles.listHeader}>
                         <Text style={styles.listTitle}>Flash Sale</Text>
                         <Timer hours={0} minutes={36} seconds={58} />
@@ -144,7 +148,7 @@ export default function HomeScreen() {
                         scrollEnabled={false}
                         showsVerticalScrollIndicator={false}
                     />
-                </View>
+                </Pressable>
 
                 <View style={styles.popularContainer}>
                     <View style={styles.listHeader}>
@@ -195,7 +199,7 @@ export default function HomeScreen() {
                     />
                 </View>
             </ScrollView>
-        </View>
+        </View >
     )
 }
 
