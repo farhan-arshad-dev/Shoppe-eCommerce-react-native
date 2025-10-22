@@ -1,4 +1,4 @@
-import { Category, NewItem, PopularItem, SaleItem, TopProduct } from "../types/shop";
+import { Category, ItemType, NewItem, PopularItem, SaleItem, TopProduct } from "../types/shop-tabs";
 import { Slide } from "../types/slide";
 
 export const slides: Slide[] = [
@@ -102,30 +102,35 @@ export const newItems: NewItem[] = [
         id: 1,
         title: "Lorem ipsum dolor sit amet consectetur.",
         price: "$17,00",
-        image: "https://picsum.photos/seed/1/200"
+        image: "https://picsum.photos/seed/1/200",
+        type: ItemType.SALE_ITEM,
     },
     {
         id: 2,
         title: "Lorem ipsum dolor sit amet consectetur.",
         price: "$32,00",
-        image: "https://picsum.photos/seed/2/200"
+        image: "https://picsum.photos/seed/2/200",
+        type: ItemType.SALE_ITEM,
     },
     {
         id: 3,
         title: "Lorem ipsum dolor sit amet consectetur.",
         price: "$21,00",
-        image: "https://picsum.photos/seed/3/200"
+        image: "https://picsum.photos/seed/3/200",
+        type: ItemType.SALE_ITEM,
     },
     {
         id: 4, title: "Lorem ipsum dolor sit amet consectetur.",
         price: "$17,00",
-        image: "https://picsum.photos/seed/4/200"
+        image: "https://picsum.photos/seed/4/200",
+        type: ItemType.SALE_ITEM,
     },
     {
         id: 5,
         title: "Lorem ipsum dolor sit amet consectetur.",
         price: "$32,00",
-        image: "https://picsum.photos/seed/5/200"
+        image: "https://picsum.photos/seed/5/200",
+        type: ItemType.SALE_ITEM,
     },
 ]
 
@@ -206,29 +211,83 @@ export const justForYouItems: NewItem[] = [
         id: 1,
         title: "Lorem ipsum dolor sit amet consectetur.",
         price: "$17,00",
+        type: ItemType.SALE_ITEM,
         image: "https://picsum.photos/seed/1/200"
     },
     {
         id: 2,
         title: "Lorem ipsum dolor sit amet consectetur.",
         price: "$32,00",
+        type: ItemType.SALE_ITEM,
         image: "https://picsum.photos/seed/2/200"
     },
     {
         id: 3,
         title: "Lorem ipsum dolor sit amet consectetur.",
         price: "$21,00",
+        type: ItemType.SALE_ITEM,
         image: "https://picsum.photos/seed/3/200"
     },
     {
         id: 4, title: "Lorem ipsum dolor sit amet consectetur.",
         price: "$17,00",
+        type: ItemType.SALE_ITEM,
         image: "https://picsum.photos/seed/4/200"
     },
     {
         id: 5,
         title: "Lorem ipsum dolor sit amet consectetur.",
         price: "$32,00",
+        type: ItemType.SALE_ITEM,
+        image: "https://picsum.photos/seed/5/200"
+    },
+]
+
+export const discountedItems: NewItem[] = [
+    {
+        id: 1,
+        title: "Lorem ipsum dolor sit amet consectetur.",
+        price: "$17,00",
+        discountedPrice: "$15,00",
+        type: ItemType.SALE_ITEM,
+        image: "https://picsum.photos/seed/1/200"
+    },
+    {
+        id: 2,
+        title: "Lorem ipsum dolor sit amet consectetur.",
+        price: "$32,00",
+        discountedPrice: "$15,00",
+        type: ItemType.SALE_ITEM,
+        image: "https://picsum.photos/seed/2/200"
+    },
+    {
+        id: 3,
+        title: "Lorem ipsum dolor sit amet consectetur.",
+        price: "$21,00",
+        discountedPrice: "$15,00",
+        type: ItemType.SALE_ITEM,
+        image: "https://picsum.photos/seed/3/200"
+    },
+    {
+        id: 4, title: "Lorem ipsum dolor sit amet consectetur.",
+        price: "$17,00",
+        discountedPrice: "$15,00",
+        type: ItemType.SALE_ITEM,
+        image: "https://picsum.photos/seed/4/200"
+    },
+    {
+        id: 5, title: "Lorem ipsum dolor sit amet consectetur.",
+        price: "$17,00",
+        discountedPrice: "$15,00",
+        image: "https://img.freepik.com/free-vector/gradient-shopping-discount-horizontal-sale-banner_23-2150321996.jpg?semt=ais_hybrid&w=740&q=80",
+        type: ItemType.BANNER,
+    },
+    {
+        id: 6,
+        title: "Lorem ipsum dolor sit amet consectetur.",
+        price: "$32,00",
+        discountedPrice: "$15,00",
+        type: ItemType.SALE_ITEM,
         image: "https://picsum.photos/seed/5/200"
     },
 ]

@@ -14,7 +14,9 @@ export interface NewItem {
     id: number;
     title: string;
     price: string,
+    discountedPrice?: string;
     image: string;
+    type: ItemType;
 }
 
 export interface SaleItem {
@@ -28,4 +30,9 @@ export interface PopularItem {
     totalLikes: number;
     tag: string,
     image: string;
+}
+
+export enum ItemType {
+    BANNER = "banner",
+    SALE_ITEM = "sale-item"
 }

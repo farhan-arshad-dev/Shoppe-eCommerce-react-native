@@ -3,10 +3,11 @@ import styles from "./styles";
 
 
 export default function JustForYouItem(
-    { index, title, price, imageUrl }: {
+    { index, title, price, discountedPrice, imageUrl }: {
         index: number
         title: string,
         price: string,
+        discountedPrice?: string,
         imageUrl: string,
     }
 ) {
@@ -21,7 +22,14 @@ export default function JustForYouItem(
                 <Image source={{ uri: imageUrl }} style={styles.justForYouItemImage} />
             </View>
             <Text style={styles.title}>{title}</Text>
-            <Text style={styles.price}>{price}</Text>
+            {discountedPrice ? (
+                <View style={styles.priceContainer}>
+                    <Text style={styles.discountedPrice}>{discountedPrice}</Text>
+                    <Text style={styles.price}>{price}</Text>
+                </View>
+            ) : (
+                <Text style={styles.discountedPrice}>{price}</Text>
+            )}
         </View>
     );
 }

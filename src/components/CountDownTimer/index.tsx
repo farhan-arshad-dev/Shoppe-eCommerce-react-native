@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, Image, StyleProp, ViewStyle, TextStyle } from "react-native";
+import { View, Text, Image, StyleProp, ViewStyle, TextStyle, ImageStyle } from "react-native";
 import styles from "./styles";
 import ClockIcon from "@/assets/images/clock-icon.png"
 
-export default function Timer({
+export default function CountDownTimer({
     hours,
     minutes,
     seconds,
@@ -12,6 +12,7 @@ export default function Timer({
     cardStyle,
     labelStyle,
     valueStyle,
+    imageStyle,
     onComplete,
 }: {
     hours: number;
@@ -22,6 +23,7 @@ export default function Timer({
     cardStyle?: StyleProp<ViewStyle>;
     labelStyle?: StyleProp<TextStyle>;
     valueStyle?: StyleProp<TextStyle>;
+    imageStyle?: StyleProp<ImageStyle>
     onComplete?: () => void;
 }) {
     const [totalSeconds, setTotalSeconds] = useState(hours * 3600 + minutes * 60 + seconds);
@@ -54,7 +56,7 @@ export default function Timer({
             < View style={styles.iconContainer} >
                 <Image
                     source={ClockIcon}
-                    style={styles.clockIcon}
+                    style={[styles.clockIcon, imageStyle]}
                 />
             </View>
 

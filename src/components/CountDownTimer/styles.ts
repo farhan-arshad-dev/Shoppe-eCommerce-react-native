@@ -4,8 +4,7 @@ export default StyleSheet.create({
     container: {
         flexDirection: "row",
         alignItems: "center",
-        alignSelf: "center", // ✅ wrap content
-        backgroundColor: "#ffffff",
+        alignSelf: "center",
     },
     iconContainer: {
         marginRight: 4,

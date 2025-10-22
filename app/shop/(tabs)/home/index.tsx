@@ -1,7 +1,6 @@
 import CategoryGrid from "@/src/components/CategoryGrid";
 import NewItemLayout from "@/src/components/NewItem";
 import SeeAllButton from "@/src/components/SeeAllButton";
-import Timer from "@/src/components/CountDownTimer";
 import { categories, justForYouItems, newItems, popularItems, saleItems, slides, topProducts } from "@/src/data/shop-tabs-data";
 import Feather from '@expo/vector-icons/Feather';
 import { useEffect, useRef, useState } from "react";
@@ -12,6 +11,8 @@ import PopularItemLayout from "@/src/components/PopularItem";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import JustForYouItem from "@/src/components/JustForYouItem";
 import { useRouter } from "expo-router";
+import CountDownTimer from "@/src/components/CountDownTimer";
+import Banner from "@/src/components/Banner";
 
 export default function HomeScreen() {
 
@@ -55,9 +56,7 @@ export default function HomeScreen() {
                         ref={pagerRef}>
                         {slides.map((slide) => {
                             return (
-                                <View key={slide.id} style={styles.slide}>
-                                    <Image source={{ uri: slide.image }} style={styles.image} resizeMode="cover" />
-                                </View>
+                                <Banner key={slide.id} image={slide.image}/>
                             );
                         })}
                     </PagerView>
@@ -129,7 +128,7 @@ export default function HomeScreen() {
                 }}>
                     <View style={styles.listHeader}>
                         <Text style={styles.listTitle}>Flash Sale</Text>
-                        <Timer hours={0} minutes={36} seconds={58} />
+                        <CountDownTimer hours={0} minutes={36} seconds={58} />
                     </View>
 
                     <FlatList

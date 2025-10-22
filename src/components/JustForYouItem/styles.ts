@@ -34,10 +34,22 @@ export default StyleSheet.create({
         color: "#000000",
         marginBottom: 4,
     },
-    price: {
+    priceContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+    },
+    discountedPrice: {
         fontSize: 17,
         fontWeight: "bold",
         lineHeight: 21,
         color: "#202020",
+    },
+    price: {
+        marginStart: 2,
+        fontSize: 14,
+        fontWeight: "bold",
+        lineHeight: 18,
+        color: "#F1AEAE",
+        textDecorationLine: "line-through",
     },
 });
