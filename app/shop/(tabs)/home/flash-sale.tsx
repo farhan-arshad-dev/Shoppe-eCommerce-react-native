@@ -1,16 +1,16 @@
-import { FlatList, Image, ImageBackground, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { FlatList, Image, ImageBackground, ScrollView, StyleSheet, Text, View } from "react-native";
 import FlashSaleBackground from "@/assets/images/flash-sale-background.png";
 import LiveSale from "@/assets/images/live-sale.png";
 import FilterIcon from "@/assets/images/filter-icon.png";
 import CountDownTimer from "@/src/components/CountDownTimer";
 import DiscountSelector from "@/src/components/DiscountSelector";
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
-import { discountedItems, justForYouItems, popularItems } from "@/src/data/shop-tabs-data";
+import { discountedItems, popularItems } from "@/src/data/shop-tabs-data";
 import JustForYouItem from "@/src/components/JustForYouItem";
 import { ItemType } from "@/src/types/shop-tabs";
 import Banner from "@/src/components/Banner";
-import SeeAllButton from "@/src/components/SeeAllButton";
-import PopularItemLayout from "@/src/components/PopularItem";
+import LiveTag from "@/src/components/LiveTag";
+import MostPopularList from "@/src/components/MostPopularListSection";
 
 export default function FlashSaleScreen() {
     return (
@@ -50,8 +50,8 @@ export default function FlashSaleScreen() {
                             <FontAwesome5 name="play" size={17} color="#ffffff" />
                         </View>
 
-                        <View style={styles.liveTextContainer}>
-                            <Text style={styles.liveText}>Live</Text>
+                        <View style={styles.liveTagContainer}>
+                            <LiveTag />
                         </View>
                     </View>
 
@@ -91,29 +91,8 @@ export default function FlashSaleScreen() {
                         />
                     </View>
 
-                    <View style={styles.popularContainer}>
-                        <View style={styles.listHeader}>
-                            <Text style={styles.listTitle}>Most Popular</Text>
-                            <SeeAllButton />
-                        </View>
+                    <MostPopularList items={popularItems} />
 
-                        <FlatList
-                            data={popularItems}
-                            renderItem={({ item }) => {
-                                return (
-                                    <PopularItemLayout
-                                        key={item.id}
-                                        likes={item.totalLikes}
-                                        tagText={item.tag}
-                                        imageUrl={item.image} />
-                                );
-                            }}
-                            keyExtractor={(item) => item.id.toString()}
-                            horizontal
-                            showsHorizontalScrollIndicator={false}
-                            contentContainerStyle={styles.horizontalList}
-                        />
-                    </View>
                 </ScrollView>
             </View>
         </View >
@@ -195,19 +174,10 @@ const styles = StyleSheet.create({
         top: "50%",
         left: "50%",
     },
-    liveTextContainer: {
+    liveTagContainer: {
         position: "absolute",
         bottom: 6,
         right: 6,
-        backgroundColor: "#08C514",
-        borderRadius: 4,
-    },
-    liveText: {
-        color: "#fff",
-        fontSize: 12,
-        fontWeight: "700",
-        paddingHorizontal: 8,
-        paddingVertical: 4,
     },
     discountItemsContainer: {
         marginTop: 26,
@@ -232,8 +202,5 @@ const styles = StyleSheet.create({
     },
     horizontalList: {
         gap: 8,
-    },
-    popularContainer: {
-        marginTop: 24,
     },
 });

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { TextInput, TouchableOpacity, View, ViewStyle } from "react-native";
+import { StyleProp, TextInput, TouchableOpacity, View, ViewStyle } from "react-native";
 import styles from "./styles";
 
 export default function PasswordBullet({
@@ -8,7 +8,7 @@ export default function PasswordBullet({
     maxLength: number,
     isWrongPassword: boolean,
     setIsWrongPassword?: (isWrong: boolean) => void,
-    style?: ViewStyle,
+    style?: StyleProp<ViewStyle>,
     onPasswordChanged?: (password: string) => void,
 }) {
 

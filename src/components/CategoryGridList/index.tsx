@@ -1,9 +1,9 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
 import styles from "./styles";
-import { Category } from "@/src/types/shop";
+import { Category } from "@/src/types/shop-tabs";
 
-export default function CategoryGrid(
+export default function CategoryGridList(
     { categories }: { categories: Category[] }
 ) {
     return (

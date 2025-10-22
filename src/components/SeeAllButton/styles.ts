@@ -10,5 +10,6 @@ export default StyleSheet.create({
         fontSize: 15,
         fontWeight: "bold",
         color: "#202020",
+        marginEnd: 16,
     },
 });

@@ -1,6 +1,5 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import AppLogoImage from "@/assets/images/app-logo.png"
-import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import { useRouter } from "expo-router";
 import PrimaryButton from "@/src/components/PrimaryButton";
 import { useEffect } from "react";
@@ -18,13 +17,13 @@ export default function Index() {
   };
 
   // Temp code
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      router.replace("/shop");
-    }, 500);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     router.replace("/shop/(tabs)/profile");
+  //   }, 500);
 
-    return () => clearTimeout(timer);
-  });
+  //   return () => clearTimeout(timer);
+  // });
 
   return (
     <View style={styles.container} >
@@ -100,10 +99,14 @@ const styles = StyleSheet.create({
   loginTextContainer: {
     flexDirection: "row",
     justifyContent: "center",
-    alignItems: "baseline",
+    alignItems: "flex-end",
     marginVertical: 24,
   },
   loginText: {
+    fontSize: 15,
+    fontWeight: "light",
+    lineHeight: 26,
+    marginHorizontal: 16,
     color: "#202020",
     opacity: 0.9,
   },

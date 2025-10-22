@@ -137,32 +137,32 @@ export const newItems: NewItem[] = [
 export const saleItems: SaleItem[] = [
     {
         id: 1,
-        discount: "20%",
+        discount: "-20%",
         image: "https://img.freepik.com/free-vector/gradient-shopping-discount-horizontal-sale-banner_23-2150321996.jpg?semt=ais_hybrid&w=740&q=80",
     },
     {
         id: 2,
-        discount: "20%",
+        discount: "-20%",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaT6HhVY4g-y9Yo5WiA4kqqep7LDBV2LAxOQ&s",
     },
     {
         id: 3,
-        discount: "20%",
+        discount: "-20%",
         image: "https://static.vecteezy.com/system/resources/thumbnails/048/909/710/small/amazed-young-woman-shopaholic-holding-colorful-shopping-bags-and-look-amused-at-next-shop-buying-things-in-store-standing-over-blue-background-photo.jpg",
     },
     {
         id: 4,
-        discount: "20%",
+        discount: "-20%",
         image: "https://smartinvestor.com.my/wp-content/uploads/2025/05/635154-PN_1030x515_.jpg.jpeg",
     },
     {
         id: 5,
-        discount: "20%",
+        discount: "-20%",
         image: "https://smartinvestor.com.my/wp-content/uploads/2025/05/635154-PN_1030x515_.jpg.jpeg",
     },
     {
         id: 6,
-        discount: "20%",
+        discount: "-20%",
         image: "https://smartinvestor.com.my/wp-content/uploads/2025/05/635154-PN_1030x515_.jpg.jpeg",
     },
 ];
@@ -290,4 +290,12 @@ export const discountedItems: NewItem[] = [
         type: ItemType.SALE_ITEM,
         image: "https://picsum.photos/seed/5/200"
     },
+]
+
+export const stroies: TopProduct[] = [
+    { id: 1, image: "https://picsum.photos/seed/1/200" },
+    { id: 2, image: "https://picsum.photos/seed/2/200" },
+    { id: 3, image: "https://picsum.photos/seed/3/200" },
+    { id: 4, image: "https://picsum.photos/seed/4/200" },
+    { id: 5, image: "https://picsum.photos/seed/5/200" },
 ]

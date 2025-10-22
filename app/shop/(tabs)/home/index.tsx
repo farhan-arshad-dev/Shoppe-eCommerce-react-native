@@ -1,18 +1,20 @@
-import CategoryGrid from "@/src/components/CategoryGrid";
-import NewItemLayout from "@/src/components/NewItem";
 import SeeAllButton from "@/src/components/SeeAllButton";
 import { categories, justForYouItems, newItems, popularItems, saleItems, slides, topProducts } from "@/src/data/shop-tabs-data";
 import Feather from '@expo/vector-icons/Feather';
 import { useEffect, useRef, useState } from "react";
-import { FlatList, Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { FlatList, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import PagerView from "react-native-pager-view";
-import SalesItemLayout from "@/src/components/SalesItem";
 import PopularItemLayout from "@/src/components/PopularItem";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import JustForYouItem from "@/src/components/JustForYouItem";
 import { useRouter } from "expo-router";
-import CountDownTimer from "@/src/components/CountDownTimer";
 import Banner from "@/src/components/Banner";
+import AvatarImage from "@/src/components/AvatarImage";
+import NewItemsList from "@/src/components/NewItemsListSection";
+import CategorySection from "@/src/components/CategorySection";
+import FlashSaleSection from "@/src/components/FlashSaleSection";
+import TopProductsSection from "@/src/components/TopProductsSection";
+import JustForYouSection from "@/src/components/JustForYouSection";
 
 export default function HomeScreen() {
 
@@ -56,12 +58,11 @@ export default function HomeScreen() {
                         ref={pagerRef}>
                         {slides.map((slide) => {
                             return (
-                                <Banner key={slide.id} image={slide.image}/>
+                                <Banner key={slide.id} image={slide.image} />
                             );
                         })}
                     </PagerView>
 
-                    {/* Pagination Dots */}
                     <View style={styles.pagination}>
                         {slides.map((_, i) => (
                             <View
@@ -71,83 +72,15 @@ export default function HomeScreen() {
                         ))}
                     </View>
                 </View>
+                <CategorySection categories={categories} />
 
-                <View style={styles.categoryContainer}>
-                    <View style={styles.listHeader}>
-                        <Text style={styles.listTitle}>Categories</Text>
-                        <SeeAllButton />
-                    </View>
+                <TopProductsSection items={topProducts} />
 
-                    <CategoryGrid categories={categories} />
-                </View>
-                <View style={styles.topProducts}>
-                    <View style={styles.listHeader}>
-                        <Text style={styles.listTitle}>Top Products</Text>
-                    </View>
-                    <FlatList
-                        data={topProducts}
-                        renderItem={({ item }) => {
-                            return (
-                                <View style={styles.profileCard}>
-                                    <Image source={{ uri: item.image }} style={styles.profilePic} />
-                                </View>
-                            );
-                        }}
-                        keyExtractor={(item) => item.id.toString()}
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
-                        contentContainerStyle={styles.horizontalList}
-                    />
-                </View>
+                <NewItemsList items={newItems} />
 
-                <View style={styles.newItemsContainer}>
-                    <View style={styles.listHeader}>
-                        <Text style={styles.listTitle}>New Items</Text>
-                        <SeeAllButton />
-                    </View>
-                    <FlatList
-                        data={newItems}
-                        renderItem={({ item }) => {
-                            return (
-                                <NewItemLayout
-                                    key={item.id}
-                                    title={item.title}
-                                    price={item.price}
-                                    imageUrl={item.image} />
-                            );
-                        }}
-                        keyExtractor={(item) => item.id.toString()}
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
-                        contentContainerStyle={styles.horizontalList}
-                    />
-                </View>
-
-                <Pressable style={styles.flashSaleContainer} onPress={() => {
+                <FlashSaleSection items={saleItems} onPress={() => {
                     router.push('/shop/(tabs)/home/flash-sale');
-                }}>
-                    <View style={styles.listHeader}>
-                        <Text style={styles.listTitle}>Flash Sale</Text>
-                        <CountDownTimer hours={0} minutes={36} seconds={58} />
-                    </View>
-
-                    <FlatList
-                        data={saleItems}
-                        renderItem={({ item, index }) => {
-                            return (
-                                <SalesItemLayout
-                                    key={item.id}
-                                    itemPosition={index}
-                                    discount={item.discount}
-                                    imageUrl={item.image} />
-                            );
-                        }}
-                        keyExtractor={(item) => item.id.toString()}
-                        numColumns={3}
-                        scrollEnabled={false}
-                        showsVerticalScrollIndicator={false}
-                    />
-                </Pressable>
+                }} />
 
                 <View style={styles.popularContainer}>
                     <View style={styles.listHeader}>
@@ -173,30 +106,8 @@ export default function HomeScreen() {
                     />
                 </View>
 
-                <View style={styles.forYouContainer}>
-                    <View style={[styles.listHeader, { justifyContent: "flex-start" }]}>
-                        <Text style={styles.listTitle}>Just For You</Text>
-                        <Ionicons name="star" size={16} color="#004CFF" />
-                    </View>
-                    <FlatList
-                        data={justForYouItems}
-                        renderItem={({ item, index }) => {
-                            return (
-                                <JustForYouItem
-                                    key={item.id}
-                                    index={index}
-                                    title={item.title}
-                                    price={item.price}
-                                    imageUrl={item.image} />
-                            );
-                        }}
-                        keyExtractor={(item) => item.id.toString()}
-                        numColumns={2}
-                        scrollEnabled={false}
-                        showsVerticalScrollIndicator={false}
-                        contentContainerStyle={styles.horizontalList}
-                    />
-                </View>
+                <JustForYouSection items={justForYouItems} />
+
             </ScrollView>
         </View >
     )
@@ -277,9 +188,6 @@ const styles = StyleSheet.create({
         marginHorizontal: 5,
         backgroundColor: "#004CFF"
     },
-    categoryContainer: {
-        width: "100%",
-    },
     listHeader: {
         width: "100%",
         flexDirection: "row",
@@ -294,47 +202,13 @@ const styles = StyleSheet.create({
         color: "#202020",
         marginRight: 8,
     },
-    topProducts: {
-        marginTop: 28,
-    },
     horizontalList: {
         gap: 8,
-    },
-    profileCard: {
-        backgroundColor: "#ffffff",
-
-        width: 60,
-        height: 60,
-        borderRadius: 30, // Half of the width/height
-        justifyContent: 'center',
-        alignItems: 'center',
-
-        // iOS Shadow
-        shadowColor: '#000000',
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.16,
-        shadowRadius: 4,
-
-        // Android Shadow
-        elevation: 4,   // background must set in the same scope
-        marginBottom: 28,
-    },
-    profilePic: {
-        width: 50,
-        height: 50,
-        overflow: "hidden",
-        borderRadius: 25,
-    },
-    newItemsContainer: {
-        marginTop: 32,
     },
     flashSaleContainer: {
         marginTop: 28,
     },
     popularContainer: {
         marginTop: 24,
-    },
-    forYouContainer: {
-        marginTop: 28,
     },
 });
