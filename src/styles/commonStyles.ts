@@ -14,9 +14,19 @@ export const useCommonStyles = makeStyles((theme) => ({
     fullWidth: {
         width: "100%",
     },
-    primaryButton: {
+    primaryButtonContainer: {
         backgroundColor: "#004CFF",
         borderRadius: theme.metrics.spacing.medium,
         padding: theme.metrics.spacing.medium,
     },
+    primaryButtonText: {
+        ...theme.typography.fontStyle.headlineMedium,
+        color: theme.colors.primaryButtonText,
+        textAlign: "center",
+    },
+    tertiaryButtonText: {
+        ...theme.typography.fontStyle.bodyLarge,
+        opacity: 0.9,
+
+    }
 }));

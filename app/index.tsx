@@ -4,9 +4,14 @@ import { useRouter } from "expo-router";
 import PrimaryButton from "@/src/components/PrimaryButton";
 import { useEffect } from "react";
 import LoginArrowIcon from "@/src/components/LongArrowIcon";
+import { useCommonStyles } from "@/src/styles/commonStyles";
+import { makeStyles } from "@/src/theme/makeStyles";
 
 export default function Index() {
   const router = useRouter();
+
+  const commonStyles = useCommonStyles();
+  const styles = useStyle();
 
   const onStartedPressed = () => {
     router.push("/auth/register");
@@ -26,88 +31,57 @@ export default function Index() {
   // });
 
   return (
-    <View style={styles.container} >
+    <View style={commonStyles.container} >
 
-      <View style={styles.centerContent}>
-        <View style={styles.logoCard}>
+      <View style={[commonStyles.centerContent, styles.logoContainer]}>
+        <View style={[commonStyles.centerContent, styles.logoCard]}>
           <Image source={AppLogoImage} />
         </View>
         <Text style={styles.title}>Shoppe</Text>
         <Text style={styles.description}>Beautiful eCommerce UI Kit{"\n"}for your online store</Text>
       </View>
 
-      <View style={styles.footerContent}>
+      <View>
         <PrimaryButton text={"Let's get started"} onPress={onStartedPressed} />
 
         <TouchableOpacity style={styles.loginTextContainer} onPress={onLoginPressed}>
-          <Text style={styles.loginText}>I already have an account</Text>
+          <Text style={[commonStyles.tertiaryButtonText, styles.loginText]}>
+            I already have an account
+          </Text>
           <LoginArrowIcon />
         </TouchableOpacity>
       </View>
-
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
+const useStyle = makeStyles((theme) => ({
+  logoContainer: {
     flex: 1,
-    justifyContent: "center",
-    backgroundColor: "#ffffff"
-  },
-  centerContent: {
-    flex: 1,
-    justifyContent: "center", // center vertically in remaining space
-    alignItems: "center",
   },
   logoCard: {
-    backgroundColor: "#ffffff",
-
+    ...theme.shadows.medium,
     width: 134,
     height: 134,
-    borderRadius: 67, // Half of the width/height
-    justifyContent: 'center',
-    alignItems: 'center',
-
-    // iOS Shadow
-    shadowColor: '#000000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.16,
-    shadowRadius: 4,
-
-    // Android Shadow
-    elevation: 4,
+    borderRadius: 67,
   },
   title: {
-    fontSize: 52,
+    ...theme.typography.fontStyle.hero,
     marginTop: 24,
-    fontWeight: "bold"
   },
-
   description: {
-    fontSize: 18,
-    marginTop: 18,
-    fontWeight: "300",
-    color: "#202020",
+    ...theme.typography.fontStyle.headlineSmall,
+    color: theme.colors.primaryText,
     textAlign: "center",
-    lineHeight: 33
-  },
-  footerContent: {
-    width: "100%",
-    paddingHorizontal: 24,
+    marginTop: theme.metrics.spacing.large,
   },
   loginTextContainer: {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "flex-end",
-    marginVertical: 24,
+    marginVertical: theme.metrics.spacing.xLarge,
   },
   loginText: {
-    fontSize: 15,
-    fontWeight: "light",
-    lineHeight: 26,
-    marginHorizontal: 16,
-    color: "#202020",
-    opacity: 0.9,
+    marginHorizontal: theme.metrics.spacing.medium,
   },
-});
+}));

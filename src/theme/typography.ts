@@ -53,32 +53,38 @@ export const typography = (() => {
     const fontStyle = {
         hero: {
             fontSize: fontSize.ultra,
-            fontWeight: fontWeight.bold,
             lineHeight: lineHeight.xxGiant,
+            fontWeight: fontWeight.bold,
             fontFamily: fontFamily.RalewayBold
         },
         headlineMedium: {
             fontSize: fontSize.xxLarge,
-            fontWeight: fontWeight.light,
             lineHeight: lineHeight.xxLarge,
+            fontWeight: fontWeight.light,
             fontFamily: fontFamily.NunitoSansVariable
         },
         headlineSmall: {
             fontSize: fontSize.xLarge,
-            fontWeight: fontWeight.light,
             lineHeight: lineHeight.xxLarge,
+            fontWeight: fontWeight.light,
             fontFamily: fontFamily.NunitoSansVariable
         },
         titleSmall: {
             fontSize: fontSize.medium,
-            fontWeight: fontWeight.bold,
             lineHeight: lineHeight.small,
+            fontWeight: fontWeight.bold,
             fontFamily: fontFamily.RalewayBold
+        },
+        bodyLarge: {
+            fontSize: fontSize.large,
+            lineHeight: lineHeight.large,
+            fontWeight: fontWeight.light,
+            fontFamily: fontFamily.NunitoSansVariable
         },
         bodyMedium: {
             fontSize: fontSize.medium,
-            fontWeight: fontWeight.light,
             lineHeight: lineHeight.large,
+            fontWeight: fontWeight.light,
             fontFamily: fontFamily.NunitoSansVariable
         },
     };

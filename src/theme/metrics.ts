@@ -20,12 +20,26 @@ export const metrics = {
         large: 6,
     },
     spacing: {
+        // Tiny / Minimal spacing
+        xxxSmall: 2,
         xxSmall: 4,
         xSmall: 8,
-        smallMedium: 12,
+
+        // Base / Common spacing
+        small: 12,
+        smallMedium: 14, // optional bridge value
         medium: 16,
+        mediumLarge: 18, // optional bridge value
+
+        // Larger content spacing
         large: 20,
         xLarge: 24,
         xxLarge: 32,
+
+        // Section / screen-level spacing
+        xxxLarge: 40,
+        huge: 48,
+        xHuge: 56,
+        xxHuge: 64,
     }
 };
