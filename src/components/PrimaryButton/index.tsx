@@ -1,17 +1,20 @@
-import { Text, TouchableOpacity } from "react-native";
-import { useCommonStyles } from "@/src/styles/commonStyles";
+import { StyleProp, Text, TouchableOpacity, ViewStyle } from "react-native";
+import { useStyles } from "./styles";
 
 export default function PrimaryButton({
-    text, onPress
+    text,
+    style,
+    onPress
 }: {
     text: string,
+    style?: StyleProp<ViewStyle>,
     onPress: () => void
 }
 ) {
-    const commonStyles = useCommonStyles();
+    const styles = useStyles();
     return (
-        <TouchableOpacity style={[commonStyles.primaryButtonContainer]} onPress={onPress}>
-            <Text style={commonStyles.primaryButtonText}>{text}</Text>
+        <TouchableOpacity style={[styles.primaryButtonContainer, style]} onPress={onPress}>
+            <Text style={styles.primaryButtonText}>{text}</Text>
         </TouchableOpacity>
     );
 }

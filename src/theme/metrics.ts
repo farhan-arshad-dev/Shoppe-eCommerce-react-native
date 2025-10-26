@@ -10,9 +10,16 @@ export const metrics = {
     borderRadius: {
         xSmall: 4,
         small: 6,
+        smallMedium: 8,
         medium: 10,
-        large: 16,
-        xlarge: 24,
+        mediumLarge: 12,
+        large: 14,
+        xlarge: 18,
+        xxLarge: 24,
+        xxxLarge: 32,
+        huge: 40,
+        xHuge: 48,
+        xxHuge: 60,
     },
     elevation: {
         small: 2,
@@ -41,5 +48,8 @@ export const metrics = {
         huge: 48,
         xHuge: 56,
         xxHuge: 64,
+    },
+    iconSize: {
+        flagIcon: 16,
     }
 };

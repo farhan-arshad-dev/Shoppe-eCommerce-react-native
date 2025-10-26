@@ -12,6 +12,7 @@ export default function RootLayout() {
   const [fontsLoaded] = useFonts({
     [theme.typography.fontFamily.RalewayBold]: require("@/assets/fonts/Raleway-Bold.ttf"),
     [theme.typography.fontFamily.NunitoSansVariable]: require("@/assets/fonts/NunitoSans-Variable.ttf"),
+    [theme.typography.fontFamily.PoppinsMedium]: require("@/assets/fonts/Poppins-Medium.ttf"),
   });
 
   useEffect(() => {

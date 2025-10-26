@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import LoginArrowIcon from "@/src/components/LongArrowIcon";
 import { useCommonStyles } from "@/src/styles/commonStyles";
 import { makeStyles } from "@/src/theme/makeStyles";
+import TertiaryButton from "@/src/components/TertiaryButton";
 
 export default function Index() {
   const router = useRouter();
@@ -24,7 +25,7 @@ export default function Index() {
   // Temp code
   // useEffect(() => {
   //   const timer = setTimeout(() => {
-  //     router.replace("/shop/(tabs)/profile");
+  //     router.replace("/auth/register");
   //   }, 500);
 
   //   return () => clearTimeout(timer);
@@ -44,12 +45,12 @@ export default function Index() {
       <View>
         <PrimaryButton text={"Let's get started"} onPress={onStartedPressed} />
 
-        <TouchableOpacity style={styles.loginTextContainer} onPress={onLoginPressed}>
-          <Text style={[commonStyles.tertiaryButtonText, styles.loginText]}>
-            I already have an account
-          </Text>
+        <TertiaryButton
+          containerStyle={styles.loginTextContainer}
+          text={"I already have an account"}
+          onPress={onLoginPressed}>
           <LoginArrowIcon />
-        </TouchableOpacity>
+        </TertiaryButton>
       </View>
     </View>
   );
@@ -76,12 +77,7 @@ const useStyle = makeStyles((theme) => ({
     marginTop: theme.metrics.spacing.large,
   },
   loginTextContainer: {
-    flexDirection: "row",
-    justifyContent: "center",
     alignItems: "flex-end",
     marginVertical: theme.metrics.spacing.xLarge,
-  },
-  loginText: {
-    marginHorizontal: theme.metrics.spacing.medium,
   },
 }));

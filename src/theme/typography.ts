@@ -2,6 +2,7 @@ export const typography = (() => {
     const fontFamily = {
         RalewayBold: "Raleway-Bold",
         NunitoSansVariable: "NunitoSans-Variable",
+        PoppinsMedium: "Poppins-Medium",
     };
 
     const fontSize = {
@@ -18,6 +19,7 @@ export const typography = (() => {
         giant: 40,
         xGiant: 44,
         xxGiant: 48,
+        xxxGiant: 50,
         ultra: 52,
     };
 
@@ -57,6 +59,12 @@ export const typography = (() => {
             fontWeight: fontWeight.bold,
             fontFamily: fontFamily.RalewayBold
         },
+        displayLarge: {
+            fontSize: fontSize.xxxGiant,
+            lineHeight: lineHeight.giant,
+            fontWeight: fontWeight.bold,
+            fontFamily: fontFamily.RalewayBold
+        },
         headlineMedium: {
             fontSize: fontSize.xxLarge,
             lineHeight: lineHeight.xxLarge,
@@ -83,9 +91,9 @@ export const typography = (() => {
         },
         bodyMedium: {
             fontSize: fontSize.medium,
-            lineHeight: lineHeight.large,
-            fontWeight: fontWeight.light,
-            fontFamily: fontFamily.NunitoSansVariable
+            lineHeight: lineHeight.medium,
+            fontWeight: fontWeight.medium,
+            fontFamily: fontFamily.PoppinsMedium
         },
     };
     return {

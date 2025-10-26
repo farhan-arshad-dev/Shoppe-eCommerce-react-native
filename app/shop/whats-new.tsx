@@ -12,8 +12,9 @@ export default function WhatsNewScreen() {
     const [page, setPage] = useState(0);
 
     const handleLetsStart = () => {
-        router.replace("/shop");
+        router.replace("/shop/home");
     };
+
     return (
         <View style={styles.container}>
 

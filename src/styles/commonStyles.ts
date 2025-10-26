@@ -14,19 +14,18 @@ export const useCommonStyles = makeStyles((theme) => ({
     fullWidth: {
         width: "100%",
     },
-    primaryButtonContainer: {
-        backgroundColor: "#004CFF",
-        borderRadius: theme.metrics.spacing.medium,
-        padding: theme.metrics.spacing.medium,
+    fullFlex: {
+        width: "100%",
+        flex: 1,
     },
-    primaryButtonText: {
-        ...theme.typography.fontStyle.headlineMedium,
-        color: theme.colors.primaryButtonText,
-        textAlign: "center",
+    authInputContainer: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        backgroundColor: theme.colors.surface,
+        paddingHorizontal: theme.metrics.spacing.large,
+        paddingVertical: theme.metrics.spacing.medium,
+        borderRadius: theme.metrics.borderRadius.xxHuge,
+        marginBottom: theme.metrics.spacing.xSmall,
     },
-    tertiaryButtonText: {
-        ...theme.typography.fontStyle.bodyLarge,
-        opacity: 0.9,
-
-    }
 }));

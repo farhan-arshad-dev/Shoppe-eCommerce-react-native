@@ -1,13 +1,22 @@
-import { Image, ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Image, ImageBackground, Text, TextInput, TouchableOpacity, View } from "react-native";
 import RegistrationBackground from "@/assets/images/registration-background.png"
 import UpLoadPhotoImage from "@/assets/images/upload-photo.png"
 import React, { useState } from "react";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import CountryPicker, { Country, CountryCode } from 'react-native-country-picker-modal'
 import { useRouter } from "expo-router";
+import { makeStyles } from "@/src/theme/makeStyles";
+import { useCommonStyles } from "@/src/styles/commonStyles";
+import { useTheme } from "@/src/theme/ThemeProvider";
+import VerticalDivider from "@/src/components/VerticalDivider";
+import PrimaryButton from "@/src/components/PrimaryButton";
+import TertiaryButton from "@/src/components/TertiaryButton";
 
 export default function RegisterScreen() {
 
+    const { theme } = useTheme();
+    const styles = useStyle();
+    const commonStyles = useCommonStyles();
     const router = useRouter();
 
     const [secure, setSecure] = useState(true);
@@ -24,87 +33,92 @@ export default function RegisterScreen() {
 
             <ImageBackground
                 source={RegistrationBackground}
-                style={styles.backgroundContainer}
+                style={[commonStyles.fullWidth, styles.backgroundContainer]}
                 resizeMode="cover" />
 
-            <View style={styles.foregroundContainer}>
-                <View style={styles.header}>
+            <View style={[commonStyles.container, styles.foregroundContainer]}>
+                <View style={[commonStyles.fullFlex, styles.header]}>
                     <Text style={styles.title}>Create{"\n"}Account</Text>
                     <TouchableOpacity style={styles.uploadPhotoStyle}>
                         <Image source={UpLoadPhotoImage} />
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.footer}>
-                    <View style={styles.inputSection}>
+                <View style={commonStyles.fullFlex}>
+                    <TextInput
+                        style={[
+                            theme.typography.fontStyle.bodyMedium,
+                            commonStyles.authInputContainer
+                        ]}
+                        placeholder="Email"
+                        placeholderTextColor={theme.colors.primaryPlaceHolder}
+                        autoCapitalize='none'
+                        keyboardType='email-address'
+                    />
+
+                    <View style={commonStyles.authInputContainer}>
                         <TextInput
-                            style={styles.emailInput}
-                            placeholder="Email"
-                            placeholderTextColor="#D2D2D2"
+                            style={theme.typography.fontStyle.bodyMedium}
+                            placeholder="Password"
+                            placeholderTextColor={theme.colors.primaryPlaceHolder}
                             autoCapitalize='none'
-                            keyboardType='email-address'
+                            secureTextEntry={secure}
                         />
-
-                        <View style={styles.inputContainer}>
-                            <TextInput
-                                style={styles.passwordInput}
-                                placeholder="Password"
-                                placeholderTextColor="#D2D2D2"
-                                autoCapitalize='none'
-                                secureTextEntry={secure}
+                        <TouchableOpacity onPress={() => setSecure(!secure)}>
+                            <Ionicons
+                                name={secure ? "eye-off-outline" : "eye-outline"}
+                                size={16}
+                                color={theme.colors.divider}
+                                style={styles.passwordToggle}
                             />
-                            <TouchableOpacity onPress={() => setSecure(!secure)}>
-                                <Ionicons
-                                    name={secure ? "eye-off-outline" : "eye-outline"}
-                                    size={16}
-                                    color="black"
-                                    style={styles.passwordToggle}
-                                />
-                            </TouchableOpacity>
-                        </View>
+                        </TouchableOpacity>
+                    </View>
 
-                        <View style={styles.inputContainer}>
-                            <TouchableOpacity
-                                onPress={() => setCountryPickerVisible(true)}
-                                style={styles.flagContainer}
-                                activeOpacity={0.8}>
-                                <CountryPicker
-                                    visible={countryPickerVisible}
-                                    onClose={() => setCountryPickerVisible(false)}
-                                    onSelect={onCountrySelect}
-                                    withFilter
-                                    withEmoji={false}
-                                    withFlag
-                                    withCallingCode
-                                    withCountryNameButton={false}
-                                    countryCode={countryCode}
-                                    theme={styles.countryPickerTheme}
-                                />
-                                <Ionicons name="chevron-down" size={16} color="#1F1F1F" />
-                            </TouchableOpacity>
-
-                            <View style={styles.divider} />
-
-                            <TextInput
-                                style={styles.countryCodeInput}
-                                placeholder="Your Number"
-                                keyboardType="phone-pad"
-                                value={phone}
-                                onChangeText={setPhone}
-                                placeholderTextColor="#D2D2D2"
+                    <View style={commonStyles.authInputContainer}>
+                        <TouchableOpacity
+                            onPress={() => setCountryPickerVisible(true)}
+                            style={styles.flagContainer}
+                            activeOpacity={0.8}>
+                            <CountryPicker
+                                visible={countryPickerVisible}
+                                onClose={() => setCountryPickerVisible(false)}
+                                onSelect={onCountrySelect}
+                                withFilter
+                                withEmoji={false}
+                                withFlag
+                                withCallingCode
+                                withCountryNameButton={false}
+                                countryCode={countryCode}
+                                containerButtonStyle={{ marginBottom: 4, }}
+                                theme={styles.countryPickerTheme}
                             />
-                        </View>
+                            <Ionicons name="chevron-down" size={16} color={theme.colors.divider} />
+                        </TouchableOpacity>
+
+                        <VerticalDivider />
+
+                        <TextInput
+                            style={[commonStyles.fullFlex, theme.typography.fontStyle.bodyMedium]}
+                            placeholder="Your Number"
+                            keyboardType="phone-pad"
+                            value={phone}
+                            onChangeText={setPhone}
+                            placeholderTextColor={theme.colors.primaryPlaceHolder}
+                        />
                     </View>
 
                     <View style={styles.buttonSection}>
-                        <TouchableOpacity style={styles.doneButton} onPress={() => {
-                            router.replace("/shop/whats-new");
-                        }}>
-                            <Text style={styles.doneButtonText}>Done</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.cancelButton} onPress={() => { router.back() }}>
-                            <Text style={styles.cancelButtonText}>Cancel</Text>
-                        </TouchableOpacity>
+                        <PrimaryButton
+                            text={"Done"}
+                            style={commonStyles.fullWidth}
+                            onPress={() => {
+                                router.replace("/shop/whats-new");
+                            }} />
+                        <TertiaryButton
+                            text={"Cancel"}
+                            containerStyle={styles.cancelButtonContainer}
+                            onPress={() => { router.back() }}
+                        />
                     </View>
                 </View>
             </View>
@@ -113,114 +127,49 @@ export default function RegisterScreen() {
     );
 }
 
-const styles = StyleSheet.create({
+const useStyle = makeStyles((theme) => ({
     container: {
         flex: 1,
-        backgroundColor: "#ffffff",
+        backgroundColor: theme.colors.background,
     },
     backgroundContainer: {
         position: "absolute",
-        width: "100%",
         aspectRatio: 1.25,
-        justifyContent: "center",
-        alignItems: "center",
     },
     foregroundContainer: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        marginHorizontal: 20,
+        backgroundColor: "transparent",
     },
     header: {
-        flex: 1,
-        width: "100%",
         justifyContent: "flex-end",
         alignItems: "flex-start",
     },
     title: {
-        fontSize: 50,
-        fontWeight: "bold",
-        lineHeight: 54,
-        color: "#202020",
-        marginVertical: 24,
+        ...theme.typography.fontStyle.displayLarge,
+        color: theme.colors.primaryText,
+        marginVertical: theme.metrics.spacing.xLarge,
     },
     uploadPhotoStyle: {
-        marginVertical: 32,
-        marginStart: 8,
-    },
-    footer: {
-        flex: 1,
-        width: "100%",
-        flexDirection: "column",
-    },
-    inputSection: {
-        flex: 1,
+        marginVertical: theme.metrics.spacing.xxLarge,
+        marginStart: theme.metrics.spacing.xSmall,
     },
     buttonSection: {
         flex: 1,
         justifyContent: "flex-end",
         alignItems: "center"
     },
-    emailInput: {
-        width: "100%",
-        backgroundColor: "#F8F8F8",
-        fontSize: 14,
-        padding: 16,
-        borderRadius: 60,
-        marginBottom: 8,
-    },
-    inputContainer: {
-        width: "100%",
-        flexDirection: "row",
-        backgroundColor: "#F8F8F8",
-        padding: 18,
-        borderRadius: 60,
-        marginBottom: 8,
-    },
-    passwordInput: {
-        flex: 1,
-        fontSize: 14,
-    },
     passwordToggle: {
         transform: [{ scaleX: -1 }],
-        marginHorizontal: 12
+        marginHorizontal: theme.metrics.spacing.small
     },
     flagContainer: {
         flexDirection: "row",
         alignItems: "center",
-        paddingRight: 4,
-    },
-    divider: {
-        width: 1,
-        height: "100%",
-        backgroundColor: "#1F1F1F",
-        marginHorizontal: 8,
-    },
-    countryCodeInput: {
-        flex: 1,
-        fontSize: 14,
+        paddingRight: theme.metrics.spacing.xxSmall,
     },
     countryPickerTheme: {
-        flagSizeButton: 14,
+        flagSizeButton: theme.metrics.iconSize.flagIcon,
     },
-    doneButton: {
-        width: "100%",
-        marginHorizontal: 24,
-        backgroundColor: "#004CFF",
-        borderRadius: 16,
+    cancelButtonContainer: {
+        marginVertical: theme.metrics.spacing.xLarge
     },
-    doneButtonText: {
-        color: "#F3F3F3",
-        margin: 16,
-        fontFamily: "Nunito Sans",
-        fontSize: 22,
-        fontWeight: "300",
-        textAlign: "center",
-    },
-    cancelButton: {
-        marginVertical: 28
-    },
-    cancelButtonText: {
-        color: "#202020",
-    },
-});
+}));

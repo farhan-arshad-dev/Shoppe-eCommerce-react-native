@@ -10,10 +10,11 @@ export const colors = {
     surface: "#F8F8F8",
 
     primaryText: "#202020",
+    primaryPlaceHolder: "#D2D2D2",
     primaryButtonText: "#F3F3F3",
 
     border: "#E5E5E5",
-    divider: "#F0F0F0",
+    divider: "#1F1F1F",
     error: "#E53935",
     success: "#43A047",
     warning: "#FB8C00",
