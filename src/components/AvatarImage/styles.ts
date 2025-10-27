@@ -1,25 +1,18 @@
-import { StyleSheet } from "react-native";
+import { makeStyles } from "@/src/theme/makeStyles";
 
-export default StyleSheet.create({
+export const useStyle = makeStyles((theme) => ({
     avatarCard: {
-        backgroundColor: "#ffffff",
-
+        ...theme.shadows.medium,
         justifyContent: 'center',
         alignItems: 'center',
-
-        // iOS Shadow
-        shadowColor: '#000000',
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.16,
-        shadowRadius: 4,
-
-        // Android Shadow
-        elevation: 4,   // background must set in the same scope
+        width: theme.metrics.iconSize.profilePicCard,
+        height: theme.metrics.iconSize.profilePicCard,
+        borderRadius: theme.metrics.iconSize.profilePicCard / 2,
     },
     avatarImage: {
-        width: 50,
-        height: 50,
+        width: theme.metrics.iconSize.profilePic,
+        height: theme.metrics.iconSize.profilePic,
         overflow: "hidden",
-        borderRadius: 25,
+        borderRadius: theme.metrics.iconSize.profilePic / 2,
     },
-});
+}));

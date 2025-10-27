@@ -1,7 +1,8 @@
 export const typography = (() => {
     const fontFamily = {
         RalewayBold: "Raleway-Bold",
-        NunitoSansVariable: "NunitoSans-Variable",
+        NunitoSansLight: "NunitoSans-Light",
+        NunitoSansBold: "NunitoSans-Bold",
         PoppinsMedium: "Poppins-Medium",
     };
 
@@ -74,14 +75,20 @@ export const typography = (() => {
         headlineMedium: {
             fontSize: fontSize.xxLarge,
             lineHeight: lineHeight.xxLarge,
-            fontWeight: fontWeight.light,
-            fontFamily: fontFamily.NunitoSansVariable
+            fontWeight: fontWeight.bold,
+            fontFamily: fontFamily.RalewayBold
         },
         headlineSmall: {
             fontSize: fontSize.xLarge,
             lineHeight: lineHeight.xxLarge,
-            fontWeight: fontWeight.light,
-            fontFamily: fontFamily.NunitoSansVariable
+            fontWeight: fontWeight.bold,
+            fontFamily: fontFamily.RalewayBold
+        },
+        headlineXSmall: {
+            fontSize: fontSize.large,
+            lineHeight: lineHeight.large,
+            fontWeight: fontWeight.bold,
+            fontFamily: fontFamily.NunitoSansBold
         },
         titleSmall: {
             fontSize: fontSize.medium,
@@ -89,11 +96,23 @@ export const typography = (() => {
             fontWeight: fontWeight.bold,
             fontFamily: fontFamily.RalewayBold
         },
+        bodyXXLarge: {
+            fontSize: fontSize.xxLarge,
+            lineHeight: lineHeight.xxLarge,
+            fontWeight: fontWeight.light,
+            fontFamily: fontFamily.NunitoSansLight
+        },
+        bodyXLarge: {
+            fontSize: fontSize.xLarge,
+            lineHeight: lineHeight.xxLarge,
+            fontWeight: fontWeight.light,
+            fontFamily: fontFamily.NunitoSansLight
+        },
         bodyLarge: {
             fontSize: fontSize.large,
             lineHeight: lineHeight.large,
             fontWeight: fontWeight.light,
-            fontFamily: fontFamily.NunitoSansVariable
+            fontFamily: fontFamily.NunitoSansLight
         },
         bodyMedium: {
             fontSize: fontSize.medium,

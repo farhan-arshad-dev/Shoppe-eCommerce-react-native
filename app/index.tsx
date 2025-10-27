@@ -23,13 +23,13 @@ export default function Index() {
   };
 
   // Temp code
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     router.replace("/auth/register");
-  //   }, 500);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      router.replace("/auth/login/reset-password");
+    }, 500);
 
-  //   return () => clearTimeout(timer);
-  // });
+    return () => clearTimeout(timer);
+  });
 
   return (
     <View style={commonStyles.screenContainer} >
@@ -62,16 +62,16 @@ const useStyle = makeStyles((theme) => ({
   },
   logoCard: {
     ...theme.shadows.medium,
-    width: 134,
-    height: 134,
-    borderRadius: 67,
+    width: theme.metrics.iconSize.logoCardSize,
+    height: theme.metrics.iconSize.logoCardSize,
+    borderRadius: theme.metrics.iconSize.logoCardSize / 2,
   },
   title: {
     ...theme.typography.fontStyle.hero,
-    marginTop: 24,
+    marginTop: theme.metrics.spacing.xLarge,
   },
   description: {
-    ...theme.typography.fontStyle.headlineSmall,
+    ...theme.typography.fontStyle.bodyXLarge,
     color: theme.colors.primaryText,
     textAlign: "center",
     marginTop: theme.metrics.spacing.large,

@@ -50,4 +50,7 @@ export const useCommonStyles = makeStyles((theme) => ({
         borderRadius: theme.metrics.borderRadius.xxHuge,
         marginBottom: theme.metrics.spacing.xSmall,
     },
+    profileCard: {
+        marginBottom: theme.metrics.spacing.xxLarge,
+    },
 }));

@@ -7,7 +7,7 @@ export const useStyles = makeStyles((theme) => ({
         padding: theme.metrics.spacing.medium,
     },
     primaryButtonText: {
-        ...theme.typography.fontStyle.headlineMedium,
+        ...theme.typography.fontStyle.bodyXXLarge,
         color: theme.colors.primaryButtonText,
         textAlign: "center",
     }

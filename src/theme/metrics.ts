@@ -50,6 +50,7 @@ export const metrics = {
         xxHuge: 64,
     },
     iconSize: {
+        logoCardSize: 134,
         flagIcon: 16,
         profilePicCard: 105,
         profilePic: 91,

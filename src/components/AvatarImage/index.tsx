@@ -1,16 +1,19 @@
-import { Image, ImageSourcePropType, View } from "react-native";
-import styles from "./styles";
+import { Image, ImageSourcePropType, StyleProp, View, ViewStyle } from "react-native";
 import DefaultAvatar from "@/assets/images/default-avatar.png";
+import { useStyle } from "./styles";
 
 export default function AvatarImage({
     image,
     cardSize = 60,
     imageSize = 50,
+    containerStyle,
 }: {
     image: string,
     cardSize?: number,
     imageSize?: number,
+    containerStyle?: StyleProp<ViewStyle>
 }) {
+    const styles = useStyle();
     const getImageSource = (): ImageSourcePropType => {
         if (typeof image === "string") {
             if (image.startsWith("http")) return { uri: image };
@@ -21,6 +24,7 @@ export default function AvatarImage({
     return (
         <View style={[
             styles.avatarCard,
+            containerStyle,
             { width: cardSize, height: cardSize, borderRadius: cardSize / 2 },
         ]}>
             <Image source={getImageSource()} style={[

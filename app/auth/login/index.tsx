@@ -84,7 +84,7 @@ const useStyle = makeStyles((theme) => ({
         marginBottom: theme.metrics.spacing.small,
     },
     description: {
-        ...theme.typography.fontStyle.headlineSmall,
+        ...theme.typography.fontStyle.bodyXLarge,
         marginEnd: theme.metrics.spacing.small,
     },
     buttonSection: {

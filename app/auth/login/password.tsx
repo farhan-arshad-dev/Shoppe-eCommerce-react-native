@@ -1,5 +1,5 @@
 import { useRouter } from "expo-router";
-import { Image, ImageBackground, Text, View } from "react-native";
+import { ImageBackground, Text, View } from "react-native";
 import PasswordBackground from "@/assets/images/password-background.png"
 import ProfilePic from "@/assets/images/profile-dummy.png"
 import { useState } from "react";
@@ -8,12 +8,15 @@ import { makeStyles } from "@/src/theme/makeStyles";
 import { useCommonStyles } from "@/src/styles/commonStyles";
 import TertiaryButton from "@/src/components/TertiaryButton";
 import LongArrowIcon from "@/src/components/LongArrowIcon";
+import AvatarImage from "@/src/components/AvatarImage";
+import { useTheme } from "@/src/theme/ThemeProvider";
 
 export default function PasswordScreen() {
 
     const commonStyles = useCommonStyles();
     const styles = useStyles();
     const router = useRouter();
+    const { theme } = useTheme();
 
     const [isWrongPassword, setIsWrongPassword] = useState(false);
 
@@ -28,9 +31,11 @@ export default function PasswordScreen() {
             <View style={[commonStyles.screenContainer, styles.foregroundContainer]}>
                 <View style={[commonStyles.centerFull, styles.header]}>
 
-                    <View style={[commonStyles.centerContent, styles.profileCard]}>
-                        <Image source={ProfilePic} style={styles.profilePic} />
-                    </View>
+                    <AvatarImage image={ProfilePic}
+                        cardSize={theme.metrics.iconSize.profilePicCard}
+                        imageSize={theme.metrics.iconSize.profilePic}
+                        containerStyle={commonStyles.profileCard}
+                    />
 
                     <Text style={styles.title}>Hello, Romina!!</Text>
                     <Text style={styles.description}>Type your password</Text>
@@ -74,23 +79,12 @@ const useStyles = makeStyles((theme) => ({
     header: {
         justifyContent: "flex-end",
     },
-    profileCard: {
-        ...theme.shadows.medium,
-        width: theme.metrics.iconSize.profilePicCard,
-        height: theme.metrics.iconSize.profilePicCard,
-        borderRadius: theme.metrics.iconSize.profilePicCard / 2,
-        marginBottom: 28,
-    },
-    profilePic: {
-        width: theme.metrics.iconSize.profilePic,
-        height: theme.metrics.iconSize.profilePic,
-    },
     title: {
         ...theme.typography.fontStyle.headlineLarge,
         marginBottom: theme.metrics.spacing.xxLarge,
     },
     description: {
-        ...theme.typography.fontStyle.headlineSmall,
+        ...theme.typography.fontStyle.bodyXLarge,
         marginBottom: theme.metrics.spacing.xSmall,
     },
     forgotPasswordContainer: {
