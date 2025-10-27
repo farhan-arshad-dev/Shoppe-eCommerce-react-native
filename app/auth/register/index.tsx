@@ -29,14 +29,14 @@ export default function RegisterScreen() {
     };
 
     return (
-        <View style={styles.container}>
+        <View style={commonStyles.container}>
 
             <ImageBackground
                 source={RegistrationBackground}
-                style={[commonStyles.fullWidth, styles.backgroundContainer]}
+                style={[commonStyles.backgroundContainer, styles.backgroundContainer]}
                 resizeMode="cover" />
 
-            <View style={[commonStyles.container, styles.foregroundContainer]}>
+            <View style={[commonStyles.screenContainer, styles.foregroundContainer]}>
                 <View style={[commonStyles.fullFlex, styles.header]}>
                     <Text style={styles.title}>Create{"\n"}Account</Text>
                     <TouchableOpacity style={styles.uploadPhotoStyle}>
@@ -128,12 +128,7 @@ export default function RegisterScreen() {
 }
 
 const useStyle = makeStyles((theme) => ({
-    container: {
-        flex: 1,
-        backgroundColor: theme.colors.background,
-    },
     backgroundContainer: {
-        position: "absolute",
         aspectRatio: 1.25,
     },
     foregroundContainer: {

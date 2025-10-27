@@ -3,6 +3,10 @@ import { makeStyles } from "../theme/makeStyles";
 export const useCommonStyles = makeStyles((theme) => ({
     container: {
         flex: 1,
+        backgroundColor: theme.colors.background,
+    },
+    screenContainer: {
+        flex: 1,
         justifyContent: "center",
         backgroundColor: theme.colors.background,
         paddingHorizontal: theme.metrics.spacing.xLarge,
@@ -32,6 +36,7 @@ export const useCommonStyles = makeStyles((theme) => ({
     backgroundContainer: {
         position: "absolute",
         width: "100%",
+        aspectRatio: 1,
         justifyContent: "center",
         alignItems: "center",
     },

@@ -1,27 +1,34 @@
 import { useRouter } from "expo-router";
-import { Image, ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Image, ImageBackground, Text, View } from "react-native";
 import PasswordBackground from "@/assets/images/password-background.png"
 import ProfilePic from "@/assets/images/profile-dummy.png"
-import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import { useState } from "react";
 import PasswordBullet from "@/src/components/PasswordBullet";
+import { makeStyles } from "@/src/theme/makeStyles";
+import { useCommonStyles } from "@/src/styles/commonStyles";
+import TertiaryButton from "@/src/components/TertiaryButton";
+import LongArrowIcon from "@/src/components/LongArrowIcon";
 
 export default function PasswordScreen() {
+
+    const commonStyles = useCommonStyles();
+    const styles = useStyles();
     const router = useRouter();
+
     const [isWrongPassword, setIsWrongPassword] = useState(false);
 
     return (
-        <View style={styles.container}>
+        <View style={commonStyles.container}>
 
             <ImageBackground
                 source={PasswordBackground}
-                style={styles.backgroundContainer}
+                style={commonStyles.backgroundContainer}
                 resizeMode="cover" />
 
-            <View style={styles.foregroundContainer}>
-                <View style={styles.header}>
+            <View style={[commonStyles.screenContainer, styles.foregroundContainer]}>
+                <View style={[commonStyles.centerFull, styles.header]}>
 
-                    <View style={styles.profileCard}>
+                    <View style={[commonStyles.centerContent, styles.profileCard]}>
                         <Image source={ProfilePic} style={styles.profilePic} />
                     </View>
 
@@ -33,7 +40,7 @@ export default function PasswordScreen() {
                         setIsWrongPassword={setIsWrongPassword}
                         onPasswordChanged={(passowrd) => {
                             if (passowrd === "00000000") {
-                                router.replace("/shop")
+                                router.replace("/shop/(tabs)/home")
                             } else if (passowrd === "11111111") {
                                 router.replace("/shop/whats-new")
                             }
@@ -41,124 +48,59 @@ export default function PasswordScreen() {
                     />
                 </View>
 
-                <View style={styles.footer}>
-                    {isWrongPassword && (<TouchableOpacity style={styles.forgotPasswordContainer} onPress={() => {
-                        router.push("/auth/login/reset-password");
-                    }}>
-                        <Text style={styles.forgotPasswordText}>Forgot your password?</Text>
-                    </TouchableOpacity>
-                    )}
-
-                    <TouchableOpacity style={styles.notYouContainer} onPress={() => {
-                        router.back();
-                    }}>
-                        <Text style={styles.notYouText}>Not you?</Text>
-                        <View style={styles.notYouArrowIcon}>
-                            <FontAwesome6 name="arrow-right-long" size={14} color="#ffffff" />
-                        </View>
-                    </TouchableOpacity>
+                <View style={commonStyles.fullFlex}>
+                    {isWrongPassword && (<TertiaryButton text={"Forgot your password?"}
+                        containerStyle={styles.forgotPasswordContainer} onPress={() => {
+                            router.push("/auth/login/reset-password");
+                        }} />)}
+                    <TertiaryButton
+                        text={"Not you?"}
+                        onPress={() => {
+                            router.back();
+                        }}
+                        containerStyle={styles.notYouContainer}>
+                        <LongArrowIcon />
+                    </TertiaryButton>
                 </View>
             </View>
-
         </View >
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#ffffff",
-    },
-    backgroundContainer: {
-        position: "absolute",
-        width: "100%",
-        aspectRatio: 1,
-        justifyContent: "center",
-        alignItems: "center",
-    },
+const useStyles = makeStyles((theme) => ({
     foregroundContainer: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        marginHorizontal: 20
+        backgroundColor: "transparent",
     },
     header: {
-        flex: 1,
         justifyContent: "flex-end",
-        alignItems: "center",
-        width: "100%",
     },
     profileCard: {
-        backgroundColor: "#ffffff",
-
-        width: 105,
-        height: 105,
-        borderRadius: 67, // Half of the width/height
-        justifyContent: 'center',
-        alignItems: 'center',
-
-        // iOS Shadow
-        shadowColor: '#000000',
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.16,
-        shadowRadius: 4,
-
-        // Android Shadow
-        elevation: 4,   // background must set in the same scope
+        ...theme.shadows.medium,
+        width: theme.metrics.iconSize.profilePicCard,
+        height: theme.metrics.iconSize.profilePicCard,
+        borderRadius: theme.metrics.iconSize.profilePicCard / 2,
         marginBottom: 28,
     },
     profilePic: {
-        width: 91,
-        height: 91,
+        width: theme.metrics.iconSize.profilePic,
+        height: theme.metrics.iconSize.profilePic,
     },
     title: {
-        marginBottom: 34,
-        fontSize: 28,
-        fontWeight: "bold",
-        color: "#202020",
-        lineHeight: 36
+        ...theme.typography.fontStyle.headlineLarge,
+        marginBottom: theme.metrics.spacing.xxLarge,
     },
     description: {
-        fontSize: 19,
-        fontWeight: "light",
-        lineHeight: 35,
-        marginBottom: 8,
-    },
-    footer: {
-        flex: 1,
-        width: "100%",
-        flexDirection: "column",
+        ...theme.typography.fontStyle.headlineSmall,
+        marginBottom: theme.metrics.spacing.xSmall,
     },
     forgotPasswordContainer: {
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "flex-end",
-        marginVertical: 40,
-    },
-    forgotPasswordText: {
-        color: "#202020",
-        opacity: 0.9,
-        marginBottom: 4,
+        marginVertical: theme.metrics.spacing.xxxLarge,
     },
     notYouContainer: {
         flex: 1,
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "flex-end",
-        marginVertical: 24,
+        marginVertical: theme.metrics.spacing.xLarge,
     },
-    notYouText: {
-        color: "#202020",
-        opacity: 0.9,
-        marginBottom: 4,
-    },
-    notYouArrowIcon: {
-        height: 30,
-        width: 30,
-        marginHorizontal: 16,
-        backgroundColor: "#004CFF",
-        borderRadius: 15,
-        alignItems: "center",
-        justifyContent: "center",
-    }
-});
+}));

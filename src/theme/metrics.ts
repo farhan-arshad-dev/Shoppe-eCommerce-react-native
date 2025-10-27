@@ -51,5 +51,7 @@ export const metrics = {
     },
     iconSize: {
         flagIcon: 16,
+        profilePicCard: 105,
+        profilePic: 91,
     }
 };

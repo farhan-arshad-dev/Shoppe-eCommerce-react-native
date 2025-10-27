@@ -4,7 +4,7 @@ export const useStyle = makeStyles((theme) => ({
     tertiaryButtonContainer: {
         flexDirection: "row",
         justifyContent: "center",
-        alignItems: "center",
+        alignItems: "flex-end",
     },
     tertiaryButtonText: {
         ...theme.typography.fontStyle.bodyLarge,

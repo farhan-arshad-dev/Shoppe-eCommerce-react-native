@@ -1,4 +1,4 @@
-import { ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { ImageBackground, Text, TextInput, View } from "react-native";
 import LoginBackground from "@/assets/images/login-background.png"
 import { useRouter } from "expo-router";
 import Fontisto from '@expo/vector-icons/Fontisto';
@@ -14,18 +14,18 @@ export default function RegisterScreen() {
     const router = useRouter();
 
     return (
-        <View style={styles.container}>
+        <View style={commonStyles.container}>
 
             <ImageBackground
                 source={LoginBackground}
                 style={[
+                    commonStyles.backgroundContainer,
                     commonStyles.centerFull,
-                    styles.backgroundContainer
                 ]}
                 resizeMode="cover" />
 
             <View style={[
-                commonStyles.container,
+                commonStyles.screenContainer,
                 commonStyles.centerContent,
                 styles.foregroundContainer,
             ]}>
@@ -70,13 +70,6 @@ export default function RegisterScreen() {
 }
 
 const useStyle = makeStyles((theme) => ({
-    container: {
-        flex: 1,
-        backgroundColor: theme.colors.background,
-    },
-    backgroundContainer: {
-        position: "absolute",
-    },
     foregroundContainer: {
         flex: 1,
         backgroundColor: "transparent",

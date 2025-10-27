@@ -65,6 +65,12 @@ export const typography = (() => {
             fontWeight: fontWeight.bold,
             fontFamily: fontFamily.RalewayBold
         },
+        headlineLarge: {
+            fontSize: fontSize.huge,
+            lineHeight: lineHeight.huge,
+            fontWeight: fontWeight.bold,
+            fontFamily: fontFamily.RalewayBold
+        },
         headlineMedium: {
             fontSize: fontSize.xxLarge,
             lineHeight: lineHeight.xxLarge,

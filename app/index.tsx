@@ -3,10 +3,10 @@ import AppLogoImage from "@/assets/images/app-logo.png"
 import { useRouter } from "expo-router";
 import PrimaryButton from "@/src/components/PrimaryButton";
 import { useEffect } from "react";
-import LoginArrowIcon from "@/src/components/LongArrowIcon";
 import { useCommonStyles } from "@/src/styles/commonStyles";
 import { makeStyles } from "@/src/theme/makeStyles";
 import TertiaryButton from "@/src/components/TertiaryButton";
+import LongArrowIcon from "@/src/components/LongArrowIcon";
 
 export default function Index() {
   const router = useRouter();
@@ -32,7 +32,7 @@ export default function Index() {
   // });
 
   return (
-    <View style={commonStyles.container} >
+    <View style={commonStyles.screenContainer} >
 
       <View style={[commonStyles.centerContent, styles.logoContainer]}>
         <View style={[commonStyles.centerContent, styles.logoCard]}>
@@ -49,7 +49,7 @@ export default function Index() {
           containerStyle={styles.loginTextContainer}
           text={"I already have an account"}
           onPress={onLoginPressed}>
-          <LoginArrowIcon />
+          <LongArrowIcon />
         </TertiaryButton>
       </View>
     </View>
