@@ -48,8 +48,10 @@ export default function PasswordResetErrorModal({
                         <PrimaryButton
                             text={"Okay"}
                             onPress={onClose}
-                            containerStyle={styles.button}
-                        />
+                            containerStyle={[
+                                commonStyles.slimButton,
+                                styles.okayButton
+                            ]} />
                     </View>
                 </View>
             </View>

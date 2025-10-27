@@ -1,7 +1,7 @@
 export const colors = {
     // Base palette
     primary: "#0042E0",
-    primaryLight: "#3F6FFF",
+    primaryLight: "#C7D6FB",
     primaryDark: "#002F9E",
 
     secondary: "#FF5790",
@@ -25,6 +25,6 @@ export const colors = {
     infoCardInner: "#F1AEAE",
 
     // States
-    pressed: "rgba(0,0,0,0.05)",
+    pressed: "#00000088",
     overlay: "#000000cc",
 };

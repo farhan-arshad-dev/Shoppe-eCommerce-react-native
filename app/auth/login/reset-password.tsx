@@ -114,7 +114,10 @@ export default function PasswordScreen() {
                         {screenType === ScreenType.VERIFICATION_CODE_ENTRY &&
                             (<SecondaryButton
                                 text={"Send Again"}
-                                containerStyle={styles.sendAgainContainer} onPress={() => {
+                                containerStyle={[
+                                    styles.sendAgainContainer,
+                                    commonStyles.slimButton,
+                                ]} onPress={() => {
                                     setIsVerificationErrorVisible(true);
                                 }} />
                             )
@@ -185,9 +188,5 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center",
         marginVertical: theme.metrics.spacing.xxSmall,
         borderRadius: theme.metrics.borderRadius.large,
-    },
-    sendAgainContainer: {
-        width: "55%",
-        paddingVertical: theme.metrics.spacing.small,
     },
 }));

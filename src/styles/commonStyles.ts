@@ -53,4 +53,9 @@ export const useCommonStyles = makeStyles((theme) => ({
     profileCard: {
         marginBottom: theme.metrics.spacing.xxLarge,
     },
+    slimButton: {
+        alignSelf: "center",
+        width: theme.metrics.screenWidth * .5,
+        paddingVertical: theme.metrics.spacing.small,
+    }
 }));

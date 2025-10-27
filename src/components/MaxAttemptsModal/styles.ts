@@ -50,10 +50,8 @@ export const useStyles = makeStyles((theme) => ({
         marginVertical: theme.metrics.spacing.large,
         paddingHorizontal: theme.metrics.spacing.xSmall,
     },
-    button: {
-        width: "55%",
+    okayButton: {
         backgroundColor: theme.colors.primaryText,
         borderRadius: theme.metrics.borderRadius.large,
-        paddingVertical: theme.metrics.spacing.small,
     },
 }));

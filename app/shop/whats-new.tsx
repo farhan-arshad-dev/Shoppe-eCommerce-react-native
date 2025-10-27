@@ -4,8 +4,15 @@ import PagerView from "react-native-pager-view";
 import { useRef, useState } from "react";
 import { slides } from "@/src/data/slides";
 import { useRouter } from "expo-router";
+import { makeStyles } from "@/src/theme/makeStyles";
+import { useCommonStyles } from "@/src/styles/commonStyles";
+import PageDotIndicator from "@/src/components/PageDotIndicator";
+import PrimaryButton from "@/src/components/PrimaryButton";
 
 export default function WhatsNewScreen() {
+
+    const commonStyles = useCommonStyles();
+    const styles = useStyles();
 
     const router = useRouter();
     const pagerRef = useRef<PagerView>(null);
@@ -16,139 +23,86 @@ export default function WhatsNewScreen() {
     };
 
     return (
-        <View style={styles.container}>
-
+        <View style={commonStyles.container}>
             <ImageBackground
                 source={WhatsNewBackground}
-                style={styles.backgroundContainer}
+                style={[
+                    commonStyles.backgroundContainer,
+                    commonStyles.fillParent
+                ]}
                 resizeMode="cover" />
 
-            <View style={styles.foregroundContainer}>
+            <View style={[commonStyles.screenContainer, styles.foregroundContainer]}>
                 <PagerView
-                    style={styles.pagerView}
+                    style={[commonStyles.fullWidth, styles.pagerView]}
                     initialPage={0}
                     onPageSelected={(e) => setPage(e.nativeEvent.position)}
                     ref={pagerRef}>
                     {slides.map((slide) => (
-                        <View key={slide.id} style={styles.slideContainer}>
+                        <View key={slide.id}
+                            style={[styles.slideContainer]}>
                             <View style={styles.slide}>
-                                <Image source={slide.image} style={styles.image} resizeMode="stretch" />
+                                <Image source={slide.image} resizeMode="stretch" />
                                 <Text style={styles.title}>{slide.title}</Text>
                                 <Text style={styles.description}>{slide.description}</Text>
-                                {page === slides.length - 1 && (<TouchableOpacity onPress={handleLetsStart} style={styles.nextButton}>
-                                    <Text style={styles.nextButtonText}>
-                                        Let&apos;s Start
-                                    </Text>
-                                </TouchableOpacity>
-                                )}
+                                {page === slides.length - 1 &&
+                                    (<View>
+                                        <PrimaryButton
+                                            text={"Let's Start"}
+                                            containerStyle={[commonStyles.slimButton, styles.nextButton]}
+                                            onPress={handleLetsStart} />
+                                    </View>
+                                    )}
                             </View>
                         </View>
                     ))}
                 </PagerView>
+                <PageDotIndicator count={slides.length} activeIndex={page} />
 
-                {/* Pagination Dots */}
-                <View style={styles.pagination}>
-                    {slides.map((_, i) => (
-                        <View
-                            key={i}
-                            style={[
-                                styles.dot,
-                                { backgroundColor: i === page ? "#004CFF" : "#C7D6FB" },
-                            ]}
-                        />
-                    ))}
-                </View>
             </View>
         </View >
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#ffffff",
-    },
-    backgroundContainer: {
-        position: "absolute",
-        width: "100%",
-        height: "100%",
-        justifyContent: "center",
-        alignItems: "center",
-    },
+const useStyles = makeStyles((theme) => ({
     foregroundContainer: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        marginHorizontal: 24
+        backgroundColor: "transparent",
+        justifyContent: "flex-start"
     },
     pagerView: {
-        flex: 1,
-        width: "100%",
-        marginTop: 82,
+        height: "75%",
+        marginTop: theme.metrics.spacing.xxHuge + theme.metrics.spacing.mediumLarge,
     },
     slideContainer: {
-        flex: 1,
         alignItems: "center",
     },
     slide: {
-        width: "90%",
-        height: "85%",
-        borderRadius: 30, // Half of the width/height
+        ...theme.shadows.medium,
+        width: "92%",
+        height: "97.5%",
+        borderRadius: theme.metrics.borderRadius.xxxLarge,
         alignItems: "center",
-        backgroundColor: "#ffffff",
-
-        // iOS Shadow
-        shadowColor: '#707070',
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.16,
-        shadowRadius: 4,
-
-        // Android Shadow
-        elevation: 4,   // background must set in the same scope
-    },
-    image: {
-        width: "100%",
     },
     title: {
-        fontSize: 28,
-        fontWeight: "bold",
-        lineHeight: 36,
-        color: "#202020",
+        ...theme.typography.fontStyle.headlineLarge,
+        color: theme.colors.primaryText,
         textAlign: "center",
-        marginTop: 40,
+        marginTop: theme.metrics.spacing.xxxLarge,
     },
     description: {
-        fontSize: 19,
-        color: "#000000",
+        ...theme.typography.fontStyle.bodyXLarge,
         textAlign: "center",
-        marginTop: 12,
-        marginHorizontal: 42,
-        lineHeight: 27,
-        fontWeight: "light",
+        marginVertical: theme.metrics.spacing.small,
+        lineHeight: theme.typography.lineHeight.xLarge,
+        marginHorizontal: theme.metrics.spacing.xxxLarge,
     },
     pagination: {
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
-        marginVertical: 20,
-    },
-    dot: {
-        width: 20,
-        height: 20,
-        borderRadius: 10,
-        marginHorizontal: 10,
+        marginVertical: theme.metrics.spacing.large,
     },
     nextButton: {
-        backgroundColor: "#004CFF",
-        borderRadius: 16,
-        alignItems: "center",
-        margin: 32,
+        margin: theme.metrics.spacing.xxLarge,
     },
-    nextButtonText: {
-        color: "#F3F3F3",
-        fontSize: 22,
-        fontWeight: "light",
-        marginVertical: 10,
-        marginHorizontal: 48
-    },
-});
+}));

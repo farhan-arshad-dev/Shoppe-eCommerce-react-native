@@ -23,13 +23,12 @@ export default function Index() {
   };
 
   // Temp code
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      router.replace("/auth/login/reset-password");
-    }, 500);
-
-    return () => clearTimeout(timer);
-  });
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     router.replace("/shop/whats-new");
+  //   }, 500);
+  //   return () => clearTimeout(timer);
+  // });
 
   return (
     <View style={commonStyles.screenContainer} >
