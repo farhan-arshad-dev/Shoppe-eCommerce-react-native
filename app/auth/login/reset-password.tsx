@@ -8,7 +8,7 @@ import PasswordBullet from "@/src/components/PasswordBullet";
 import PrimaryButton from "@/src/components/PrimaryButton";
 import SecondaryButton from "@/src/components/SecondaryButton";
 import PrimaryInputText from "@/src/components/PrimaryInputText";
-import PasswordResetErrorModal from "@/src/components/PasswordResetErrorModal";
+import PasswordResetErrorModal from "@/src/components/MaxAttemptsModal";
 import { useCommonStyles } from "@/src/styles/commonStyles";
 import AvatarImage from "@/src/components/AvatarImage";
 import { theme } from "@/src/theme";
@@ -61,8 +61,8 @@ export default function PasswordScreen() {
                     styles.header
                 ]}>
                     <AvatarImage image={ProfilePic}
-                        cardSize={theme.metrics.iconSize.profilePicCard}
-                        imageSize={theme.metrics.iconSize.profilePic}
+                        cardSize={theme.metrics.iconCardSize.profilePicCard}
+                        imageSize={theme.metrics.iconCardSize.profilePic}
                         containerStyle={commonStyles.profileCard}
                     />
 
@@ -112,9 +112,11 @@ export default function PasswordScreen() {
                         }
 
                         {screenType === ScreenType.VERIFICATION_CODE_ENTRY &&
-                            (<SecondaryButton text={"Send Again"} style={{ width: "55%" }} onPress={() => {
-                                setIsVerificationErrorVisible(true);
-                            }} />
+                            (<SecondaryButton
+                                text={"Send Again"}
+                                containerStyle={styles.sendAgainContainer} onPress={() => {
+                                    setIsVerificationErrorVisible(true);
+                                }} />
                             )
                         }
 
@@ -183,5 +185,9 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center",
         marginVertical: theme.metrics.spacing.xxSmall,
         borderRadius: theme.metrics.borderRadius.large,
-    }
+    },
+    sendAgainContainer: {
+        width: "55%",
+        paddingVertical: theme.metrics.spacing.small,
+    },
 }));

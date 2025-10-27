@@ -4,7 +4,7 @@ export const colors = {
     primaryLight: "#3F6FFF",
     primaryDark: "#002F9E",
 
-    secondary: "#FF6B00",
+    secondary: "#FF5790",
 
     background: "#FFFFFF",
     surface: "#F8F8F8",
@@ -21,7 +21,10 @@ export const colors = {
     info: "#1E88E5",
     shadow: '#000000',
 
+    infoCardOutter: "#FFEBEB",
+    infoCardInner: "#F1AEAE",
+
     // States
     pressed: "rgba(0,0,0,0.05)",
-    overlay: "rgba(0,0,0,0.4)",
+    overlay: "#000000cc",
 };

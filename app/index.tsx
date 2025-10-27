@@ -62,9 +62,9 @@ const useStyle = makeStyles((theme) => ({
   },
   logoCard: {
     ...theme.shadows.medium,
-    width: theme.metrics.iconSize.logoCardSize,
-    height: theme.metrics.iconSize.logoCardSize,
-    borderRadius: theme.metrics.iconSize.logoCardSize / 2,
+    width: theme.metrics.iconCardSize.logoCardSize,
+    height: theme.metrics.iconCardSize.logoCardSize,
+    borderRadius: theme.metrics.iconCardSize.logoCardSize / 2,
   },
   title: {
     ...theme.typography.fontStyle.hero,

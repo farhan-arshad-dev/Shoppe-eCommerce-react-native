@@ -1,16 +1,15 @@
-import { StyleSheet } from "react-native";
+import { makeStyles } from "@/src/theme/makeStyles";
 
-export default StyleSheet.create({
+export const useStyles = makeStyles((theme => ({
     secondaryButton: {
         width: "100%",
-        backgroundColor: "#FF5790",
-        borderRadius: 16,
+        backgroundColor: theme.colors.secondary,
+        borderRadius: theme.metrics.borderRadius.xlarge,
+        padding: theme.metrics.spacing.medium,
     },
     secondaryButtonText: {
-        color: "#F3F3F3",
-        margin: 16,
-        fontSize: 22,
-        fontWeight: "300",
+        ...theme.typography.fontStyle.bodyXXLarge,
+        color: theme.colors.primaryButtonText,
         textAlign: "center",
     },
-});
+})));

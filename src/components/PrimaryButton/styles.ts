@@ -3,7 +3,7 @@ import { makeStyles } from "@/src/theme/makeStyles";
 export const useStyles = makeStyles((theme) => ({
     primaryButtonContainer: {
         backgroundColor: theme.colors.primary,
-        borderRadius: theme.metrics.spacing.medium,
+        borderRadius: theme.metrics.borderRadius.xlarge,
         padding: theme.metrics.spacing.medium,
     },
     primaryButtonText: {

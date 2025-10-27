@@ -3,6 +3,7 @@ export const typography = (() => {
         RalewayBold: "Raleway-Bold",
         NunitoSansLight: "NunitoSans-Light",
         NunitoSansBold: "NunitoSans-Bold",
+        NunitoSansRegular: "NunitoSans-Regular",
         PoppinsMedium: "Poppins-Medium",
     };
 

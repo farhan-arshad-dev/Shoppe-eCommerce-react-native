@@ -32,8 +32,8 @@ export default function PasswordScreen() {
                 <View style={[commonStyles.centerFull, styles.header]}>
 
                     <AvatarImage image={ProfilePic}
-                        cardSize={theme.metrics.iconSize.profilePicCard}
-                        imageSize={theme.metrics.iconSize.profilePic}
+                        cardSize={theme.metrics.iconCardSize.profilePicCard}
+                        imageSize={theme.metrics.iconCardSize.profilePic}
                         containerStyle={commonStyles.profileCard}
                     />
 

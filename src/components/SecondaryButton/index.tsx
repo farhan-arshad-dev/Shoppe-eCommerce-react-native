@@ -1,16 +1,17 @@
 import { Text, TouchableOpacity, ViewStyle } from "react-native";
-import styles from "./styles";
+import { useStyles } from "./styles";
 
 export default function SecondaryButton({
-    text, onPress, style
+    text, onPress, containerStyle
 }: {
     text: string,
     onPress: () => void,
-    style?: ViewStyle,
+    containerStyle?: ViewStyle,
 }
 ) {
+    const styles = useStyles();
     return (
-        <TouchableOpacity style={[styles.secondaryButton, style]} onPress={onPress}>
+        <TouchableOpacity style={[styles.secondaryButton, containerStyle]} onPress={onPress}>
             <Text style={styles.secondaryButtonText}>{text}</Text>
         </TouchableOpacity>
     );
