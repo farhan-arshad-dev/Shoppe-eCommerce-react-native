@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, Text, View } from "react-native";
 import AppLogoImage from "@/assets/images/app-logo.png"
 import { useRouter } from "expo-router";
 import PrimaryButton from "@/src/components/PrimaryButton";

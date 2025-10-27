@@ -1,11 +1,14 @@
 import { FontAwesome6 } from "@expo/vector-icons";
 import { View } from "react-native";
-import styles from "./styles";
+import { useStyles } from "./styles";
+import { useTheme } from "@/src/theme/ThemeProvider";
 
 export default function LoginArrowIcon() {
+    const { theme } = useTheme();
+    const styles = useStyles();
     return (
         <View style={styles.loginArrowIcon}>
-            <FontAwesome6 name="arrow-right-long" size={14} color="#ffffff" />
+            <FontAwesome6 name="arrow-right-long" size={14} color={theme.colors.background} />
         </View>
     );
 }

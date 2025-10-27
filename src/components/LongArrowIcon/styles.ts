@@ -1,6 +1,6 @@
-import { StyleSheet } from "react-native";
+import { makeStyles } from "@/src/theme/makeStyles";
 
-export default StyleSheet.create({
+export const useStyles = makeStyles((theme) => ({
     loginArrowIcon: {
         height: 30,
         width: 30,
@@ -9,4 +9,4 @@ export default StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
-})
+}))
