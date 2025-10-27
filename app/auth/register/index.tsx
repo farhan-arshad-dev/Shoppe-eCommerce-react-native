@@ -110,7 +110,7 @@ export default function RegisterScreen() {
                     <View style={styles.buttonSection}>
                         <PrimaryButton
                             text={"Done"}
-                            style={commonStyles.fullWidth}
+                            containerStyle={commonStyles.fullWidth}
                             onPress={() => {
                                 router.replace("/shop/whats-new");
                             }} />

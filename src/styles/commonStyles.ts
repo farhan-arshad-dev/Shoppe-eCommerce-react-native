@@ -15,8 +15,25 @@ export const useCommonStyles = makeStyles((theme) => ({
         width: "100%",
     },
     fullFlex: {
-        width: "100%",
         flex: 1,
+        width: "100%",
+    },
+    fillParent: {
+        width: "100%",
+        height: "100%",
+    },
+    centerFull: {
+        flex: 1,
+        width: "100%",
+        height: "100%",
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    backgroundContainer: {
+        position: "absolute",
+        width: "100%",
+        justifyContent: "center",
+        alignItems: "center",
     },
     authInputContainer: {
         flexDirection: "row",

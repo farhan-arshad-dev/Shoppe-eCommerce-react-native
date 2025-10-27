@@ -8,7 +8,6 @@ export const useStyle = makeStyles((theme) => ({
     },
     tertiaryButtonText: {
         ...theme.typography.fontStyle.bodyLarge,
-        opacity: 0.9,
         marginHorizontal: theme.metrics.spacing.medium,
         color: theme.colors.primaryText
     },

@@ -23,6 +23,7 @@ export default function TertiaryButton({
             activeOpacity={0.7}>
 
             <Text style={[style.tertiaryButtonText, textStyle]}>{text}</Text>
+
             {children}
 
         </TouchableOpacity>

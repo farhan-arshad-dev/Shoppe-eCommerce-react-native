@@ -3,9 +3,14 @@ import LoginBackground from "@/assets/images/login-background.png"
 import { useRouter } from "expo-router";
 import Fontisto from '@expo/vector-icons/Fontisto';
 import PrimaryButton from "@/src/components/PrimaryButton";
+import { useCommonStyles } from "@/src/styles/commonStyles";
+import { makeStyles } from "@/src/theme/makeStyles";
+import TertiaryButton from "@/src/components/TertiaryButton";
 
 export default function RegisterScreen() {
 
+    const commonStyles = useCommonStyles();
+    const styles = useStyle();
     const router = useRouter();
 
     return (
@@ -13,13 +18,21 @@ export default function RegisterScreen() {
 
             <ImageBackground
                 source={LoginBackground}
-                style={styles.backgroundContainer}
+                style={[
+                    commonStyles.centerFull,
+                    styles.backgroundContainer
+                ]}
                 resizeMode="cover" />
 
-            <View style={styles.foregroundContainer}>
-                <View style={styles.header} />
+            <View style={[
+                commonStyles.container,
+                commonStyles.centerContent,
+                styles.foregroundContainer,
+            ]}>
+                {/* top half space */}
+                <View style={commonStyles.fullFlex} />
 
-                <View style={styles.footer}>
+                <View style={commonStyles.fullFlex}>
                     <View>
                         <Text style={styles.title}>Login</Text>
                         <View style={styles.descriptionContainer}>
@@ -27,7 +40,7 @@ export default function RegisterScreen() {
                             <Fontisto name="heart" size={16} color="black" />
                         </View>
                         <TextInput
-                            style={styles.emailInput}
+                            style={commonStyles.authInputContainer}
                             placeholder="Email"
                             placeholderTextColor="#D2D2D2"
                             autoCapitalize='none'
@@ -36,12 +49,18 @@ export default function RegisterScreen() {
                     </View>
 
                     <View style={styles.buttonSection}>
-                        <PrimaryButton text={"Next"} onPress={() => {
-                            router.push("/auth/login/password")
-                        }} />
-                        <TouchableOpacity style={styles.cancelButton} onPress={() => { router.back() }}>
-                            <Text style={styles.cancelButtonText}>Cancel</Text>
-                        </TouchableOpacity>
+
+                        <PrimaryButton
+                            text={"Next"}
+                            containerStyle={commonStyles.fullWidth}
+                            onPress={() => {
+                                router.push("/auth/login/password")
+                            }} />
+
+                        <TertiaryButton
+                            text={"Cancel"}
+                            onPress={() => { router.back() }}
+                            containerStyle={styles.cancelButton} />
                     </View>
                 </View>
             </View>
@@ -50,56 +69,30 @@ export default function RegisterScreen() {
     );
 }
 
-const styles = StyleSheet.create({
+const useStyle = makeStyles((theme) => ({
     container: {
         flex: 1,
-        backgroundColor: "#ffffff",
+        backgroundColor: theme.colors.background,
     },
     backgroundContainer: {
         position: "absolute",
-        width: "100%",
-        height: "100%",
-        justifyContent: "center",
-        alignItems: "center",
     },
     foregroundContainer: {
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        marginHorizontal: 20
-    },
-    header: {
-        flex: 1,
-        width: "100%",
-    },
-    footer: {
-        flex: 1,
-        width: "100%",
-        flexDirection: "column",
+        backgroundColor: "transparent",
     },
     title: {
-        marginTop: 32,
-        fontSize: 52,
-        fontWeight: "bold",
+        ...theme.typography.fontStyle.hero,
+        marginTop: theme.metrics.spacing.xLarge,
     },
     descriptionContainer: {
         flexDirection: "row",
-        alignItems: "center"
+        alignItems: "center",
+        marginBottom: theme.metrics.spacing.small,
     },
     description: {
-        fontSize: 19,
-        fontWeight: "light",
-        color: "#202020",
-        lineHeight: 35,
-        marginEnd: 12,
-    },
-    emailInput: {
-        width: "100%",
-        backgroundColor: "#F8F8F8",
-        fontSize: 14,
-        padding: 16,
-        borderRadius: 60,
-        marginTop: 12,
+        ...theme.typography.fontStyle.headlineSmall,
+        marginEnd: theme.metrics.spacing.small,
     },
     buttonSection: {
         flex: 1,
@@ -107,9 +100,6 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     cancelButton: {
-        marginVertical: 28
-    },
-    cancelButtonText: {
-        color: "#202020",
-    },
-});
+        marginVertical: theme.metrics.spacing.xLarge,
+    }
+}));
