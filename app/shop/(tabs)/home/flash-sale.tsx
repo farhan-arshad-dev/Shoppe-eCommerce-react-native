@@ -1,4 +1,4 @@
-import { FlatList, Image, ImageBackground, ScrollView, Text, View } from "react-native";
+import { FlatList, Image, ImageBackground, Pressable, ScrollView, Text, View } from "react-native";
 import FlashSaleBackground from "@/assets/images/flash-sale-background.png";
 import LiveSale from "@/assets/images/live-sale.png";
 import FilterIcon from "@/assets/images/filter-icon.png";
@@ -16,6 +16,7 @@ import { useState } from "react";
 import { useCommonStyles } from "@/src/styles/commonStyles";
 import { useTheme } from "@/src/theme/ThemeProvider";
 import { makeStyles } from "@/src/theme/makeStyles";
+import { useRouter } from "expo-router";
 
 export default function FlashSaleScreen() {
 
@@ -23,8 +24,10 @@ export default function FlashSaleScreen() {
     const commonStyles = useCommonStyles();
     const styles = useStyles();
 
+    const router = useRouter();
+
     const [isSaleVideoPlaying, setIsSaleVideoPlaying] = useState(false);
-    console.log()
+    console.log(`Started Live Sale Video: ${isSaleVideoPlaying}`)
 
     return (
         <View style={styles.container}>
@@ -56,7 +59,9 @@ export default function FlashSaleScreen() {
                 <ScrollView style={styles.scrollViewContainer}
                     showsVerticalScrollIndicator={false}>
 
-                    <View style={styles.liveContainer}>
+                    <Pressable style={styles.liveContainer} onPress={() => {
+                        router.push("/shop/home/live-sale");
+                    }}>
                         <VideoPlayer videoSource={videoUrls[0]} onPlayStateChange={(isPlaying) => setIsSaleVideoPlaying(isPlaying)} />
                         {!isSaleVideoPlaying &&
                             (<View style={[
@@ -78,7 +83,7 @@ export default function FlashSaleScreen() {
                         <View style={styles.liveTagContainer}>
                             <LiveTag />
                         </View>
-                    </View>
+                    </Pressable>
 
                     <View style={styles.discountItemsContainer}>
                         <View style={styles.listHeader}>
