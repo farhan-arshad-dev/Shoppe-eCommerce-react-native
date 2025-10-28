@@ -52,6 +52,7 @@ export const metrics = {
     iconCardSize: {
         logoCardSize: 134,
         flagIcon: 16,
+        playIcon: 16,
         profilePicCard: 105,
         profilePic: 91,
         infoIcon: 14,

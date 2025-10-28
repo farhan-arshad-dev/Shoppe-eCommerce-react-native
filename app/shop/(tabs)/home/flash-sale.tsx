@@ -1,18 +1,31 @@
-import { FlatList, Image, ImageBackground, ScrollView, StyleSheet, Text, View } from "react-native";
+import { FlatList, Image, ImageBackground, ScrollView, Text, View } from "react-native";
 import FlashSaleBackground from "@/assets/images/flash-sale-background.png";
 import LiveSale from "@/assets/images/live-sale.png";
 import FilterIcon from "@/assets/images/filter-icon.png";
 import CountDownTimer from "@/src/components/CountDownTimer";
 import DiscountSelector from "@/src/components/DiscountSelector";
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
-import { discountedItems, popularItems } from "@/src/data/shop-tabs-data";
+import { discountedItems, popularItems, videoUrls } from "@/src/data/shop-tabs-data";
 import JustForYouItem from "@/src/components/JustForYouItem";
 import { ItemType } from "@/src/types/shop-tabs";
 import Banner from "@/src/components/Banner";
 import LiveTag from "@/src/components/LiveTag";
 import MostPopularList from "@/src/components/MostPopularListSection";
+import VideoPlayer from "@/src/components/VideoPlayer";
+import { useState } from "react";
+import { useCommonStyles } from "@/src/styles/commonStyles";
+import { useTheme } from "@/src/theme/ThemeProvider";
+import { makeStyles } from "@/src/theme/makeStyles";
 
 export default function FlashSaleScreen() {
+
+    const { theme } = useTheme();
+    const commonStyles = useCommonStyles();
+    const styles = useStyles();
+
+    const [isSaleVideoPlaying, setIsSaleVideoPlaying] = useState(false);
+    console.log()
+
     return (
         <View style={styles.container}>
 
@@ -41,15 +54,27 @@ export default function FlashSaleScreen() {
                     <DiscountSelector />
                 </View>
                 <ScrollView style={styles.scrollViewContainer}
-                    showsVerticalScrollIndicator={false}
-                >
+                    showsVerticalScrollIndicator={false}>
+
                     <View style={styles.liveContainer}>
-                        <Image source={LiveSale} style={styles.liveSaleImage} />
+                        <VideoPlayer videoSource={videoUrls[0]} onPlayStateChange={(isPlaying) => setIsSaleVideoPlaying(isPlaying)} />
+                        {!isSaleVideoPlaying &&
+                            (<View style={[
+                                commonStyles.container,
+                                commonStyles.fillParent
+                            ]}>
+                                <Image
+                                    source={LiveSale}
+                                    style={[commonStyles.fillParent]}
+                                />
 
-                        <View style={styles.playButtonContainer}>
-                            <FontAwesome5 name="play" size={17} color="#ffffff" />
-                        </View>
-
+                                <View style={styles.playButtonContainer}>
+                                    <FontAwesome5
+                                        name="play"
+                                        size={theme.metrics.iconCardSize.playIcon}
+                                        color={theme.colors.background} />
+                                </View>
+                            </View>)}
                         <View style={styles.liveTagContainer}>
                             <LiveTag />
                         </View>
@@ -99,7 +124,7 @@ export default function FlashSaleScreen() {
     )
 }
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((theme) => ({
     container: {
         flex: 1,
         backgroundColor: "#ffffff",
@@ -159,15 +184,14 @@ const styles = StyleSheet.create({
         marginTop: 16,
     },
     liveContainer: {
+        width: "100%",
+        aspectRatio: "2",
         borderColor: "#E9E5E5",
         alignItems: "center",
+        justifyContent: "center",
         borderRadius: 13,
         borderWidth: 1,
-        paddingTop: 8,
         overflow: "hidden",
-    },
-    liveSaleImage: {
-        width: "100%",
     },
     playButtonContainer: {
         position: "absolute",
@@ -203,4 +227,4 @@ const styles = StyleSheet.create({
     horizontalList: {
         gap: 8,
     },
-});
+}))

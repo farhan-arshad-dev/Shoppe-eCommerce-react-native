@@ -299,3 +299,8 @@ export const stroies: TopProduct[] = [
     { id: 4, image: "https://picsum.photos/seed/4/200" },
     { id: 5, image: "https://picsum.photos/seed/5/200" },
 ]
+
+export const videoUrls = [
+    "https://videos.pexels.com/video-files/2104648/2104648-hd_1280_720_30fps.mp4",
+    "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+]

@@ -1,4 +1,4 @@
-import { ImageBackground, StyleSheet, TouchableOpacity, View, Image, Text } from "react-native";
+import { ImageBackground, View, Image, Text } from "react-native";
 import WhatsNewBackground from "@/assets/images/whats-new-background.png"
 import PagerView from "react-native-pager-view";
 import { useRef, useState } from "react";
