@@ -1,18 +1,23 @@
 import { Text, View } from "react-native";
 import SeeAllButton from "../SeeAllButton";
 import { Category } from "@/src/types/shop-tabs";
-import styles from "./styles";
 import CategoryGridList from "../CategoryGridList";
+import { useStyles } from "./styles";
+import { useCommonStyles } from "@/src/styles/commonStyles";
 
 export default function CategorySection({
     categories,
 }: {
     categories: Category[]
 }) {
+
+    const styles = useStyles();
+    const commonStyles = useCommonStyles();
+
     return (
-        <View style={styles.categoryContainer}>
-            <View style={styles.listHeader}>
-                <Text style={styles.listTitle}>Categories</Text>
+        <View style={[commonStyles.fullWidth, styles.container]}>
+            <View style={commonStyles.listHeader}>
+                <Text style={commonStyles.listTitle}>Categories</Text>
                 <SeeAllButton />
             </View>
 

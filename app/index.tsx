@@ -29,7 +29,6 @@ export default function Index() {
   //   }, 500);
   //   return () => clearTimeout(timer);
   // });
-
   return (
     <View style={commonStyles.screenContainer} >
 
@@ -61,9 +60,9 @@ const useStyle = makeStyles((theme) => ({
   },
   logoCard: {
     ...theme.shadows.medium,
-    width: theme.metrics.iconCardSize.logoCardSize,
-    height: theme.metrics.iconCardSize.logoCardSize,
-    borderRadius: theme.metrics.iconCardSize.logoCardSize / 2,
+    width: theme.metrics.componentSizes.logoCard,
+    height: theme.metrics.componentSizes.logoCard,
+    borderRadius: theme.metrics.componentSizes.logoCard / 2,
   },
   title: {
     ...theme.typography.fontStyle.hero,

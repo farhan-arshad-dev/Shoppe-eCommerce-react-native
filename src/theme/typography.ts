@@ -5,6 +5,7 @@ export const typography = (() => {
         NunitoSansBold: "NunitoSans-Bold",
         NunitoSansRegular: "NunitoSans-Regular",
         PoppinsMedium: "Poppins-Medium",
+        RalewayMedium: "Raleway-Medium",
     };
 
     const fontSize = {

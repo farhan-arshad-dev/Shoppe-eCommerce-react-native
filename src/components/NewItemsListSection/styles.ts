@@ -1,24 +1,10 @@
-import { StyleSheet } from "react-native";
+import { makeStyles } from "@/src/theme/makeStyles";
 
-export default StyleSheet.create({
+export const useStyles = makeStyles((theme) => ({
     newItemsContainer: {
-        marginTop: 32,
-    },
-    listHeader: {
-        width: "100%",
-        flexDirection: "row",
-        alignItems: "center",
-        marginBottom: 12,
-        justifyContent: "space-between"
-    },
-    listTitle: {
-        fontSize: 21,
-        fontWeight: "bold",
-        lineHeight: 30,
-        color: "#202020",
-        marginRight: 8,
+        marginTop: theme.metrics.spacing.xxLarge,
     },
     horizontalList: {
-        gap: 8,
+        gap: theme.metrics.spacing.xSmall,
     },
-})
+}));

@@ -76,7 +76,7 @@ export default function FlashSaleScreen() {
                                 <View style={styles.playButtonContainer}>
                                     <FontAwesome5
                                         name="play"
-                                        size={theme.metrics.iconCardSize.playIcon}
+                                        size={theme.metrics.componentSizes.playIcon}
                                         color={theme.colors.background} />
                                 </View>
                             </View>)}

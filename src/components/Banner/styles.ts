@@ -1,14 +1,8 @@
-import { StyleSheet } from "react-native";
+import { makeStyles } from "@/src/theme/makeStyles";
 
-export default StyleSheet.create({
+export const useStyles = makeStyles((theme) => ({
     slide: {
-        width: "100%",
-        aspectRatio: 2.5,
         overflow: "hidden",
-        borderRadius: 10,
+        borderRadius: theme.metrics.borderRadius.medium,
     },
-    image: {
-        width: "100%",
-        height: "100%",
-    },
-})
+}));

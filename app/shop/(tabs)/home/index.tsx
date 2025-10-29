@@ -2,7 +2,7 @@ import SeeAllButton from "@/src/components/SeeAllButton";
 import { categories, justForYouItems, newItems, popularItems, saleItems, slides, topProducts } from "@/src/data/shop-tabs-data";
 import Feather from '@expo/vector-icons/Feather';
 import { useEffect, useRef, useState } from "react";
-import { FlatList, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { FlatList, ScrollView, Text, TextInput, View } from "react-native";
 import PagerView from "react-native-pager-view";
 import PopularItemLayout from "@/src/components/PopularItem";
 import { useRouter } from "expo-router";
@@ -12,8 +12,16 @@ import CategorySection from "@/src/components/CategorySection";
 import FlashSaleSection from "@/src/components/FlashSaleSection";
 import TopProductsSection from "@/src/components/TopProductsSection";
 import JustForYouSection from "@/src/components/JustForYouSection";
+import { makeStyles } from "@/src/theme/makeStyles";
+import { useCommonStyles } from "@/src/styles/commonStyles";
+import { useTheme } from "@/src/theme/ThemeProvider";
+import PageDotIndicator from "@/src/components/PageDotIndicator";
 
 export default function HomeScreen() {
+
+    const { theme } = useTheme();
+    const commonStyles = useCommonStyles();
+    const styles = useStyles();
 
     const router = useRouter();
     const pagerRef = useRef<PagerView>(null);
@@ -32,17 +40,20 @@ export default function HomeScreen() {
     }, []);
 
     return (
-        <View style={styles.container}>
-            <View style={styles.header}>
+        <View style={[commonStyles.screenContainer]}>
+            <View style={commonStyles.header}>
                 <Text style={styles.title}>Shop</Text>
                 <View style={styles.searchContainer}>
                     <TextInput
                         style={styles.searchInput}
                         placeholder="Search"
-                        placeholderTextColor="#C7C7C7"
+                        placeholderTextColor={theme.colors.primaryPlaceHolder}
                         autoCapitalize='none'
                     />
-                    <Feather name="camera" size={20} color="#0042E0" style={styles.cameraIcon} />
+                    <Feather
+                        name="camera"
+                        size={theme.metrics.componentSizes.cameraIcon}
+                        color={theme.colors.primary} />
                 </View>
             </View>
 
@@ -51,7 +62,7 @@ export default function HomeScreen() {
                     <PagerView
                         style={styles.pagerView}
                         initialPage={0}
-                        onPageSelected={(e) => setPage(e.nativeEvent.position)}
+                        onPageSelected={(event) => setPage(event.nativeEvent.position)}
                         ref={pagerRef}>
                         {slides.map((slide) => {
                             return (
@@ -59,15 +70,14 @@ export default function HomeScreen() {
                             );
                         })}
                     </PagerView>
-
-                    <View style={styles.pagination}>
-                        {slides.map((_, i) => (
-                            <View
-                                key={i}
-                                style={i === page ? styles.selectedDot : styles.dot}
-                            />
-                        ))}
-                    </View>
+                    <PageDotIndicator
+                        count={slides.length}
+                        activeIndex={page}
+                        size={10}
+                        gap={10}
+                        containerStyle={styles.pagination}
+                        selectedDotStyle={styles.selectedDot}
+                    />
                 </View>
                 <CategorySection categories={categories} />
 
@@ -80,8 +90,8 @@ export default function HomeScreen() {
                 }} />
 
                 <View style={styles.popularContainer}>
-                    <View style={styles.listHeader}>
-                        <Text style={styles.listTitle}>Most Popular</Text>
+                    <View style={commonStyles.listHeader}>
+                        <Text style={commonStyles.listTitle}>Most Popular</Text>
                         <SeeAllButton />
                     </View>
 
@@ -110,102 +120,44 @@ export default function HomeScreen() {
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: "center",
-        paddingHorizontal: 20,
-        paddingTop: 56,
-        backgroundColor: "#ffffff",
-    },
-    header: {
-        width: "100%",
-        flexDirection: "row",
-        marginBottom: 16,
-    },
+const useStyles = makeStyles((theme) => ({
     title: {
-        fontSize: 28,
-        fontWeight: "bold",
-        lineHeight: 36,
-        color: "#202020",
-        marginRight: 20,
+        ...theme.typography.fontStyle.headlineLarge,
+        marginRight: theme.metrics.spacing.large,
     },
     searchContainer: {
         flex: 1,
         flexDirection: "row",
-        backgroundColor: "#F8F8F8",
-        paddingVertical: 8,
-        paddingHorizontal: 16,
-        borderRadius: 18,
+        justifyContent: 'center',
+        alignItems: "center",
+        backgroundColor: theme.colors.surface,
+        paddingVertical: theme.metrics.spacing.xSmall,
+        paddingHorizontal: theme.metrics.spacing.medium,
+        borderRadius: theme.metrics.borderRadius.xlarge,
     },
     searchInput: {
+        ...theme.typography.fontStyle.headlineXSmall,
         flex: 1,
-        fontSize: 16,
-        fontWeight: "medium",
-        lineHeight: 21,
-    },
-    cameraIcon: {
-        marginStart: 16,
+        fontFamily: theme.typography.fontFamily.RalewayMedium,
+        marginEnd: theme.metrics.spacing.medium,
     },
     sliderContainer: {
-        justifyContent: "flex-start",
-        marginTop: 16,
+        marginTop: theme.metrics.spacing.medium,
     },
     pagerView: {
         width: "100%",
         aspectRatio: 2.5,
     },
-    slide: {
-        width: "100%",
-        aspectRatio: 2.5,
-        overflow: "hidden",
-        borderRadius: 10,
-    },
-    image: {
-        width: "100%",
-        height: "100%",
-    },
     pagination: {
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-        marginVertical: 10,
-    },
-    dot: {
-        width: 10,
-        height: 10,
-        borderRadius: 5,
-        marginHorizontal: 5,
-        backgroundColor: "#C7D6FB",
+        marginVertical: theme.metrics.spacing.small,
     },
     selectedDot: {
-        width: 40,
-        height: 10,
-        borderRadius: 5,
-        marginHorizontal: 5,
-        backgroundColor: "#004CFF"
-    },
-    listHeader: {
-        width: "100%",
-        flexDirection: "row",
-        alignItems: "center",
-        marginBottom: 12,
-        justifyContent: "space-between"
-    },
-    listTitle: {
-        fontSize: 21,
-        fontWeight: "bold",
-        lineHeight: 30,
-        color: "#202020",
-        marginRight: 8,
+        width: theme.metrics.componentSizes.selectedIndicatorWidth,
     },
     horizontalList: {
-        gap: 8,
-    },
-    flashSaleContainer: {
-        marginTop: 28,
+        gap: theme.metrics.spacing.xSmall,
     },
     popularContainer: {
-        marginTop: 24,
+        marginTop: theme.metrics.spacing.xLarge,
     },
-});
+}));

@@ -49,8 +49,8 @@ export const metrics = {
         xHuge: 56,
         xxHuge: 64,
     },
-    iconCardSize: {
-        logoCardSize: 134,
+    componentSizes: {
+        logoCard: 134,
         flagIcon: 16,
         playIcon: 16,
         profilePicCard: 105,
@@ -59,5 +59,7 @@ export const metrics = {
         modalInfoIcon: 80,
         modalInfoOuterCircle: 50,
         modalInfoInnerCircle: 24,
+        cameraIcon: 20,
+        selectedIndicatorWidth: 40,
     }
 };

@@ -162,7 +162,7 @@ const useStyle = makeStyles((theme) => ({
         paddingRight: theme.metrics.spacing.xxSmall,
     },
     countryPickerTheme: {
-        flagSizeButton: theme.metrics.iconCardSize.flagIcon,
+        flagSizeButton: theme.metrics.componentSizes.flagIcon,
     },
     cancelButtonContainer: {
         marginVertical: theme.metrics.spacing.xLarge

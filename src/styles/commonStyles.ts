@@ -55,7 +55,27 @@ export const useCommonStyles = makeStyles((theme) => ({
     },
     slimButton: {
         alignSelf: "center",
-        width: theme.metrics.screenWidth * .5,
+        width: theme.metrics.screenWidth / 2,
         paddingVertical: theme.metrics.spacing.small,
+    },
+    header: {
+        width: "100%",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        marginBottom: theme.metrics.spacing.medium,
+        marginTop: theme.metrics.spacing.xHuge,
+    },
+    listHeader: {
+        width: "100%",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        marginBottom: theme.metrics.spacing.small,
+    },
+    listTitle: {
+        ...theme.typography.fontStyle.headlineSmall,
+        color: theme.colors.primaryText,
+        marginRight: theme.metrics.spacing.xSmall,
     }
 }));

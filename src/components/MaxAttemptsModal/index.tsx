@@ -37,7 +37,7 @@ export default function PasswordResetErrorModal({
                             <View style={styles.innerCircle}>
                                 <FontAwesome6
                                     name="exclamation"
-                                    size={theme.metrics.iconCardSize.infoIcon}
+                                    size={theme.metrics.componentSizes.infoIcon}
                                     color={theme.colors.background} />
                             </View>
                         </View>
