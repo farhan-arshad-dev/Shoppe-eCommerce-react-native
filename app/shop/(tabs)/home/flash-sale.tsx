@@ -17,6 +17,7 @@ import { useCommonStyles } from "@/src/styles/commonStyles";
 import { useTheme } from "@/src/theme/ThemeProvider";
 import { makeStyles } from "@/src/theme/makeStyles";
 import { useRouter } from "expo-router";
+import DiscountGrideList from "@/src/components/DiscountGrideList";
 
 export default function FlashSaleScreen() {
 
@@ -60,6 +61,7 @@ export default function FlashSaleScreen() {
                     <View style={styles.discountContainerBackground} />
                     <DiscountSelector />
                 </View>
+
                 <ScrollView style={styles.scrollViewContainer}
                     showsVerticalScrollIndicator={false}>
 
@@ -122,6 +124,7 @@ export default function FlashSaleScreen() {
                             showsVerticalScrollIndicator={false}
                             contentContainerStyle={commonStyles.horizontalListGap}
                         />
+                        <DiscountGrideList />
                     </View>
 
                     <MostPopularList items={popularItems} />

@@ -19,7 +19,6 @@ export const useCommonStyles = makeStyles((theme) => ({
         width: "100%",
     },
     fullFlex: {
-        flex: 1,
         width: "100%",
     },
     fillParent: {

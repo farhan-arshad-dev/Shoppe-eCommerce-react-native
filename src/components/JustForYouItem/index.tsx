@@ -1,7 +1,6 @@
 import { Image, Text, View } from "react-native";
 import styles from "./styles";
 
-
 export default function JustForYouItem(
     { index, title, price, discountedPrice, imageUrl }: {
         index: number
