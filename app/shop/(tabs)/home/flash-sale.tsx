@@ -30,16 +30,20 @@ export default function FlashSaleScreen() {
     console.log(`Started Live Sale Video: ${isSaleVideoPlaying}`)
 
     return (
-        <View style={styles.container}>
+        <View style={commonStyles.container}>
 
             <ImageBackground
                 source={FlashSaleBackground}
-                style={styles.backgroundContainer}
+                style={[
+                    commonStyles.backgroundContainer,
+                    styles.backgroundContainer
+                ]}
                 resizeMode="cover" />
 
-            <View style={styles.foregroundContainer}>
-                <View style={styles.header}>
-                    <View style={styles.titleContainer}>
+            <View style={[commonStyles.containerWithPadding,
+            styles.foregroundContainer]}>
+                <View style={commonStyles.header}>
+                    <View>
                         <Text style={styles.title}>
                             Flash Sale
                         </Text>
@@ -48,12 +52,12 @@ export default function FlashSaleScreen() {
                         </Text>
                     </View>
                     <CountDownTimer hours={0} minutes={36} seconds={58}
-                        imageStyle={styles.clockStyle}
-                        cardStyle={styles.countDownCardColor}
+                        imageStyle={styles.clockImageStyle}
+                        cardStyle={styles.countDownCard}
                     />
                 </View>
-                <View style={styles.discountContainer}>
-                    <View style={styles.discountContainerBackground}></View>
+                <View style={[commonStyles.centerContent, styles.discountContainer]}>
+                    <View style={styles.discountContainerBackground} />
                     <DiscountSelector />
                 </View>
                 <ScrollView style={styles.scrollViewContainer}
@@ -86,8 +90,8 @@ export default function FlashSaleScreen() {
                     </Pressable>
 
                     <View style={styles.discountItemsContainer}>
-                        <View style={styles.listHeader}>
-                            <Text style={styles.listTitle}>20% Discount</Text>
+                        <View style={commonStyles.listHeader}>
+                            <Text style={commonStyles.listTitle}>20% Discount</Text>
                             <Image source={FilterIcon} style={styles.filterIcon} />
                         </View>
                         <FlatList
@@ -130,72 +134,49 @@ export default function FlashSaleScreen() {
 }
 
 const useStyles = makeStyles((theme) => ({
-    container: {
-        flex: 1,
-        backgroundColor: "#ffffff",
-    },
     backgroundContainer: {
-        position: "absolute",
-        width: "100%",
         aspectRatio: 1.5,
-        top: 0,
-        start: 0,
     },
     foregroundContainer: {
-        flex: 1,
-        marginHorizontal: 20,
-        marginTop: 56,
+        backgroundColor: "transparent",
     },
-    header: {
-        flexDirection: "row",
-        justifyContent: "space-between",
+    clockImageStyle: {
+        width: theme.metrics.spacing.mediumLarge,
+        height: theme.metrics.spacing.mediumLarge,
+        tintColor: theme.colors.background,
     },
-    clockStyle: {
-        width: 18,
-        height: 18,
-        tintColor: "#ffffff",
-    },
-    countDownCardColor: {
-        backgroundColor: "#ffffff"
-    },
-    titleContainer: {
-
+    countDownCard: {
+        backgroundColor: theme.colors.background,
     },
     title: {
-        fontSize: 28,
-        fontWeight: "bold",
-        lineHeight: 36,
-        color: "#202020",
+        ...theme.typography.fontStyle.headlineLarge,
+        color: theme.colors.primaryText,
     },
     description: {
-        fontSize: 14,
-        fontWeight: "medium",
-        lineHeight: 18,
-        color: "#202020",
+        ...theme.typography.fontStyle.bodyMedium,
+        color: theme.colors.primaryText,
     },
     discountContainer: {
-        justifyContent: "center",
-        alignContent: "center",
-        marginTop: 24,
+        marginTop: theme.metrics.spacing.smallMedium,
     },
     discountContainerBackground: {
-        width: "100%",
         position: "absolute",
-        backgroundColor: "#F9F9F9",
-        borderRadius: 8,
-        padding: 16,
+        width: "100%",
+        backgroundColor: theme.colors.surface,
+        borderRadius: theme.metrics.borderRadius.smallMedium,
+        padding: theme.metrics.spacing.medium,
     },
     scrollViewContainer: {
-        marginTop: 16,
+        marginTop: theme.metrics.spacing.medium,
     },
     liveContainer: {
         width: "100%",
         aspectRatio: "2",
-        borderColor: "#E9E5E5",
         alignItems: "center",
         justifyContent: "center",
-        borderRadius: 13,
-        borderWidth: 1,
+        borderRadius: theme.metrics.borderRadius.large,
+        borderWidth: theme.metrics.componentSizes.borderWidth,
+        borderColor: theme.colors.border,
         overflow: "hidden",
     },
     playButtonContainer: {
@@ -205,31 +186,17 @@ const useStyles = makeStyles((theme) => ({
     },
     liveTagContainer: {
         position: "absolute",
-        bottom: 6,
-        right: 6,
+        bottom: theme.metrics.spacing.xSmall,
+        right: theme.metrics.spacing.xSmall,
     },
     discountItemsContainer: {
-        marginTop: 26,
+        marginTop: theme.metrics.spacing.xLarge,
     },
     filterIcon: {
-        width: 18,
-        height: 18,
-    },
-    listHeader: {
-        width: "100%",
-        flexDirection: "row",
-        alignItems: "center",
-        marginBottom: 12,
-        justifyContent: "space-between"
-    },
-    listTitle: {
-        fontSize: 21,
-        fontWeight: "bold",
-        lineHeight: 30,
-        color: "#202020",
-        marginRight: 8,
+        width: theme.metrics.componentSizes.filterIcon,
+        height: theme.metrics.componentSizes.filterIcon,
     },
     horizontalList: {
-        gap: 8,
+        gap: theme.metrics.spacing.xSmall,
     },
 }))

@@ -51,7 +51,7 @@ export default function PasswordScreen() {
                 resizeMode="cover" />
 
             <View style={[
-                commonStyles.screenContainer,
+                commonStyles.containerWithPadding,
                 commonStyles.centerContent,
                 styles.foregroundContainer
             ]}>

@@ -61,5 +61,7 @@ export const metrics = {
         modalInfoInnerCircle: 24,
         cameraIcon: 20,
         selectedIndicatorWidth: 40,
+        borderWidth: 1,
+        filterIcon: 18,
     }
 };

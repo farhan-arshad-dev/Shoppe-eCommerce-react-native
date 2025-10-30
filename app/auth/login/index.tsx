@@ -25,7 +25,7 @@ export default function RegisterScreen() {
                 resizeMode="cover" />
 
             <View style={[
-                commonStyles.screenContainer,
+                commonStyles.containerWithPadding,
                 commonStyles.centerContent,
                 styles.foregroundContainer,
             ]}>

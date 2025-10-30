@@ -5,11 +5,11 @@ export const useCommonStyles = makeStyles((theme) => ({
         flex: 1,
         backgroundColor: theme.colors.background,
     },
-    screenContainer: {
+    containerWithPadding: {
         flex: 1,
         justifyContent: "center",
         backgroundColor: theme.colors.background,
-        paddingHorizontal: theme.metrics.spacing.xLarge,
+        paddingHorizontal: theme.metrics.spacing.large,
     },
     centerContent: {
         justifyContent: "center",

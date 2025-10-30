@@ -36,7 +36,7 @@ export default function RegisterScreen() {
                 style={[commonStyles.backgroundContainer, styles.backgroundContainer]}
                 resizeMode="cover" />
 
-            <View style={[commonStyles.screenContainer, styles.foregroundContainer]}>
+            <View style={[commonStyles.containerWithPadding, styles.foregroundContainer]}>
                 <View style={[commonStyles.fullFlex, styles.header]}>
                     <Text style={styles.title}>Create{"\n"}Account</Text>
                     <TouchableOpacity style={styles.uploadPhotoStyle}>

@@ -32,7 +32,7 @@ export default function WhatsNewScreen() {
                 ]}
                 resizeMode="cover" />
 
-            <View style={[commonStyles.screenContainer, styles.foregroundContainer]}>
+            <View style={[commonStyles.containerWithPadding, styles.foregroundContainer]}>
                 <PagerView
                     style={[commonStyles.fullWidth, styles.pagerView]}
                     initialPage={0}

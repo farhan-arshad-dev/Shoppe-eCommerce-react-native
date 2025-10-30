@@ -8,7 +8,7 @@ export default function MenuScreen() {
     const styles = useStyles();
 
     return (
-        <View style={[commonStyles.screenContainer, commonStyles.centerContent]}>
+        <View style={[commonStyles.containerWithPadding, commonStyles.centerContent]}>
             <View>
                 <Text>Live Sale</Text>
             </View>

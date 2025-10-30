@@ -23,14 +23,15 @@ export default function Index() {
   };
 
   // Temp code
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     router.replace("/shop/whats-new");
-  //   }, 500);
-  //   return () => clearTimeout(timer);
-  // });
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      router.replace("/shop/home/flash-sale");
+    }, 500);
+    return () => clearTimeout(timer);
+  });
+
   return (
-    <View style={commonStyles.screenContainer} >
+    <View style={commonStyles.containerWithPadding} >
 
       <View style={[commonStyles.centerContent, styles.logoContainer]}>
         <View style={[commonStyles.centerContent, styles.logoCard]}>

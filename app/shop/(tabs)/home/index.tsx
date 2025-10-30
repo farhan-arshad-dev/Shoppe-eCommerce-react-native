@@ -40,7 +40,7 @@ export default function HomeScreen() {
     }, []);
 
     return (
-        <View style={[commonStyles.screenContainer]}>
+        <View style={[commonStyles.containerWithPadding]}>
             <View style={commonStyles.header}>
                 <Text style={styles.title}>Shop</Text>
                 <View style={styles.searchContainer}>

@@ -28,7 +28,7 @@ export default function PasswordScreen() {
                 style={commonStyles.backgroundContainer}
                 resizeMode="cover" />
 
-            <View style={[commonStyles.screenContainer, styles.foregroundContainer]}>
+            <View style={[commonStyles.containerWithPadding, styles.foregroundContainer]}>
                 <View style={[commonStyles.centerFull, styles.header]}>
 
                     <AvatarImage image={ProfilePic}
