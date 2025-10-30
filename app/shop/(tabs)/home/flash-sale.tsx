@@ -88,7 +88,6 @@ export default function FlashSaleScreen() {
                             <LiveTag />
                         </View>
                     </Pressable>
-
                     <View style={styles.discountItemsContainer}>
                         <View style={commonStyles.listHeader}>
                             <Text style={commonStyles.listTitle}>20% Discount</Text>
@@ -121,7 +120,7 @@ export default function FlashSaleScreen() {
                             numColumns={2}
                             scrollEnabled={false}
                             showsVerticalScrollIndicator={false}
-                            contentContainerStyle={styles.horizontalList}
+                            contentContainerStyle={commonStyles.horizontalListGap}
                         />
                     </View>
 

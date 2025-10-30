@@ -30,6 +30,7 @@ export const metrics = {
         // Tiny / Minimal spacing
         xxxSmall: 2,
         xxSmall: 4,
+        tiny: 6,
         xSmall: 8,
 
         // Base / Common spacing

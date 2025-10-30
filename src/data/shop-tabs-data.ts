@@ -290,6 +290,14 @@ export const discountedItems: NewItem[] = [
         type: ItemType.SALE_ITEM,
         image: "https://picsum.photos/seed/5/200"
     },
+    {
+        id: 7,
+        title: "Lorem ipsum dolor sit amet consectetur.",
+        price: "$32,00",
+        discountedPrice: "$15,00",
+        type: ItemType.SALE_ITEM,
+        image: "https://picsum.photos/seed/5/200"
+    },
 ]
 
 export const stroies: TopProduct[] = [

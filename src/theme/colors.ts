@@ -12,6 +12,7 @@ export const colors = {
     primaryText: "#202020",
     primaryPlaceHolder: "#D2D2D2",
     primaryButtonText: "#F3F3F3",
+    tabText: '#000000',
 
     border: "#E5E5E5",
     divider: "#1F1F1F",

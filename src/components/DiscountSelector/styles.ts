@@ -1,6 +1,6 @@
-import { StyleSheet } from "react-native";
+import { makeStyles } from "@/src/theme/makeStyles";
 
-export default StyleSheet.create({
+export const useStyles = makeStyles((theme) => ({
     container: {
         width: "100%",
         flexDirection: "row",
@@ -19,17 +19,14 @@ export default StyleSheet.create({
         backgroundColor: "#ffffff"
     },
     text: {
-        fontSize: 13,
-        fontWeight: "bold",
-        lineHeight: 17,
-        color: "#000000",
+        ...theme.typography.fontStyle.titleSmall,
+        color: theme.colors.tabText,
     },
     selectedText: {
-        fontSize: 16,
-        color: "#004CFF",
-        fontWeight: "800",
-        paddingVertical: 8,
-        paddingHorizontal: 10,
+        ...theme.typography.fontStyle.headlineXSmall,
+        color: theme.colors.primary,
+        fontFamily: theme.typography.fontFamily.RalewayExtraBold,
+        padding: theme.metrics.spacing.tiny,
     },
     triangleDown: {
         position: "absolute",
@@ -47,4 +44,4 @@ export default StyleSheet.create({
         borderRightColor: "transparent",
         borderTopColor: "#004CFF",
     },
-});
+}));

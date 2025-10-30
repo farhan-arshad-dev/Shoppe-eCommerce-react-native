@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { View, Text, Pressable } from "react-native";
-import styles from "./styles";
+import { useStyles } from "./styles";
 
 const discounts = ["All", "10%", "20%", "30%", "40%", "50%"];
 
 export default function DiscountSelector() {
+
+    const styles = useStyles();
+
     const [selected, setSelected] = useState("All");
 
     return (
