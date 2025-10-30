@@ -5,7 +5,6 @@ export const useStyles = makeStyles((theme) => ({
         marginVertical: theme.metrics.spacing.xSmall,
     },
     horizontalList: {
-        gap: theme.metrics.spacing.xSmall,
         marginVertical: theme.metrics.spacing.xSmall,
     },
 }))

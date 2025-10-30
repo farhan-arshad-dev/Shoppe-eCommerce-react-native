@@ -34,7 +34,7 @@ export default function NewItemsListSection({
                 keyExtractor={(item) => item.id.toString()}
                 horizontal
                 showsHorizontalScrollIndicator={false}
-                contentContainerStyle={styles.horizontalList}
+                contentContainerStyle={commonStyles.horizontalListGap}
             />
         </View>
     );

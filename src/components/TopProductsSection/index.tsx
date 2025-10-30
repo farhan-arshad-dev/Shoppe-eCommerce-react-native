@@ -28,7 +28,7 @@ export default function TopProductsSection({
                 keyExtractor={(item) => item.id.toString()}
                 horizontal
                 showsHorizontalScrollIndicator={false}
-                contentContainerStyle={styles.horizontalList}
+                contentContainerStyle={[commonStyles.horizontalListGap, styles.horizontalList]}
             />
         </View>
     );

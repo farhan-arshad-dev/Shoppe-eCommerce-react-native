@@ -109,7 +109,7 @@ export default function HomeScreen() {
                         keyExtractor={(item) => item.id.toString()}
                         horizontal
                         showsHorizontalScrollIndicator={false}
-                        contentContainerStyle={styles.horizontalList}
+                        contentContainerStyle={commonStyles.horizontalListGap}
                     />
                 </View>
 
@@ -142,7 +142,7 @@ const useStyles = makeStyles((theme) => ({
         marginEnd: theme.metrics.spacing.medium,
     },
     sliderContainer: {
-        marginTop: theme.metrics.spacing.medium,
+        marginTop: theme.metrics.spacing.tiny,
     },
     pagerView: {
         width: "100%",
@@ -153,9 +153,6 @@ const useStyles = makeStyles((theme) => ({
     },
     selectedDot: {
         width: theme.metrics.componentSizes.selectedIndicatorWidth,
-    },
-    horizontalList: {
-        gap: theme.metrics.spacing.xSmall,
     },
     popularContainer: {
         marginTop: theme.metrics.spacing.xLarge,

@@ -18,7 +18,4 @@ export default StyleSheet.create({
         color: "#202020",
         marginRight: 8,
     },
-    horizontalList: {
-        gap: 8,
-    },
 })

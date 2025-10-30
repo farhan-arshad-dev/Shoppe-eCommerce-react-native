@@ -3,12 +3,14 @@ import { FlatList, Text, View } from "react-native";
 import styles from "./styles";
 import JustForYouItem from "../JustForYouItem";
 import { NewItem } from "@/src/types/shop-tabs";
+import { useCommonStyles } from "@/src/styles/commonStyles";
 
 export default function JustForYouSection({
     items,
 }: {
     items: NewItem[];
 }) {
+    const commonStyles = useCommonStyles();
     return (
         <View style={styles.forYouContainer}>
             <View style={[styles.listHeader, { justifyContent: "flex-start" }]}>
@@ -31,7 +33,7 @@ export default function JustForYouSection({
                 numColumns={2}
                 scrollEnabled={false}
                 showsVerticalScrollIndicator={false}
-                contentContainerStyle={styles.horizontalList}
+                contentContainerStyle={commonStyles.horizontalListGap}
             />
         </View>
     );

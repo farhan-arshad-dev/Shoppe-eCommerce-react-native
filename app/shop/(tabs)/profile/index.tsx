@@ -1,6 +1,6 @@
 import AvatarImage from "@/src/components/AvatarImage";
 import IconBadge from "@/src/components/IconBadge";
-import { FlatList, Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import { FlatList, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import ScanIcon from "@/assets/images/scan-icon.png";
 import MessageIcon from "@/assets/images/message-icon.png";
 import EvilIcons from '@expo/vector-icons/EvilIcons';
@@ -73,21 +73,21 @@ export default function ProfileScreen() {
                         <Text style={styles.listTitle}>My Orders</Text>
                     </View>
                     <View style={styles.orderActions}>
-                        <View style={styles.orderButton}>
+                        <TouchableOpacity style={styles.orderButton}>
                             <Text style={styles.orderButtonText}>To Pay</Text>
-                        </View>
-                        <View style={styles.orderButton}>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.orderButton}>
                             <Text style={styles.orderButtonText}>To Recieve</Text>
                             <View style={styles.dot} />
-                        </View>
-                        <View style={styles.orderButton}>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.orderButton}>
                             <Text style={styles.orderButtonText}>To Review</Text>
-                        </View>
+                        </TouchableOpacity>
                     </View>
                 </View>
                 <View style={styles.myOrdersSection}>
                     <View style={styles.listHeader}>
-                        <Text style={styles.listTitle}>My Orders</Text>
+                        <Text style={styles.listTitle}>Stoies</Text>
                     </View>
                     <FlatList
                         data={stroies}

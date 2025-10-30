@@ -64,7 +64,7 @@ export const useCommonStyles = makeStyles((theme) => ({
         alignItems: "center",
         justifyContent: "space-between",
         marginBottom: theme.metrics.spacing.medium,
-        marginTop: theme.metrics.spacing.xHuge,
+        marginTop: theme.metrics.spacing.huge,
     },
     listHeader: {
         width: "100%",
@@ -77,5 +77,8 @@ export const useCommonStyles = makeStyles((theme) => ({
         ...theme.typography.fontStyle.headlineSmall,
         color: theme.colors.primaryText,
         marginRight: theme.metrics.spacing.xSmall,
+    },
+    horizontalListGap: {
+        gap: theme.metrics.spacing.xSmall,
     }
 }));

@@ -195,7 +195,4 @@ const useStyles = makeStyles((theme) => ({
         width: theme.metrics.componentSizes.filterIcon,
         height: theme.metrics.componentSizes.filterIcon,
     },
-    horizontalList: {
-        gap: theme.metrics.spacing.xSmall,
-    },
 }))

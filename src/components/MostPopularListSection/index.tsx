@@ -3,12 +3,14 @@ import SeeAllButton from "../SeeAllButton";
 import PopularItemLayout from "../PopularItem";
 import { PopularItem } from "@/src/types/shop-tabs";
 import styles from "./styles";
+import { useCommonStyles } from "@/src/styles/commonStyles";
 
 export default function MostPopularListSection({
     items
 }: {
     items: PopularItem[],
 }) {
+    const commonStyles = useCommonStyles();
     return (
         <View style={styles.popularContainer}>
             <View style={styles.listHeader}>
@@ -30,7 +32,7 @@ export default function MostPopularListSection({
                 keyExtractor={(item) => item.id.toString()}
                 horizontal
                 showsHorizontalScrollIndicator={false}
-                contentContainerStyle={styles.horizontalList}
+                contentContainerStyle={commonStyles.horizontalListGap}
             />
         </View>
     );
