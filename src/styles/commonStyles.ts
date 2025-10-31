@@ -19,6 +19,7 @@ export const useCommonStyles = makeStyles((theme) => ({
         width: "100%",
     },
     fullFlex: {
+        flex: 1,
         width: "100%",
     },
     fillParent: {
@@ -79,5 +80,9 @@ export const useCommonStyles = makeStyles((theme) => ({
     },
     horizontalListGap: {
         gap: theme.metrics.spacing.xSmall,
-    }
+    },
+    bannerView: {
+        width: "100%",
+        aspectRatio: 2.5,
+    },
 }));

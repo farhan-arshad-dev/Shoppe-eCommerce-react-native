@@ -1,4 +1,4 @@
-import { FlatList, Image, ImageBackground, Pressable, ScrollView, Text, View } from "react-native";
+import { Image, ImageBackground, Pressable, ScrollView, Text, View } from "react-native";
 import FlashSaleBackground from "@/assets/images/flash-sale-background.png";
 import LiveSale from "@/assets/images/live-sale.png";
 import FilterIcon from "@/assets/images/filter-icon.png";
@@ -6,9 +6,6 @@ import CountDownTimer from "@/src/components/CountDownTimer";
 import DiscountSelector from "@/src/components/DiscountSelector";
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import { discountedItems, popularItems, videoUrls } from "@/src/data/shop-tabs-data";
-import JustForYouItem from "@/src/components/JustForYouItem";
-import { ItemType } from "@/src/types/shop-tabs";
-import Banner from "@/src/components/Banner";
 import LiveTag from "@/src/components/LiveTag";
 import MostPopularList from "@/src/components/MostPopularListSection";
 import VideoPlayer from "@/src/components/VideoPlayer";
@@ -95,36 +92,7 @@ export default function FlashSaleScreen() {
                             <Text style={commonStyles.listTitle}>20% Discount</Text>
                             <Image source={FilterIcon} style={styles.filterIcon} />
                         </View>
-                        <FlatList
-                            data={discountedItems}
-                            renderItem={({ item, index }) => {
-                                if (item.type === ItemType.BANNER) {
-                                    return (
-                                        <View style={{ marginVertical: 20 }}>
-                                            <Banner
-                                                key={item.id}
-                                                image={item.image} />
-                                        </View>
-                                    );
-                                } else {
-                                    return (
-                                        <JustForYouItem
-                                            key={item.id}
-                                            index={index}
-                                            title={item.title}
-                                            price={item.price}
-                                            discountedPrice={item.discountedPrice}
-                                            imageUrl={item.image} />
-                                    );
-                                }
-                            }}
-                            keyExtractor={(item) => item.id.toString()}
-                            numColumns={2}
-                            scrollEnabled={false}
-                            showsVerticalScrollIndicator={false}
-                            contentContainerStyle={commonStyles.horizontalListGap}
-                        />
-                        <DiscountGrideList />
+                        <DiscountGrideList items={discountedItems} />
                     </View>
 
                     <MostPopularList items={popularItems} />

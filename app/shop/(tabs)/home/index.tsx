@@ -60,7 +60,7 @@ export default function HomeScreen() {
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.sliderContainer}>
                     <PagerView
-                        style={styles.pagerView}
+                        style={commonStyles.bannerView}
                         initialPage={0}
                         onPageSelected={(event) => setPage(event.nativeEvent.position)}
                         ref={pagerRef}>
@@ -143,10 +143,6 @@ const useStyles = makeStyles((theme) => ({
     },
     sliderContainer: {
         marginTop: theme.metrics.spacing.tiny,
-    },
-    pagerView: {
-        width: "100%",
-        aspectRatio: 2.5,
     },
     pagination: {
         marginVertical: theme.metrics.spacing.small,

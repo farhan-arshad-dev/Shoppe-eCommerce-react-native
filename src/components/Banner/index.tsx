@@ -8,7 +8,7 @@ export default function Banner({ image }: { image: string }) {
     const styles = useStyles();
 
     return (
-        <View style={[commonStyles.fillParent, styles.slide]}>
+        <View style={[commonStyles.fillParent, styles.banner]}>
             <Image source={{ uri: image }} style={commonStyles.fillParent} resizeMode="cover" />
         </View>
     )

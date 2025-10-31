@@ -17,7 +17,7 @@ interface GridListProps<T> {
     keyExtractor: (item: T, index: number) => string;
     numColumns?: number;
     itemSpacing?: number;
-    nestedScrollEnabled?: boolean,
+    scrollEnabled?: boolean,
     contentContainerStyle?: StyleProp<ViewStyle>;
 }
 
@@ -29,7 +29,7 @@ export default function GridListView<T>({
     keyExtractor,
     numColumns = 1,
     itemSpacing = 0,
-    nestedScrollEnabled = true,
+    scrollEnabled = true,
     contentContainerStyle,
 }: GridListProps<T>): React.ReactElement {
 
@@ -82,7 +82,7 @@ export default function GridListView<T>({
         }
 
         return (
-            <View style={styles.row}>
+            <View style={[styles.row, { gap: itemSpacing }]}>
                 {row.items.map((item, colIndex) => {
                     const originalIndex = data.indexOf(item);
                     return (
@@ -121,7 +121,7 @@ export default function GridListView<T>({
                 keyExtractor={internalKeyExtractor}
                 contentContainerStyle={contentContainerStyle}
                 showsVerticalScrollIndicator={false}
-                nestedScrollEnabled={nestedScrollEnabled}
+                scrollEnabled={scrollEnabled}
             />
         </View>
     );

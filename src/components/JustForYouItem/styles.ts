@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native"
 
 export default StyleSheet.create({
     container: {
-        width: "48%",
+        width: "100%",
     },
     justForYouItemCard: {
         backgroundColor: "#ffffff",
@@ -24,7 +24,7 @@ export default StyleSheet.create({
     },
     justForYouItemImage: {
         width: "100%",
-        aspectRatio: 1,
+        aspectRatio: 0.9,
         borderRadius: 5, // Half of the width/height
     },
     title: {

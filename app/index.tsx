@@ -25,7 +25,7 @@ export default function Index() {
   // Temp code
   useEffect(() => {
     const timer = setTimeout(() => {
-      router.replace("/shop/(tabs)/profile");
+      router.replace("/shop/(tabs)/home/flash-sale");
     }, 500);
     return () => clearTimeout(timer);
   });

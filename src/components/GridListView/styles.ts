@@ -8,7 +8,6 @@ export const useStyles = makeStyles((theme) => ({
     },
     itemWrapper: {
         flex: 1,
-        width: "100%"
     },
     fullWidthWrapper: {
         width: '100%',

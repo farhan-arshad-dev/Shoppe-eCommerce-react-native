@@ -1,8 +1,8 @@
-import { StyleSheet } from "react-native";
+import { makeStyles } from "@/src/theme/makeStyles";
 
-export default StyleSheet.create({
+export const useStyles = makeStyles((theme) => ({
     forYouContainer: {
-        marginTop: 28,
+        marginTop: theme.metrics.spacing.xLarge,
     },
     listHeader: {
         width: "100%",
@@ -18,4 +18,4 @@ export default StyleSheet.create({
         color: "#202020",
         marginRight: 8,
     },
-});
+}));
