@@ -14,11 +14,14 @@ import FlashSaleSection from "@/src/components/FlashSaleSection";
 import { useRouter } from "expo-router";
 import TopProductsSection from "@/src/components/TopProductsSection";
 import JustForYouSection from "@/src/components/JustForYouSection";
+import { useState } from "react";
 
 export default function ProfileScreen() {
 
     const avatar = "https://www.w3schools.com/howto/img_avatar.png"
     const router = useRouter();
+
+    const [activeStoryIndex, setActiveStoryIndex] = useState(0);
 
     return (
         <View style={styles.container}>
@@ -87,7 +90,7 @@ export default function ProfileScreen() {
                 </View>
                 <View style={styles.myOrdersSection}>
                     <View style={styles.listHeader}>
-                        <Text style={styles.listTitle}>Stoies</Text>
+                        <Text style={styles.listTitle}>Stories</Text>
                     </View>
                     <FlatList
                         data={stroies}
@@ -95,6 +98,8 @@ export default function ProfileScreen() {
                             return (
                                 <StoriesItem
                                     key={item.id}
+                                    isActive={index === activeStoryIndex}
+                                    onActive={() => setActiveStoryIndex(index)}
                                     isLive={index === 0}
                                     imageUrl={item.image} />
                             );

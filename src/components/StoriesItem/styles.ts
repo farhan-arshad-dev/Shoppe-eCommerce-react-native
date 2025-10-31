@@ -1,19 +1,23 @@
-import { Dimensions, StyleSheet } from "react-native";
+import { makeStyles } from "@/src/theme/makeStyles";
+import { Dimensions } from "react-native";
 
 const { width } = Dimensions.get('window');
 
-export default StyleSheet.create({
+export const useStyles = makeStyles((theme) => ({
     card: {
         flexDirection: "column",
         width: width * 0.3,
+        aspectRatio: 0.6,
         alignItems: "center",
         justifyContent: "center",
         overflow: "hidden",
-        borderRadius: 10,
+        borderRadius: theme.metrics.borderRadius.medium,
+        borderWidth: theme.metrics.componentSizes.borderWidth,
+        borderColor: theme.colors.border,
     },
     image: {
         width: "100%",
-        aspectRatio: 0.6,
+        height: "100%",
     },
     playButtonContainer: {
         position: "absolute",
@@ -32,4 +36,4 @@ export default StyleSheet.create({
         top: 4,
         start: 4,
     },
-});
+}));

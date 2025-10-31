@@ -1,27 +1,66 @@
-import { View, Image } from "react-native";
-import styles from "./styles";
+import { View, Image, Pressable, TouchableOpacity } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 import LiveTag from "../LiveTag";
+import { videoUrls } from "@/src/data/shop-tabs-data";
+import VideoPlayer from "../VideoPlayer";
+import { useState } from "react";
+import { useCommonStyles } from "@/src/styles/commonStyles";
+import { useTheme } from "@/src/theme/ThemeProvider";
+import { useStyles } from "./styles";
 
 export default function StoriesItemLayout({
     imageUrl,
-    isLive = false
+    isLive = false,
+    isActive = false,
+    onActive,
 }: {
-    imageUrl: string;
-    isLive?: boolean;
+    imageUrl: string,
+    isLive?: boolean,
+    isActive?: boolean,
+    onActive?: () => void,
 }) {
-    return (
-        <View style={styles.card}>
-            <Image source={{ uri: imageUrl }} style={styles.image} />
+    const { theme } = useTheme();
+    const commonStyles = useCommonStyles();
+    const styles = useStyles();
 
-            <View style={styles.playButtonContainer}>
-                <FontAwesome5 name="play" size={14} color="#ffffff" />
-            </View>
+    const [isSaleVideoPlaying, setIsSaleVideoPlaying] = useState(false);
+    console.log(`Profile: Started Live Sale Video: ${isSaleVideoPlaying}`)
+
+    const showImage = !isActive || !isSaleVideoPlaying
+    return (
+        <TouchableOpacity
+            style={styles.card}
+            disabled={isActive}
+            onPress={() => {
+                onActive?.();
+            }}>
+            {isActive && (
+                <VideoPlayer
+                    videoSource={videoUrls.verticalVideo}
+                    onPlayStateChange={(isPlaying) => {
+                        setIsSaleVideoPlaying(isPlaying)
+                    }}
+                />
+            )}
+            {showImage &&
+                (<View style={[
+                    commonStyles.container,
+                    commonStyles.fillParent
+                ]}>
+                    <Image source={{ uri: imageUrl }} style={styles.image} />
+
+                    <View style={styles.playButtonContainer}>
+                        <FontAwesome5
+                            name="play"
+                            size={theme.metrics.componentSizes.playIcon}
+                            color={theme.colors.background} />
+                    </View>
+                </View>)}
             {isLive && (
                 <View style={styles.liveTagContainer}>
                     <LiveTag />
                 </View>
             )}
-        </View>
+        </TouchableOpacity>
     );
 }

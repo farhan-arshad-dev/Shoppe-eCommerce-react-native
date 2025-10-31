@@ -37,7 +37,7 @@ export default function VideoPlayer({
     });
     useEffect(() => {
         onPlayStateChange?.(isPlaying);
-    }, [isPlaying]);
+    }, [isPlaying, onPlayStateChange]);
 
     return (
         <View style={[commonStyles.backgroundContainer, commonStyles.fillParent]}>

@@ -66,7 +66,7 @@ export default function FlashSaleScreen() {
                     <Pressable style={styles.liveContainer} onPress={() => {
                         router.push("/shop/home/live-sale");
                     }}>
-                        <VideoPlayer videoSource={videoUrls[0]} onPlayStateChange={(isPlaying) => setIsSaleVideoPlaying(isPlaying)} />
+                        <VideoPlayer videoSource={videoUrls.regularVideo} onPlayStateChange={(isPlaying) => setIsSaleVideoPlaying(isPlaying)} />
                         {!isSaleVideoPlaying &&
                             (<View style={[
                                 commonStyles.container,
