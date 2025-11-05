@@ -15,8 +15,12 @@ import { useRouter } from "expo-router";
 import TopProductsSection from "@/src/components/TopProductsSection";
 import JustForYouSection from "@/src/components/JustForYouSection";
 import { useState } from "react";
+import { RootState } from "@/src/redux/store/store";
+import { useSelector } from "react-redux";
 
 export default function ProfileScreen() {
+
+    const userName = useSelector((state: RootState) => state.userData.userName?.split(" ")[0]);
 
     const avatar = "https://www.w3schools.com/howto/img_avatar.png"
     const router = useRouter();
@@ -44,7 +48,7 @@ export default function ProfileScreen() {
                     </IconBadge>
                 </View>
             </View>
-            <Text style={styles.title}>Hello, Romina!</Text>
+            <Text style={styles.title}>Hello, {userName}!</Text>
 
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.announcementCard}>

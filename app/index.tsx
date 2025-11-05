@@ -2,7 +2,6 @@ import { Image, Text, View } from "react-native";
 import AppLogoImage from "@/assets/images/app-logo.png"
 import { useRouter } from "expo-router";
 import PrimaryButton from "@/src/components/PrimaryButton";
-import { useEffect } from "react";
 import { useCommonStyles } from "@/src/styles/commonStyles";
 import { makeStyles } from "@/src/theme/makeStyles";
 import TertiaryButton from "@/src/components/TertiaryButton";
@@ -21,14 +20,6 @@ export default function Index() {
   const onLoginPressed = () => {
     router.push("/auth/login");
   };
-
-  // Temp code
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      router.replace("/shop/(tabs)/home/flash-sale");
-    }, 500);
-    return () => clearTimeout(timer);
-  });
 
   return (
     <View style={commonStyles.containerWithPadding} >
