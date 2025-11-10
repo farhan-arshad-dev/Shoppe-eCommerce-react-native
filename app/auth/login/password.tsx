@@ -2,14 +2,16 @@ import { useRouter } from "expo-router";
 import { ImageBackground, Text, View } from "react-native";
 import PasswordBackground from "@/assets/images/password-background.png"
 import ProfilePic from "@/assets/images/profile-dummy.png"
-import { useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import PasswordBullet from "@/src/components/PasswordBullet";
 import { makeStyles } from "@/src/theme/makeStyles";
 import { useCommonStyles } from "@/src/styles/commonStyles";
 import TertiaryButton from "@/src/components/TertiaryButton";
 import LongArrowIcon from "@/src/components/LongArrowIcon";
 import AvatarImage from "@/src/components/AvatarImage";
-import { useTheme } from "@/src/theme/ThemeProvider";
+import { useTheme } from "@/src/providers/ThemeProvider";
+import { useLoginData } from "@/src/providers/LoginDataProvider";
+import { useAuth } from "@/src/hooks/useAuth";
 
 export default function PasswordScreen() {
 
@@ -18,7 +20,27 @@ export default function PasswordScreen() {
     const router = useRouter();
     const { theme } = useTheme();
 
+    const { login, isLoggingIn } = useAuth();
+    const { email, password, setPassword } = useLoginData();
+
     const [isWrongPassword, setIsWrongPassword] = useState(false);
+    const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+    const handlePasswordChange = useCallback((password: string) => {
+        setIsWrongPassword(false);
+        if (debounceTimer.current) {
+            clearTimeout(debounceTimer.current);
+        }
+
+        // start a new timer (3 seconds after user stops typing)
+        debounceTimer.current = setTimeout(async () => {
+            try {
+                await login({ email, password });
+            } catch (_: any) {
+                setIsWrongPassword(true);
+            }
+        }, 1500);
+    }, [email, login]);
 
     return (
         <View style={commonStyles.container}>
@@ -43,13 +65,7 @@ export default function PasswordScreen() {
                         maxLength={8}
                         isWrongPassword={isWrongPassword}
                         setIsWrongPassword={setIsWrongPassword}
-                        onPasswordChanged={(passowrd) => {
-                            if (passowrd === "00000000") {
-                                router.replace("/shop/(tabs)/home")
-                            } else if (passowrd === "11111111") {
-                                router.replace("/shop/whats-new")
-                            }
-                        }}
+                        onPasswordChanged={handlePasswordChange}
                     />
                 </View>
 
@@ -58,14 +74,15 @@ export default function PasswordScreen() {
                         containerStyle={styles.forgotPasswordContainer} onPress={() => {
                             router.push("/auth/login/reset-password");
                         }} />)}
-                    <TertiaryButton
-                        text={"Not you?"}
-                        onPress={() => {
-                            router.back();
-                        }}
-                        containerStyle={styles.notYouContainer}>
-                        <LongArrowIcon />
-                    </TertiaryButton>
+                    <View style={[commonStyles.fillParent, styles.notYouContainer]}>
+                        <TertiaryButton
+                            text={"Not you?"}
+                            onPress={() => {
+                                router.back();
+                            }}>
+                            <LongArrowIcon />
+                        </TertiaryButton>
+                    </View>
                 </View>
             </View>
         </View >
@@ -96,5 +113,6 @@ const useStyles = makeStyles((theme) => ({
     notYouContainer: {
         flex: 1,
         marginVertical: theme.metrics.spacing.xLarge,
+        justifyContent: "flex-end"
     },
 }));

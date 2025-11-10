@@ -1,5 +1,6 @@
+import { ThemeProvider, useTheme } from "@/src/providers/ThemeProvider";
 import { RootState, store } from "@/src/redux/store/store";
-import { ThemeProvider, useTheme } from "@/src/theme/ThemeProvider";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useFonts } from "expo-font";
 import { SplashScreen, Stack, useRouter } from "expo-router";
 import React, { useEffect } from "react";
@@ -23,7 +24,7 @@ function RootContent() {
     [theme.typography.fontFamily.RalewayExtraBold]: require("@/assets/fonts/Raleway-ExtraBold.ttf"),
   });
 
-  const token = useSelector((state: RootState) => state.userData.token);
+  const token = useSelector((state: RootState) => state.auth.token);
   const isLoggedIn = Boolean(token);
 
   useEffect(() => {
@@ -50,13 +51,15 @@ function RootContent() {
 }
 
 export default function RootLayout() {
-
+  const queryClient = new QueryClient()
   return (
     <SafeAreaProvider>
       <Provider store={store}>
-        <ThemeProvider>
-          <RootContent />
-        </ThemeProvider>
+        <QueryClientProvider client={queryClient}>
+          <ThemeProvider>
+            <RootContent />
+          </ThemeProvider>
+        </QueryClientProvider>
       </Provider>
     </SafeAreaProvider>
   );

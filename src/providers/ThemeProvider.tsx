@@ -1,5 +1,5 @@
 import React, { createContext, useContext } from "react";
-import { theme as defaultTheme, ThemeType } from "./index";
+import { theme as defaultTheme, ThemeType } from "@/src/theme";
 
 type ThemeContextType = {
     theme: ThemeType;

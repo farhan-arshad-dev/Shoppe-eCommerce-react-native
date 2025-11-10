@@ -7,10 +7,10 @@ import CountryPicker, { Country, CountryCode } from 'react-native-country-picker
 import { useRouter } from "expo-router";
 import { makeStyles } from "@/src/theme/makeStyles";
 import { useCommonStyles } from "@/src/styles/commonStyles";
-import { useTheme } from "@/src/theme/ThemeProvider";
 import VerticalDivider from "@/src/components/VerticalDivider";
 import PrimaryButton from "@/src/components/PrimaryButton";
 import TertiaryButton from "@/src/components/TertiaryButton";
+import { useTheme } from "@/src/providers/ThemeProvider";
 
 export default function RegisterScreen() {
 

@@ -20,7 +20,7 @@ import { useSelector } from "react-redux";
 
 export default function ProfileScreen() {
 
-    const userName = useSelector((state: RootState) => state.userData.userName?.split(" ")[0]);
+    const userName = useSelector((state: RootState) => state.auth.user?.name?.split(" ")[0]);
 
     const avatar = "https://www.w3schools.com/howto/img_avatar.png"
     const router = useRouter();

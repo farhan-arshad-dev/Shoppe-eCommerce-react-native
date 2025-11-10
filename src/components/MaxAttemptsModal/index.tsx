@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, View, Text } from "react-native";
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
-import { useTheme } from "@/src/theme/ThemeProvider";
+import { useTheme } from "@/src/providers/ThemeProvider";
 import { useStyles } from "./styles";
 import { useCommonStyles } from "@/src/styles/commonStyles";
 import PrimaryButton from "../PrimaryButton";

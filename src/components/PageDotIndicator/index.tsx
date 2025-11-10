@@ -1,6 +1,6 @@
 import { StyleProp, View, ViewStyle } from "react-native";
 import { useStyle } from "./styles";
-import { useTheme } from "@/src/theme/ThemeProvider";
+import { useTheme } from "@/src/providers/ThemeProvider";
 
 export default function PageDotIndicator({
     count,

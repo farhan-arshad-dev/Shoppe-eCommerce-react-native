@@ -11,7 +11,7 @@ import MostPopularList from "@/src/components/MostPopularListSection";
 import VideoPlayer from "@/src/components/VideoPlayer";
 import { useState } from "react";
 import { useCommonStyles } from "@/src/styles/commonStyles";
-import { useTheme } from "@/src/theme/ThemeProvider";
+import { useTheme } from "@/src/providers/ThemeProvider";
 import { makeStyles } from "@/src/theme/makeStyles";
 import { useRouter } from "expo-router";
 import DiscountGrideList from "@/src/components/DiscountGrideList";

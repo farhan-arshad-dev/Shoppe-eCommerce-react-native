@@ -6,12 +6,19 @@ import PrimaryButton from "@/src/components/PrimaryButton";
 import { useCommonStyles } from "@/src/styles/commonStyles";
 import { makeStyles } from "@/src/theme/makeStyles";
 import TertiaryButton from "@/src/components/TertiaryButton";
+import { useLoginData } from "@/src/providers/LoginDataProvider";
 
 export default function RegisterScreen() {
 
     const commonStyles = useCommonStyles();
     const styles = useStyle();
     const router = useRouter();
+
+    const { email, setEmail } = useLoginData();
+
+    const onEmailChange = (email: string) => {
+        setEmail(email)
+    }
 
     return (
         <View style={commonStyles.container}>
@@ -45,7 +52,8 @@ export default function RegisterScreen() {
                             placeholderTextColor="#D2D2D2"
                             autoCapitalize='none'
                             keyboardType='email-address'
-                        />
+                            onChangeText={onEmailChange}
+                        >{email}</TextInput>
                     </View>
 
                     <View style={styles.buttonSection}>

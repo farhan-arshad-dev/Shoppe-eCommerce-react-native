@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
-import { useTheme } from "./ThemeProvider";
-import { ThemeType } from "./index";
+import { ThemeType } from "@/src/theme/index";
+import { useTheme } from "@/src/providers/ThemeProvider";
 
 // need to use makeStyles intated of using StyleSheet.create
 export function makeStyles<

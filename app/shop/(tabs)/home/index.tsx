@@ -14,7 +14,7 @@ import TopProductsSection from "@/src/components/TopProductsSection";
 import JustForYouSection from "@/src/components/JustForYouSection";
 import { makeStyles } from "@/src/theme/makeStyles";
 import { useCommonStyles } from "@/src/styles/commonStyles";
-import { useTheme } from "@/src/theme/ThemeProvider";
+import { useTheme } from "@/src/providers/ThemeProvider";
 import PageDotIndicator from "@/src/components/PageDotIndicator";
 
 export default function HomeScreen() {

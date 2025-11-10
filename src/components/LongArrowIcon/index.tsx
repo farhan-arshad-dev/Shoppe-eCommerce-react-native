@@ -1,7 +1,7 @@
 import { FontAwesome6 } from "@expo/vector-icons";
 import { View } from "react-native";
 import { useStyles } from "./styles";
-import { useTheme } from "@/src/theme/ThemeProvider";
+import { useTheme } from "@/src/providers/ThemeProvider";
 
 export default function LongArrowIcon() {
     const { theme } = useTheme();

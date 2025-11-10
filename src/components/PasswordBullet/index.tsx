@@ -24,7 +24,6 @@ export default function PasswordBullet({
             setPassword(text);
             onPasswordChanged?.(text)
         }
-        setIsWrongPassword?.(text === "00000"); // temp to mark the password wrong
     };
 
     return (

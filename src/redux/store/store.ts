@@ -1,23 +1,10 @@
 import { combineReducers } from "redux"
 import { configureStore } from '@reduxjs/toolkit';
-import { UserState } from "@/src/types/UserState";
+import authReducer from "../auth/authSlice";
 
-// const initialUserState: UserState = {
-//     userId: null,
-//     userName: null,
-//     token: null,
-//     loading: false,
-// };
-
-const initialUserState: UserState = {
-    userId: 123,
-    userName: "Farhan Arshad",
-    token: "abc",
-    loading: false,
-};
 
 const rootReducer = combineReducers({
-    userData: () => initialUserState
+    auth: authReducer
 });
 
 export const store = configureStore({
