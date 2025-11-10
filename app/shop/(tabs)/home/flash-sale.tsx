@@ -25,7 +25,6 @@ export default function FlashSaleScreen() {
     const router = useRouter();
 
     const [isSaleVideoPlaying, setIsSaleVideoPlaying] = useState(false);
-    console.log(`Started Live Sale Video: ${isSaleVideoPlaying}`)
 
     return (
         <View style={commonStyles.container}>

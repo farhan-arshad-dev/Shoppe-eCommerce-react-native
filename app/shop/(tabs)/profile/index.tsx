@@ -11,10 +11,10 @@ import NewItemsListSection from "@/src/components/NewItemsListSection";
 import CategorySection from "@/src/components/CategorySection";
 import MostPopularListSection from "@/src/components/MostPopularListSection";
 import FlashSaleSection from "@/src/components/FlashSaleSection";
-import { useRouter } from "expo-router";
+import { useFocusEffect, useRouter } from "expo-router";
 import TopProductsSection from "@/src/components/TopProductsSection";
 import JustForYouSection from "@/src/components/JustForYouSection";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { RootState } from "@/src/redux/store/store";
 import { useSelector } from "react-redux";
 
@@ -26,6 +26,15 @@ export default function ProfileScreen() {
     const router = useRouter();
 
     const [activeStoryIndex, setActiveStoryIndex] = useState(0);
+
+    useFocusEffect(
+        useCallback(() => {
+            setActiveStoryIndex(0); // play 1st stories video on tab resume
+            return () => {
+                setActiveStoryIndex(-1); // pause Stories Video Player
+            };
+        }, [])
+    );
 
     return (
         <View style={styles.container}>

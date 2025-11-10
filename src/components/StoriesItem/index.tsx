@@ -24,7 +24,6 @@ export default function StoriesItemLayout({
     const styles = useStyles();
 
     const [isSaleVideoPlaying, setIsSaleVideoPlaying] = useState(false);
-    console.log(`Profile: Started Live Sale Video: ${isSaleVideoPlaying}`)
 
     const showImage = !isActive || !isSaleVideoPlaying
     return (
