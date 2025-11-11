@@ -1,9 +1,12 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useDispatch, useSelector } from "react-redux";
 import { loginApi, getUserInfoApi } from "@/src/api/authApi";
-import { setToken, setUser } from "../redux/auth/authSlice";
+import { setLoading, setToken, setUser } from "../redux/auth/authSlice";
 import { RootState } from "../redux/store/store";
 import { LoginResponse } from "../types/auth";
+import { storage } from "../storage";
+import { STORAGE_KEYS } from "../storage/storage_keys";
+import { useEffect } from "react";
 
 export const useAuth = () => {
     const dispatch = useDispatch();
@@ -16,23 +19,38 @@ export const useAuth = () => {
         queryFn: () => getUserInfoApi(token || undefined),
         enabled: !!token,
     });
-    if (isSuccess) {
-        console.log("Auth success", data)
-        dispatch(setUser(data))
-    } else if(isError) {
-        console.log("Auth failure", error)
-        dispatch(setUser(null))
-    }
+    useEffect(() => {
+        if (isSuccess) {
+            console.log("Fetched User Profile: ", true);
+            storage.setItem(STORAGE_KEYS.USER, data);
+            dispatch(setUser(data))
+        } else if (isError) {
+            console.log("Fetched User Profile: ", false);
+            dispatch(setUser(null))
+        }
+    }, [data, dispatch, error, isError, isSuccess])
 
     const loginMutation = useMutation({
         mutationFn: loginApi,
         onSuccess: async (data: LoginResponse) => {
-
+            storage.setItem(STORAGE_KEYS.ACCESS_TOKEN, data.token);
             dispatch(setToken(data.token));
             dispatch(setUser(data.user));
             queryClient.invalidateQueries({ queryKey: ["userInfo"] });
         },
     });
+
+    const restoreSession = async () => {
+        console.log("Restoring User Session");
+        const token = await storage.getItem(STORAGE_KEYS.ACCESS_TOKEN);
+        if (token) {
+            const userProfile = await storage.getItem(STORAGE_KEYS.USER);
+            dispatch(setToken(token));
+            dispatch(setUser(userProfile));
+        }
+        dispatch(setLoading(false));
+    };
+
 
     return {
         token,
@@ -40,5 +58,6 @@ export const useAuth = () => {
         isLoading,
         login: loginMutation.mutateAsync,
         isLoggingIn: loginMutation.isPending,
+        restoreSession,
     };
 };

@@ -1,11 +1,12 @@
+import { useAuth } from "@/src/hooks/useAuth";
 import { ThemeProvider, useTheme } from "@/src/providers/ThemeProvider";
-import { RootState, store } from "@/src/redux/store/store";
+import { store } from "@/src/redux/store/store";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useFonts } from "expo-font";
 import { SplashScreen, Stack, useRouter } from "expo-router";
 import React, { useEffect } from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { Provider, useSelector } from "react-redux";
+import { Provider } from "react-redux";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -24,11 +25,12 @@ function RootContent() {
     [theme.typography.fontFamily.RalewayExtraBold]: require("@/assets/fonts/Raleway-ExtraBold.ttf"),
   });
 
-  const token = useSelector((state: RootState) => state.auth.token);
+  const { token, restoreSession } = useAuth();
   const isLoggedIn = Boolean(token);
 
   useEffect(() => {
     const prepare = async () => {
+      restoreSession();
       if (fontsLoaded) {
         await SplashScreen.hideAsync();
         if (isLoggedIn) {
@@ -37,7 +39,7 @@ function RootContent() {
       }
     }
     prepare();
-  }, [fontsLoaded, isLoggedIn]);
+  }, [fontsLoaded, isLoggedIn, restoreSession, router]);
 
   if (!fontsLoaded) return null;
 

@@ -15,12 +15,12 @@ import { useFocusEffect, useRouter } from "expo-router";
 import TopProductsSection from "@/src/components/TopProductsSection";
 import JustForYouSection from "@/src/components/JustForYouSection";
 import { useCallback, useState } from "react";
-import { RootState } from "@/src/redux/store/store";
-import { useSelector } from "react-redux";
+import { useAuth } from "@/src/hooks/useAuth";
 
 export default function ProfileScreen() {
 
-    const userName = useSelector((state: RootState) => state.auth.user?.name?.split(" ")[0]);
+    const { user } = useAuth();
+    const userName = user?.name?.split(" ")[0];
 
     const avatar = "https://www.w3schools.com/howto/img_avatar.png"
     const router = useRouter();
@@ -40,7 +40,7 @@ export default function ProfileScreen() {
         <View style={styles.container}>
             <View style={styles.header}>
                 <View style={styles.avatarContainer}>
-                    <AvatarImage image={avatar} cardSize={43} imageSize={40} />
+                    <AvatarImage image={user!.profilePic} cardSize={43} imageSize={40} />
                     <View style={styles.myActivityContainer}>
                         <Text style={styles.myActivityText}>My Activity</Text>
                     </View>
