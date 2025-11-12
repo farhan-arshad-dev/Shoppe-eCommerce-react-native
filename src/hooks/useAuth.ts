@@ -15,8 +15,8 @@ export const useAuth = () => {
 
     // Load user info if token exists
     const { data, isSuccess, error, isError } = useQuery({
-        queryKey: ['userInfo', token],
-        queryFn: () => getUserInfoApi(token || undefined),
+        queryKey: ['userInfo'],
+        queryFn: () => getUserInfoApi(),
         enabled: !!token,
     });
     useEffect(() => {
@@ -53,6 +53,7 @@ export const useAuth = () => {
 
     const sessionLogout = async () =>{
         console.log("Logging Out User Session");
+        
         dispatch(logout());
         storage.clear();
     }

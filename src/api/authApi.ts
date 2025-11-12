@@ -1,41 +1,15 @@
 import { LoginPayload, LoginResponse, User } from "../types/auth";
 import { wait } from "../utils/utils";
-
-const FAKE_DATA = {
-    user: {
-        id: 1,
-        email: "farhan@gmail.com",
-        name: "Farhan Arshad",
-        profilePic: "https://avatars.githubusercontent.com/u/43750646"
-    },
-    password: "00000000",
-    token: "token",
-
-}
+import { apiClient } from "./client";
 
 export const loginApi = async (data: LoginPayload): Promise<LoginResponse> => {
-    await wait(700);
-
-    if (data.email === FAKE_DATA.user.email && data.password === FAKE_DATA.password) {
-        return {
-            token: FAKE_DATA.token,
-            user: FAKE_DATA.user,
-        };
-    }
-
-    const err: any = new Error("Invalid credentials");
-    err.status = 401;
-    throw err;
+    const res = await apiClient.post("/login", data);
+    return res.data; // assume { token: string, user: {...} }
 };
 
-export const getUserInfoApi = async (token?: string): Promise<User> => {
-    await wait(400);
-    if (token === FAKE_DATA.token) {
-        return { ...FAKE_DATA.user };
-    }
-    const err: any = new Error("Unauthorized");
-    err.status = 401;
-    throw err;
+export const getUserInfoApi = async (): Promise<User> => {
+    const res = await apiClient.get("/user");
+    return res.data; // assume { user: {id: number, name: string, email: string, profilePic: string;} }
 };
 
 export const logout = async () => {
