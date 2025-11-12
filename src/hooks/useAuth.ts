@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useDispatch, useSelector } from "react-redux";
 import { loginApi, getUserInfoApi } from "@/src/api/authApi";
-import { setLoading, setToken, setUser } from "../redux/auth/authSlice";
+import { logout, setLoading, setToken, setUser } from "../redux/auth/authSlice";
 import { RootState } from "../redux/store/store";
 import { LoginResponse } from "../types/auth";
 import { storage } from "../storage";
@@ -51,6 +51,11 @@ export const useAuth = () => {
         dispatch(setLoading(false));
     };
 
+    const sessionLogout = async () =>{
+        console.log("Logging Out User Session");
+        dispatch(logout());
+        storage.clear();
+    }
 
     return {
         token,
@@ -59,5 +64,6 @@ export const useAuth = () => {
         login: loginMutation.mutateAsync,
         isLoggingIn: loginMutation.isPending,
         restoreSession,
+        sessionLogout,
     };
 };

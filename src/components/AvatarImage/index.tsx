@@ -1,6 +1,6 @@
 import { Image, ImageSourcePropType, StyleProp, View, ViewStyle } from "react-native";
-import DefaultAvatar from "@/assets/images/default-avatar.png";
 import { useStyle } from "./styles";
+import { DefaultAvatar } from "@/src/data/defaults";
 
 export default function AvatarImage({
     image,

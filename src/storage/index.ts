@@ -1,7 +1,7 @@
 import { secureStorage } from "./secure";
 import { localStorage } from "./local";
 import { SECURE_KEYS } from "./secure_keys";
-import { StorageKey } from "./storage_keys";
+import { STORAGE_KEYS, StorageKey } from "./storage_keys";
 
 export const storage = {
     async setItem(key: StorageKey, value: any) {
@@ -26,4 +26,11 @@ export const storage = {
             await localStorage.removeItem(key);
         }
     },
+
+    async clear(){
+        const storageKeys = Object.values(STORAGE_KEYS);
+        for (const key of storageKeys){
+            this.removeItem(key);
+        }
+    }
 };

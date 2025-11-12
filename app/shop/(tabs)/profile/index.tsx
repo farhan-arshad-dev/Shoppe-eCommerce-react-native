@@ -11,19 +11,18 @@ import NewItemsListSection from "@/src/components/NewItemsListSection";
 import CategorySection from "@/src/components/CategorySection";
 import MostPopularListSection from "@/src/components/MostPopularListSection";
 import FlashSaleSection from "@/src/components/FlashSaleSection";
-import { useFocusEffect, useRouter } from "expo-router";
+import { useFocusEffect } from "expo-router";
 import TopProductsSection from "@/src/components/TopProductsSection";
 import JustForYouSection from "@/src/components/JustForYouSection";
 import { useCallback, useState } from "react";
 import { useAuth } from "@/src/hooks/useAuth";
+import { DefaultAvatar } from "@/src/data/defaults";
 
 export default function ProfileScreen() {
 
-    const { user } = useAuth();
-    const userName = user?.name?.split(" ")[0];
-
-    const avatar = "https://www.w3schools.com/howto/img_avatar.png"
-    const router = useRouter();
+    const { user, sessionLogout } = useAuth();
+    const userName = user ? user.name.split(" ")[0] : "Guest";
+    const profilePic = user ? user.profilePic : DefaultAvatar;
 
     const [activeStoryIndex, setActiveStoryIndex] = useState(0);
 
@@ -40,7 +39,7 @@ export default function ProfileScreen() {
         <View style={styles.container}>
             <View style={styles.header}>
                 <View style={styles.avatarContainer}>
-                    <AvatarImage image={user!.profilePic} cardSize={43} imageSize={40} />
+                    <AvatarImage image={profilePic} cardSize={43} imageSize={40} />
                     <View style={styles.myActivityContainer}>
                         <Text style={styles.myActivityText}>My Activity</Text>
                     </View>
@@ -52,7 +51,7 @@ export default function ProfileScreen() {
                     <IconBadge showBadge={true}>
                         <Image source={MessageIcon} style={styles.messageIcon} />
                     </IconBadge>
-                    <IconBadge>
+                    <IconBadge onClick={sessionLogout}>
                         <EvilIcons name="gear" size={20} color="#004CFF" />
                     </IconBadge>
                 </View>

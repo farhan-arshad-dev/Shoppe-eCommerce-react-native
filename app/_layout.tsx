@@ -35,6 +35,8 @@ function RootContent() {
         await SplashScreen.hideAsync();
         if (isLoggedIn) {
           router.replace("/shop/(tabs)/home");
+        } else {
+          router.replace("/");
         }
       }
     }
