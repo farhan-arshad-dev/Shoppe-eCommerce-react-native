@@ -1,13 +1,13 @@
-import { FlatList, Text, View } from "react-native";
+import { FlatList, Text, TouchableOpacity, View } from "react-native";
 import AvatarImage from "../AvatarImage";
-import { TopProduct } from "@/src/types/shop-tabs";
 import { useCommonStyles } from "@/src/styles/commonStyles";
 import { useStyles } from "./styles";
+import { ProductItem } from "@/src/types/product";
 
 export default function TopProductsSection({
     items,
 }: {
-    items: TopProduct[]
+    items: ProductItem[]
 }) {
 
     const styles = useStyles();
@@ -22,7 +22,9 @@ export default function TopProductsSection({
                 data={items}
                 renderItem={({ item }) => {
                     return (
-                        <AvatarImage image={item.image} />
+                        <TouchableOpacity>
+                            <AvatarImage image={item.images[0]} />
+                        </TouchableOpacity>
                     );
                 }}
                 keyExtractor={(item) => item.id.toString()}

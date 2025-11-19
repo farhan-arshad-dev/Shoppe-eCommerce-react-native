@@ -1,11 +1,8 @@
 import AvatarImage from "@/src/components/AvatarImage";
 import IconBadge from "@/src/components/IconBadge";
 import { FlatList, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import ScanIcon from "@/assets/images/scan-icon.png";
-import MessageIcon from "@/assets/images/message-icon.png";
 import EvilIcons from '@expo/vector-icons/EvilIcons';
 import LongArrowIcon from "@/src/components/LongArrowIcon";
-import { categories, justForYouItems, newItems, popularItems, saleItems, stroies, topProducts } from "@/src/data/shop-tabs-data";
 import StoriesItem from "@/src/components/StoriesItem";
 import NewItemsListSection from "@/src/components/NewItemsListSection";
 import CategorySection from "@/src/components/CategorySection";
@@ -16,7 +13,7 @@ import TopProductsSection from "@/src/components/TopProductsSection";
 import JustForYouSection from "@/src/components/JustForYouSection";
 import { useCallback, useState } from "react";
 import { useAuth } from "@/src/hooks/useAuth";
-import { DefaultAvatar } from "@/src/data/defaults";
+import { DefaultAvatar, MessageIcon, MOCK_PRODUCTS_DATA, ScanIcon } from "@/src/data/defaults";
 
 export default function ProfileScreen() {
 
@@ -71,10 +68,10 @@ export default function ProfileScreen() {
                         <Text style={styles.listTitle}>Recently viewed</Text>
                     </View>
                     <FlatList
-                        data={topProducts}
+                        data={MOCK_PRODUCTS_DATA.topProducts}
                         renderItem={({ item }) => {
                             return (
-                                <AvatarImage image={item.image} />
+                                <AvatarImage image={item.images[0]} />
                             );
                         }}
                         keyExtractor={(item) => item.id.toString()}
@@ -105,7 +102,7 @@ export default function ProfileScreen() {
                         <Text style={styles.listTitle}>Stories</Text>
                     </View>
                     <FlatList
-                        data={stroies}
+                        data={MOCK_PRODUCTS_DATA.stroies}
                         renderItem={({ item, index }) => {
                             return (
                                 <StoriesItem
@@ -113,7 +110,7 @@ export default function ProfileScreen() {
                                     isActive={index === activeStoryIndex}
                                     onActive={() => setActiveStoryIndex(index)}
                                     isLive={index === 0}
-                                    imageUrl={item.image} />
+                                    imageUrl={item.images[0]} />
                             );
                         }}
                         keyExtractor={(item) => item.id.toString()}
@@ -123,19 +120,31 @@ export default function ProfileScreen() {
                     />
                 </View>
 
-                <NewItemsListSection items={newItems} />
+                {MOCK_PRODUCTS_DATA.newItems && (
+                    <NewItemsListSection items={MOCK_PRODUCTS_DATA.newItems} onItemPress={function (productId: number): void { }} />
+                )}
+                {MOCK_PRODUCTS_DATA.popularItems && (
+                    <MostPopularListSection items={MOCK_PRODUCTS_DATA.popularItems} />
 
-                <MostPopularListSection items={popularItems} />
+                )}
+                {MOCK_PRODUCTS_DATA.categories && (
+                    <CategorySection categories={MOCK_PRODUCTS_DATA.categories} />
 
-                <CategorySection categories={categories} />
+                )}
+                {MOCK_PRODUCTS_DATA.saleItems && (
+                    <FlashSaleSection items={MOCK_PRODUCTS_DATA.saleItems} onPress={() => {
+                        // router.push('/shop/(tabs)/home/flash-sale');
+                    }} />
+                )}
 
-                <FlashSaleSection items={saleItems} onPress={() => {
-                    // router.push('/shop/(tabs)/home/flash-sale');
-                }} />
+                {MOCK_PRODUCTS_DATA.topProducts && (
+                    <TopProductsSection items={MOCK_PRODUCTS_DATA.topProducts} />
 
-                <TopProductsSection items={topProducts} />
+                )}
+                {MOCK_PRODUCTS_DATA.justForYouItems && (
+                    <JustForYouSection items={MOCK_PRODUCTS_DATA.justForYouItems} />
+                )}
 
-                <JustForYouSection items={justForYouItems} />
             </ScrollView>
         </View>
     )

@@ -1,11 +1,7 @@
-import { Slide } from "@/src/types/slide";
-import whatsnew1 from "@//assets/images/whatsnew1.png";
-import whatsnew2 from "@//assets/images/whatsnew2.png";
-import whatsnew3 from "@//assets/images/whatsnew3.png";
-import whatsnew4 from "@//assets/images/whatsnew4.png";
+import { WhatsNewSlide } from "../types/whats-new-slide";
+import { whatsnew1, whatsnew2, whatsnew3, whatsnew4 } from "./defaults";
 
-
-export const slides: Slide[] = [
+export const slides: WhatsNewSlide[] = [
     {
         id: 1,
         title: "Welcome to AppX",

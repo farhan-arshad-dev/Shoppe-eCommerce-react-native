@@ -1,18 +1,15 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Text, View } from "react-native";
-import { NewItem } from "@/src/types/shop-tabs";
-import { useCommonStyles } from "@/src/styles/commonStyles";
 import DiscountGrideList from "../DiscountGrideList";
 import { useStyles } from "./styles";
+import { ProductItem } from "@/src/types/product";
 
 export default function JustForYouSection({
     items,
 }: {
-    items: NewItem[];
+    items: ProductItem[];
 }) {
-    const commonStyles = useCommonStyles();
     const styles = useStyles();
-
     return (
         <View style={styles.forYouContainer}>
             <View style={[styles.listHeader, { justifyContent: "flex-start" }]}>

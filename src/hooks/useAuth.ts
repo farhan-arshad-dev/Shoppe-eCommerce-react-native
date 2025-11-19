@@ -18,6 +18,9 @@ export const useAuth = () => {
         queryKey: ['userInfo'],
         queryFn: () => getUserInfoApi(),
         enabled: !!token,
+        staleTime: 1000 * 60 * 5,
+        gcTime: 1000 * 60 * 30,
+        retry: 1,
     });
     useEffect(() => {
         if (isSuccess) {
@@ -51,9 +54,9 @@ export const useAuth = () => {
         dispatch(setLoading(false));
     };
 
-    const sessionLogout = async () =>{
+    const sessionLogout = async () => {
         console.log("Logging Out User Session");
-        
+
         dispatch(logout());
         storage.clear();
     }

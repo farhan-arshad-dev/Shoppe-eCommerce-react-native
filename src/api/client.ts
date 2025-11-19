@@ -3,10 +3,12 @@ import { storage } from "../storage";
 import { STORAGE_KEYS } from "../storage/storage_keys";
 import AxiosMockAdapter from 'axios-mock-adapter';
 import { API_BASE_URL, MOCK_MODE } from "../config";
+import { MOCK_AUTH_DATA, MOCK_PRODUCTS_DATA } from "../data/defaults";
 
 export const apiClient = axios.create({
     baseURL: API_BASE_URL,
     headers: { "Content-Type": "application/json" },
+    timeout: 15000,
 });
 
 apiClient.interceptors.request.use(async (config) => {
@@ -14,23 +16,11 @@ apiClient.interceptors.request.use(async (config) => {
     if (token) {
         config.headers.Authorization = `JWT ${token}`;
     }
-    console.log(config.headers.Authorization);
     return config;
 });
 
 if (MOCK_MODE === 'true') {
     console.log("Serving Mock Data");
-
-    const FAKE_DATA = {
-        user: {
-            id: 1,
-            email: "farhan@gmail.com",
-            name: "Farhan Arshad",
-            profilePic: "https://avatars.githubusercontent.com/u/43750646"
-        },
-        password: "00000000",
-        token: "token",
-    }
 
     const mock = new AxiosMockAdapter(apiClient, { delayResponse: 400 });
 
@@ -38,8 +28,8 @@ if (MOCK_MODE === 'true') {
     mock.onPost('/login').reply((config) => {
         const { email, password } = JSON.parse(config.data);
         console.log("Mock User endpoint")
-        if (email === FAKE_DATA.user.email && password === FAKE_DATA.password) {
-            return [200, { token: FAKE_DATA.token, user: FAKE_DATA.user }];
+        if (email === MOCK_AUTH_DATA.user.email && password === MOCK_AUTH_DATA.password) {
+            return [200, { token: MOCK_AUTH_DATA.token, user: MOCK_AUTH_DATA.user }];
         }
         return [401, { message: 'Invalid credentials' }];
     });
@@ -48,8 +38,18 @@ if (MOCK_MODE === 'true') {
     mock.onGet('/user').reply((config) => {
         const token = config.headers?.Authorization?.split(' ')[1];
         console.log("Mock User endpoint")
-        if (token === FAKE_DATA.token) {
-            return [200, FAKE_DATA.user];
+        if (token === MOCK_AUTH_DATA.token) {
+            return [200, MOCK_AUTH_DATA.user];
+        }
+        return [401, { message: 'Unauthorized' }];
+    });
+
+    // Mock products endpoint
+    mock.onGet('/products').reply((config) => {
+        const token = config.headers?.Authorization?.split(' ')[1];
+        console.log("Mock Products endpoint")
+        if (token === MOCK_AUTH_DATA.token) {
+            return [200, MOCK_PRODUCTS_DATA];
         }
         return [401, { message: 'Unauthorized' }];
     });

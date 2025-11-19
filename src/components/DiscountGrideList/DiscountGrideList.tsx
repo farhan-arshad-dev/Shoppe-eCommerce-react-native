@@ -1,21 +1,21 @@
 import { View } from "react-native";
 import GridListView from "../GridListView";
-import { ItemType, NewItem } from "@/src/types/shop-tabs";
 import Banner from "../Banner";
 import JustForYouItem from "../JustForYouItem";
 import { useCommonStyles } from "@/src/styles/commonStyles";
+import { ItemType, ProductItem } from "@/src/types/product";
 
 export default function DiscountGrideList({
     items,
 }: {
-    items: NewItem[],
+    items: ProductItem[],
 }) {
 
     const commonStyles = useCommonStyles();
 
     return (
         <View style={commonStyles.container}>
-            <GridListView<NewItem>
+            <GridListView<ProductItem>
                 data={items}
                 itemSpacing={4}
                 isBanner={(item) => item.type === ItemType.BANNER}
@@ -27,7 +27,7 @@ export default function DiscountGrideList({
                             title={item.title}
                             price={item.price}
                             discountedPrice={item.discountedPrice}
-                            imageUrl={item.image} />
+                            imageUrl={item.images[0]} />
                     )
                 }}
                 renderBanner={(item, index) => {
@@ -35,7 +35,7 @@ export default function DiscountGrideList({
                         <View style={[commonStyles.bannerView, { marginVertical: 8 }]}>
                             <Banner
                                 key={item.id}
-                                image={item.image} />
+                                image={item.images[0]} />
                         </View>
                     );
                 }}

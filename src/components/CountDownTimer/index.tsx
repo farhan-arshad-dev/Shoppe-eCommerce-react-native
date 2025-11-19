@@ -44,7 +44,7 @@ export default function CountDownTimer({
         }, 1000);
 
         return () => clearInterval(interval);
-    }, [live, totalSeconds]);
+    }, [live, onComplete, totalSeconds]);
 
     // ⏳ Derived values
     const hrs = Math.floor(totalSeconds / 3600);

@@ -1,4 +1,4 @@
-export type Slide = {
+export type WhatsNewSlide = {
     id: number;
     title?: string;
     description?: string;

@@ -1,14 +1,16 @@
 import { FlatList, Text, View } from "react-native";
 import SeeAllButton from "../SeeAllButton";
 import NewItemLayout from "../NewItemLayout";
-import { NewItem } from "@/src/types/shop-tabs";
 import { useCommonStyles } from "@/src/styles/commonStyles";
 import { useStyles } from "./styles";
+import { ProductItem } from "@/src/types/product";
 
 export default function NewItemsListSection({
-    items
+    items,
+    onItemPress,
 }: {
-    items: NewItem[];
+    items: ProductItem[];
+    onItemPress: (productId: number) => void,
 }) {
 
     const styles = useStyles();
@@ -28,7 +30,9 @@ export default function NewItemsListSection({
                             key={item.id}
                             title={item.title}
                             price={item.price}
-                            imageUrl={item.image} />
+                            imageUrl={item.images[0]}
+                            onPress={() => onItemPress(item.id)}
+                        />
                     );
                 }}
                 keyExtractor={(item) => item.id.toString()}

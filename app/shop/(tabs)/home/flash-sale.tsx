@@ -1,11 +1,7 @@
 import { Image, ImageBackground, Pressable, ScrollView, Text, View } from "react-native";
-import FlashSaleBackground from "@/assets/images/flash-sale-background.png";
-import LiveSale from "@/assets/images/live-sale.png";
-import FilterIcon from "@/assets/images/filter-icon.png";
 import CountDownTimer from "@/src/components/CountDownTimer";
 import DiscountSelector from "@/src/components/DiscountSelector";
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
-import { discountedItems, popularItems, videoUrls } from "@/src/data/shop-tabs-data";
 import LiveTag from "@/src/components/LiveTag";
 import MostPopularList from "@/src/components/MostPopularListSection";
 import VideoPlayer from "@/src/components/VideoPlayer";
@@ -15,6 +11,7 @@ import { useTheme } from "@/src/providers/ThemeProvider";
 import { makeStyles } from "@/src/theme/makeStyles";
 import { useRouter } from "expo-router";
 import DiscountGrideList from "@/src/components/DiscountGrideList";
+import { FilterIcon, FlashSaleBackground, LiveSale, MOCK_PRODUCTS_DATA, VideoUrls } from "@/src/data/defaults";
 
 export default function FlashSaleScreen() {
 
@@ -64,7 +61,7 @@ export default function FlashSaleScreen() {
                     <Pressable style={styles.liveContainer} onPress={() => {
                         router.push("/shop/home/live-sale");
                     }}>
-                        <VideoPlayer videoSource={videoUrls.regularVideo} onPlayStateChange={(isPlaying) => setIsSaleVideoPlaying(isPlaying)} />
+                        <VideoPlayer videoSource={VideoUrls.regularVideo} onPlayStateChange={(isPlaying) => setIsSaleVideoPlaying(isPlaying)} />
                         {!isSaleVideoPlaying &&
                             (<View style={[
                                 commonStyles.container,
@@ -91,10 +88,10 @@ export default function FlashSaleScreen() {
                             <Text style={commonStyles.listTitle}>20% Discount</Text>
                             <Image source={FilterIcon} style={styles.filterIcon} />
                         </View>
-                        <DiscountGrideList items={discountedItems} />
+                        <DiscountGrideList items={MOCK_PRODUCTS_DATA.discountedItems} />
                     </View>
 
-                    <MostPopularList items={popularItems} />
+                    <MostPopularList items={MOCK_PRODUCTS_DATA.popularItems} />
 
                 </ScrollView>
             </View>

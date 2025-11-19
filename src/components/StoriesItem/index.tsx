@@ -1,12 +1,12 @@
-import { View, Image, Pressable, TouchableOpacity } from "react-native";
+import { View, Image, TouchableOpacity } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 import LiveTag from "../LiveTag";
-import { videoUrls } from "@/src/data/shop-tabs-data";
 import VideoPlayer from "../VideoPlayer";
 import { useState } from "react";
 import { useCommonStyles } from "@/src/styles/commonStyles";
 import { useTheme } from "@/src/providers/ThemeProvider";
 import { useStyles } from "./styles";
+import { VideoUrls } from "@/src/data/defaults";
 
 export default function StoriesItemLayout({
     imageUrl,
@@ -35,7 +35,7 @@ export default function StoriesItemLayout({
             }}>
             {isActive && (
                 <VideoPlayer
-                    videoSource={videoUrls.verticalVideo}
+                    videoSource={VideoUrls.verticalVideo}
                     onPlayStateChange={(isPlaying) => {
                         setIsSaleVideoPlaying(isPlaying)
                     }}

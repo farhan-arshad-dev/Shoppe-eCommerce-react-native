@@ -1,15 +1,15 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import styles from "./styles";
-import { Category } from "@/src/types/shop-tabs";
+import { ProductItem } from "@/src/types/product";
 
 export default function CategoryGridList(
-    { categories }: { categories: Category[] }
+    { categories }: { categories: ProductItem[] }
 ) {
     return (
         <View style={styles.gridContainer}>
             {categories.map((item) => (
-                <View key={item.id} style={styles.card}>
+                <TouchableOpacity key={item.id} style={styles.card}>
                     <View style={styles.imageGrid}>
                         {item.images.map((img, id) => (
                             <Image
@@ -20,10 +20,10 @@ export default function CategoryGridList(
                         ))}
                     </View>
                     <View style={styles.cardTitle}>
-                        <Text style={styles.name}>{item.name}</Text>
+                        <Text style={styles.name}>{item.title}</Text>
                         <Text style={styles.count}>{item.count}</Text>
                     </View>
-                </View>
+                </TouchableOpacity>
             ))}
         </View>
     );

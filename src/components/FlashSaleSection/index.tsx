@@ -2,13 +2,13 @@ import { FlatList, Pressable, Text, View } from "react-native";
 import styles from "./styles";
 import CountDownTimer from "../CountDownTimer";
 import SalesItemLayout from "../SalesItem";
-import { SaleItem } from "@/src/types/shop-tabs";
+import { ProductItem } from "@/src/types/product";
 
 export default function FlashSaleSection({
     items,
     onPress,
 }: {
-    items: SaleItem[];
+    items: ProductItem[];
     onPress: () => void;
 }) {
     return (
@@ -25,8 +25,8 @@ export default function FlashSaleSection({
                         <SalesItemLayout
                             key={item.id}
                             itemPosition={index}
-                            discount={item.discount}
-                            imageUrl={item.image} />
+                            discount={item.discountPercentage ? item.discountPercentage : "0"}
+                            imageUrl={item.images[0]} />
                     );
                 }}
                 keyExtractor={(item) => item.id.toString()}

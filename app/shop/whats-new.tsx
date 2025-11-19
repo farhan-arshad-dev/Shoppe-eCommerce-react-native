@@ -1,5 +1,4 @@
 import { ImageBackground, View, Image, Text } from "react-native";
-import WhatsNewBackground from "@/assets/images/whats-new-background.png"
 import PagerView from "react-native-pager-view";
 import { useRef, useState } from "react";
 import { slides } from "@/src/data/slides";
@@ -8,6 +7,7 @@ import { makeStyles } from "@/src/theme/makeStyles";
 import { useCommonStyles } from "@/src/styles/commonStyles";
 import PageDotIndicator from "@/src/components/PageDotIndicator";
 import PrimaryButton from "@/src/components/PrimaryButton";
+import { WhatsNewBackground } from "@/src/data/defaults";
 
 export default function WhatsNewScreen() {
 

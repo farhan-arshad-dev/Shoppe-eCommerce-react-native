@@ -1,14 +1,14 @@
 import { FlatList, Text, View } from "react-native";
 import SeeAllButton from "../SeeAllButton";
 import PopularItemLayout from "../PopularItem";
-import { PopularItem } from "@/src/types/shop-tabs";
 import styles from "./styles";
 import { useCommonStyles } from "@/src/styles/commonStyles";
+import { ProductItem } from "@/src/types/product";
 
 export default function MostPopularListSection({
     items
 }: {
-    items: PopularItem[],
+    items: ProductItem[],
 }) {
     const commonStyles = useCommonStyles();
     return (
@@ -26,7 +26,7 @@ export default function MostPopularListSection({
                             key={item.id}
                             likes={item.totalLikes}
                             tagText={item.tag}
-                            imageUrl={item.image} />
+                            imageUrl={item.images[0]} />
                     );
                 }}
                 keyExtractor={(item) => item.id.toString()}

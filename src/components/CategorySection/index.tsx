@@ -1,14 +1,14 @@
 import { Text, View } from "react-native";
 import SeeAllButton from "../SeeAllButton";
-import { Category } from "@/src/types/shop-tabs";
 import CategoryGridList from "../CategoryGridList";
 import { useStyles } from "./styles";
 import { useCommonStyles } from "@/src/styles/commonStyles";
+import { ProductItem } from "@/src/types/product";
 
 export default function CategorySection({
     categories,
 }: {
-    categories: Category[]
+    categories: ProductItem[]
 }) {
 
     const styles = useStyles();
