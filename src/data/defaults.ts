@@ -86,10 +86,10 @@ const MOCK_PRODUCTS: ProductItem[] = [
         title: "Clothing",
         count: 109,
         images: [
-            "https://picsum.photos/seed/1/200",
-            "https://picsum.photos/seed/2/200",
-            "https://picsum.photos/seed/3/200",
-            "https://picsum.photos/seed/4/200",
+            "https://hulaglobal.com/wp-content/uploads/2022/08/Hula-global-fashion-summer-guide-1024x711.jpg",
+            "https://media.burford.co.uk/images/SNY04089.jpg_edit.width-1440_05001m7uKQ0crRoI.jpg",
+            "https://cdn.prod.website-files.com/5f0fcce0a916ee029d5b60df/66aa60ce9339e87dea1c765f_FASHION%20CLOTHES.jpg",
+            "https://media.gq-magazine.co.uk/photos/6752d1cc574fe314763cd1f0/master/w_1600%2Cc_limit/ClothingEssentials_A-plain%2C-slouchy-hoodie.jpg",
         ],
         description: "",
         price: "",
@@ -104,10 +104,10 @@ const MOCK_PRODUCTS: ProductItem[] = [
         title: "Shoes",
         count: 530,
         images: [
-            "https://picsum.photos/seed/5/200",
-            "https://picsum.photos/seed/6/200",
-            "https://picsum.photos/seed/7/200",
-            "https://picsum.photos/seed/8/200",
+            "https://d30fs77zq6vq2v.cloudfront.net/product/1080x1619/17082025/8502-grey-side-jpg-2_1709793487-1675755034198.jpg",
+            "https://servis.pk/cdn/shop/files/M-AC-0100376GreyBlack_5.jpg?v=1758229823&width=533",
+            "https://1ststep.pk/cdn/shop/files/mariselle_blue_sneakers_0440762_1.webp?v=1736332592",
+            "https://www.skechers.com/dw/image/v2/BDCN_PRD/on/demandware.static/-/Library-Sites-SkechersSharedLibrary/default/dw43b90dff/images/2025-Images/Q3/Mens_FW25_CasualSneakers.jpg?sw=356",
         ],
         description: "",
         price: "",
@@ -258,7 +258,7 @@ const MOCK_PRODUCTS: ProductItem[] = [
         id: 16,
         title: "Lorem ipsum dolor sit amet consectetur.",
         price: "$17,00",
-        images: ["https://picsum.photos/seed/1/200"],
+        images: ["https://cdn.thewirecutter.com/wp-content/media/2024/07/laptopstopicpage-2048px-3685-2x1-1.jpg?width=2048&quality=75&crop=2:1&auto=webp"],
         type: ItemType.PRODUCT,
         totalLikes: 0,
         tag: "",
@@ -271,14 +271,14 @@ const MOCK_PRODUCTS: ProductItem[] = [
         id: 17,
         title: "Lorem ipsum dolor sit amet consectetur.",
         price: "$32,00",
-        images: ["https://picsum.photos/seed/2/200"],
+        images: ["https://acom.pk/cdn/shop/articles/laptops.png?v=1647261846"],
         type: ItemType.PRODUCT,
         totalLikes: 0,
         tag: "",
-        description: "",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lobortis risus. Donec euismod, nisi vel consectetur interdum, nislligula bibendum lorem, vel cursus arcu massa nec sapien. Aliquam erat volutpat. Integer ut orci nec justo vulputate vulputate sit amet non justo. Curabitur at lacus id eros interdum fermentum.",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 4
     },
     {
         id: 18,
@@ -291,7 +291,7 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 3
     },
     {
         id: 19, title: "Lorem ipsum dolor sit amet consectetur.",
@@ -303,7 +303,7 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 1
     },
     {
         id: 20,
@@ -316,7 +316,7 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 6
     },
     {
         id: 21,
@@ -329,7 +329,7 @@ const MOCK_PRODUCTS: ProductItem[] = [
         tag: "",
         description: "",
         discountedPrice: "",
-        count: 0
+        count: 1
     },
     {
         id: 22,
@@ -342,7 +342,7 @@ const MOCK_PRODUCTS: ProductItem[] = [
         tag: "",
         description: "",
         discountedPrice: "",
-        count: 0
+        count: 2
     },
     {
         id: 23,

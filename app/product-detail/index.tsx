@@ -1,14 +1,28 @@
+import { addItem } from "@/src/redux/cart/cartSlice";
+import { useCommonStyles } from "@/src/styles/commonStyles";
+import { makeStyles } from "@/src/theme/makeStyles";
+import { ProductItem } from "@/src/types/product";
 import { useLocalSearchParams } from "expo-router";
-import React, { useRef } from "react";
-import { View, Text, Image, StyleSheet, Animated, Dimensions, TouchableOpacity, } from "react-native";
+import React, { useRef, useState } from "react";
+import { View, Text, Image, Animated, Dimensions, TouchableOpacity, } from "react-native";
+import { useDispatch } from "react-redux";
 
 const { height } = Dimensions.get("window");
 const IMAGE_HEIGHT = height * 0.5;
 
 export default function ProductDetailsScreen() {
-    const { productId } = useLocalSearchParams();
-    const scrollY = useRef(new Animated.Value(0)).current;
 
+    const styles = useStyles();
+    const commonStyles = useCommonStyles();
+
+    const dispatch = useDispatch();
+
+    const { productJson } = useLocalSearchParams();
+    const product = JSON.parse(productJson as string) as ProductItem;
+
+    const [productQty, setProductQty] = useState(1);
+
+    const scrollY = useRef(new Animated.Value(0)).current;
     const blurValue = scrollY.interpolate({
         inputRange: [0, 200],
         outputRange: [0, 15],
@@ -25,7 +39,7 @@ export default function ProductDetailsScreen() {
         <View style={styles.container}>
 
             <Animated.Image
-                source={{ uri: "https://picsum.photos/800" }}
+                source={{ uri: product.images[0] }}
                 style={[styles.mainImage]}
                 blurRadius={blurValue}
             />
@@ -43,11 +57,11 @@ export default function ProductDetailsScreen() {
                 )}>
                 <View style={styles.headerRow}>
                     <Image
-                        source={{ uri: "https://picsum.photos/200" }}
+                        source={{ uri: product.images[0] }}
                         style={styles.thumbnail}
                     />
                     <View style={{ marginLeft: 12 }}>
-                        <Text style={styles.price}>$129.99</Text>
+                        <Text style={styles.price}>{product.price}</Text>
                         <Text style={styles.selected}>
                             Color: Black • Size: M
                         </Text>
@@ -74,23 +88,31 @@ export default function ProductDetailsScreen() {
 
                 <Text style={styles.sectionTitle}>Quantity</Text>
                 <View style={styles.qtyRow}>
-                    <TouchableOpacity style={styles.qtyBtn}>
+                    <TouchableOpacity style={styles.qtyBtn} onPress={() => {
+                        let tempProduct = 1
+                        if (productQty - 1 > 0) {
+                            tempProduct = productQty - 1
+                        }
+                        setProductQty(tempProduct);
+                    }}>
                         <Text style={styles.qtyBtnText}>-</Text>
                     </TouchableOpacity>
 
-                    <Text style={styles.qtyValue}>1</Text>
+                    <Text style={styles.qtyValue}>{productQty}</Text>
 
-                    <TouchableOpacity style={styles.qtyBtn}>
+                    <TouchableOpacity style={styles.qtyBtn} onPress={() => {
+                        let tempProduct = productQty + 1
+                        if (productQty + 1 > product.count) {
+                            tempProduct = product.count
+                        }
+                        setProductQty(tempProduct);
+                    }}>
                         <Text style={styles.qtyBtnText}>+</Text>
                     </TouchableOpacity>
                 </View>
 
                 <Text style={styles.description}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a
-                    lobortis risus. Donec euismod, nisi vel consectetur interdum, nisl
-                    ligula bibendum lorem, vel cursus arcu massa nec sapien. Aliquam erat
-                    volutpat. Integer ut orci nec justo vulputate vulputate sit amet non
-                    justo. Curabitur at lacus id eros interdum fermentum.
+                    {product.description}
                 </Text>
             </Animated.ScrollView>
 
@@ -99,7 +121,12 @@ export default function ProductDetailsScreen() {
                     <Text style={{ fontSize: 24 }}>♡</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.addToCartBtn}>
+                <TouchableOpacity style={styles.addToCartBtn} onPress={() => {
+                    dispatch(addItem({
+                        product: product,
+                        quantity: productQty
+                    }))
+                }}>
                     <Text style={styles.btnText}>Add to Cart</Text>
                 </TouchableOpacity>
 
@@ -111,8 +138,8 @@ export default function ProductDetailsScreen() {
     );
 }
 
-const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: "#fff" },
+const useStyles = makeStyles((theme) => ({
+    container: { flex: 1, backgroundColor: theme.colors.background },
 
     // Top large product image
     mainImage: {
@@ -127,7 +154,7 @@ const styles = StyleSheet.create({
     overlay: {
         flex: 1,
         marginTop: IMAGE_HEIGHT - 60,
-        backgroundColor: "#fff",
+        backgroundColor: theme.colors.background,
         borderTopLeftRadius: 28,
         borderTopRightRadius: 28,
         padding: 20,
@@ -269,5 +296,5 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: "700",
     },
-});
+}))
 

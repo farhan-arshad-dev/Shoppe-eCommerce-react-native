@@ -10,7 +10,7 @@ export default function NewItemsListSection({
     onItemPress,
 }: {
     items: ProductItem[];
-    onItemPress: (productId: number) => void,
+    onItemPress: (productItem: ProductItem) => void,
 }) {
 
     const styles = useStyles();
@@ -31,7 +31,7 @@ export default function NewItemsListSection({
                             title={item.title}
                             price={item.price}
                             imageUrl={item.images[0]}
-                            onPress={() => onItemPress(item.id)}
+                            onPress={() => onItemPress(item)}
                         />
                     );
                 }}

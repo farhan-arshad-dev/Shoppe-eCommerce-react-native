@@ -123,11 +123,11 @@ export default function HomeScreen() {
                 {data.newItems && (
                     <NewItemsList
                         items={data.newItems}
-                        onItemPress={(productId) => {
+                        onItemPress={(productItem) => {
                             router.push({
                                 pathname: "/product-detail",
-                                params: { productId }
-                            })
+                                params: { productJson: JSON.stringify(productItem) }
+                            });
                         }}
                     />
                 )}
