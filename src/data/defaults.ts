@@ -40,7 +40,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 2,
@@ -53,7 +54,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 3,
@@ -66,7 +68,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 4,
@@ -79,7 +82,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 5,
@@ -97,7 +101,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         discountedPrice: "",
         type: ItemType.PRODUCT,
         totalLikes: 0,
-        tag: ""
+        tag: "",
+        productId: "product_usd_3200",
     },
     {
         id: 6,
@@ -115,7 +120,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         discountedPrice: "",
         type: ItemType.PRODUCT,
         totalLikes: 0,
-        tag: ""
+        tag: "",
+        productId: "product_usd_3200",
     },
     {
         id: 7,
@@ -133,7 +139,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         discountedPrice: "",
         type: ItemType.PRODUCT,
         totalLikes: 0,
-        tag: ""
+        tag: "",
+        productId: "product_usd_3200",
     },
     {
         id: 8,
@@ -151,7 +158,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         discountedPrice: "",
         type: ItemType.PRODUCT,
         totalLikes: 0,
-        tag: ""
+        tag: "",
+        productId: "product_usd_3200",
     },
     {
         id: 9,
@@ -169,7 +177,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         discountedPrice: "",
         type: ItemType.PRODUCT,
         totalLikes: 0,
-        tag: ""
+        tag: "",
+        productId: "product_usd_3200",
     },
     {
         id: 10,
@@ -187,7 +196,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         discountedPrice: "",
         type: ItemType.PRODUCT,
         totalLikes: 0,
-        tag: ""
+        tag: "",
+        productId: "product_usd_3200",
     },
     {
         id: 11,
@@ -200,7 +210,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 12,
@@ -213,7 +224,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 13,
@@ -226,7 +238,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 14,
@@ -239,7 +252,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 15,
@@ -252,7 +266,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 16,
@@ -265,7 +280,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 17,
@@ -278,7 +294,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lobortis risus. Donec euismod, nisi vel consectetur interdum, nislligula bibendum lorem, vel cursus arcu massa nec sapien. Aliquam erat volutpat. Integer ut orci nec justo vulputate vulputate sit amet non justo. Curabitur at lacus id eros interdum fermentum.",
         discountPercentage: "",
         discountedPrice: "",
-        count: 4
+        count: 4,
+        productId: "product_usd_3200",
     },
     {
         id: 18,
@@ -291,7 +308,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 3
+        count: 3,
+        productId: "product_usd_3200",
     },
     {
         id: 19, title: "Lorem ipsum dolor sit amet consectetur.",
@@ -303,7 +321,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 1
+        count: 1,
+        productId: "product_usd_3200",
     },
     {
         id: 20,
@@ -316,7 +335,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 6
+        count: 6,
+        productId: "product_usd_3200",
     },
     {
         id: 21,
@@ -329,7 +349,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         tag: "",
         description: "",
         discountedPrice: "",
-        count: 1
+        count: 1,
+        productId: "product_usd_3200",
     },
     {
         id: 22,
@@ -342,7 +363,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         tag: "",
         description: "",
         discountedPrice: "",
-        count: 2
+        count: 2,
+        productId: "product_usd_3200",
     },
     {
         id: 23,
@@ -355,7 +377,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         tag: "",
         description: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 24,
@@ -368,7 +391,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         tag: "",
         description: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 25,
@@ -381,7 +405,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         tag: "",
         description: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 26,
@@ -394,7 +419,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         tag: "",
         description: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 27,
@@ -407,7 +433,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 28,
@@ -420,7 +447,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 29,
@@ -433,7 +461,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 30,
@@ -446,7 +475,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 31,
@@ -459,7 +489,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 32,
@@ -472,7 +503,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 33,
@@ -485,7 +517,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 34,
@@ -498,7 +531,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 35,
@@ -511,7 +545,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 36, title: "Lorem ipsum dolor sit amet consectetur.",
@@ -523,7 +558,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 37,
@@ -536,7 +572,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     }, {
         id: 38,
         images: ["https://picsum.photos/seed/1/200"],
@@ -548,7 +585,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 39,
@@ -561,7 +599,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 40,
@@ -574,7 +613,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 41,
@@ -587,7 +627,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 42,
@@ -600,7 +641,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         description: "",
         discountPercentage: "",
         discountedPrice: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 43,
@@ -613,7 +655,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         tag: "",
         description: "",
         discountPercentage: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 44,
@@ -626,7 +669,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         tag: "",
         description: "",
         discountPercentage: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 45,
@@ -639,7 +683,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         tag: "",
         description: "",
         discountPercentage: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 46, title: "Lorem ipsum dolor sit amet consectetur.",
@@ -651,7 +696,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         tag: "",
         description: "",
         discountPercentage: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 47, title: "Lorem ipsum dolor sit amet consectetur.",
@@ -663,7 +709,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         tag: "",
         description: "",
         discountPercentage: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 48,
@@ -676,7 +723,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         tag: "",
         description: "",
         discountPercentage: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     },
     {
         id: 49,
@@ -689,7 +737,8 @@ const MOCK_PRODUCTS: ProductItem[] = [
         tag: "",
         description: "",
         discountPercentage: "",
-        count: 0
+        count: 0,
+        productId: "product_usd_3200",
     }
 ];
 

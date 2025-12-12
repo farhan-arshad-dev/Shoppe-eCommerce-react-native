@@ -7,6 +7,9 @@ import { SplashScreen, Stack, useRouter } from "expo-router";
 import React, { useEffect } from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Provider } from "react-redux";
+import Purchases, { LOG_LEVEL } from 'react-native-purchases';
+import { Platform } from "react-native";
+import { REVENUE_CAT_API_KEY } from "@/src/config";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -56,7 +59,33 @@ function RootContent() {
 }
 
 export default function RootLayout() {
+
   const queryClient = new QueryClient()
+  useEffect(() => {
+    Purchases.setLogLevel(LOG_LEVEL.VERBOSE);
+
+    // Platform-specific API keys
+    const iosApiKey = REVENUE_CAT_API_KEY!;
+    const androidApiKey = REVENUE_CAT_API_KEY!;
+
+    if (Platform.OS === 'ios') {
+      Purchases.configure({ apiKey: iosApiKey });
+    } else if (Platform.OS === 'android') {
+      Purchases.configure({ apiKey: androidApiKey });
+    }
+    getCustomerInfo();
+  }, []);
+
+  async function getCustomerInfo() {
+    try {
+      const customerInfo = await Purchases.getCustomerInfo();
+      console.log("Customer Info", JSON.stringify(customerInfo, null, 2));
+
+    } catch (e) {
+      console.log("Customer Info error", e);
+    }
+  }
+
   return (
     <SafeAreaProvider>
       <Provider store={store}>

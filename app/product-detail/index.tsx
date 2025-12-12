@@ -3,8 +3,9 @@ import { useCommonStyles } from "@/src/styles/commonStyles";
 import { makeStyles } from "@/src/theme/makeStyles";
 import { ProductItem } from "@/src/types/product";
 import { useLocalSearchParams } from "expo-router";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { View, Text, Image, Animated, Dimensions, TouchableOpacity, } from "react-native";
+import Purchases, { PurchasesPackage } from "react-native-purchases";
 import { useDispatch } from "react-redux";
 
 const { height } = Dimensions.get("window");
@@ -14,6 +15,8 @@ export default function ProductDetailsScreen() {
 
     const styles = useStyles();
     const commonStyles = useCommonStyles();
+
+    const [packages, setPackages] = useState<PurchasesPackage[] | undefined>([]);
 
     const dispatch = useDispatch();
 
@@ -28,12 +31,41 @@ export default function ProductDetailsScreen() {
         outputRange: [0, 15],
         extrapolate: "clamp",
     });
+    useEffect(() => {
+        loadOfferings().then((packages) => {
+            setPackages(packages);
+            console.log("Products", JSON.stringify(packages, null, 2));
+
+        });
+    }, []);
 
     const translateY = scrollY.interpolate({
         inputRange: [0, height],
         outputRange: [0, -height],
         extrapolate: "clamp",
     });
+
+    async function loadOfferings() {
+        try {
+            const offerings = await Purchases.getOfferings();
+
+            if (offerings.current) {
+                return offerings.current.availablePackages;
+            }
+        } catch (e) {
+            console.log("Error loading offerings", e);
+        }
+    }
+
+    async function purchasePackage(purchasesPackage: PurchasesPackage) {
+        try {
+            const { customerInfo } = await Purchases.purchasePackage(purchasesPackage);
+            alert(`Product Pruchased of Price ${purchasesPackage.product.price}`,)
+            console.log(JSON.stringify(customerInfo, null, 2));
+        } catch (e) {
+            console.log("Error purchasing", e);
+        }
+    }
 
     return (
         <View style={styles.container}>
@@ -130,7 +162,12 @@ export default function ProductDetailsScreen() {
                     <Text style={styles.btnText}>Add to Cart</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.buyNowBtn}>
+                <TouchableOpacity style={styles.buyNowBtn} onPress={() => {
+                    let productPackage = packages?.filter(item => item.identifier === product.productId)[0]
+                    if (productPackage) {
+                        purchasePackage(productPackage);
+                    }
+                }}>
                     <Text style={styles.btnTextWhite}>Buy Now</Text>
                 </TouchableOpacity>
             </View>

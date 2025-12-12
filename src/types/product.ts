@@ -14,6 +14,7 @@ export interface ProductItem {
     images: string[];
     description: string;
     price: string;
+    productId: string,
     discountPercentage: string;
     discountedPrice: string;
     type: ItemType;
